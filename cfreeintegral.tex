@@ -1,0 +1,4655 @@
+\documentclass[12pt]{amsart}
+\usepackage{svn}
+% svn propset svn:keywords 'Revision' cfreeintegral.tex
+\SVN $Revision: 177 $
+
+\usepackage{amssymb,amsthm,amsmath,amsfonts}
+\usepackage{graphicx}
+%\usepackage{subfigure}
+\usepackage{subcaption}
+\usepackage{epstopdf}
+\usepackage{mathtools}
+\usepackage{mathabx}
+\usepackage{blkarray}
+\usepackage{comment}
+%\usepackage{amsaddr}
+
+\usepackage{textcomp}
+
+
+
+\raggedbottom{}
+
+
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{commath}
+\usepackage{color}
+\newcommand{\FIXME}[1]{{\color{red}\framebox{ #1}}}
+\newcommand{\TODO}[1]{{\color{green}TODO #1}}
+
+
+\newcommand{\Parent}{ \mbox{Parent} }
+
+%\usepackage{cite}
+%\usepackage[colorlinks=true,urlcolor=black,anchorcolor=black,citecolor=teal,linkcolor=violet]{hyperref}
+\usepackage[colorlinks=true,urlcolor=black,anchorcolor=black,citecolor=black,linkcolor=black]{hyperref}
+%\usepackage[urlcolor=black,anchorcolor=black,citecolor=teal]{hyperref}
+\usepackage[hypcap]{caption}
+\usepackage{doi}
+%\usepackage[cp1250]{inputenc}
+%\usepackage[T1]{polski}
+%\textwidth=16cm
+%\oddsidemargin=0pt
+%\evensidemargin=0pt
+\usepackage[a4paper,margin=1in]{geometry}
+\setlength{\textwidth}{16cm}
+\setlength{\textheight}{26cm}
+\topmargin = -15mm
+%\oddsidemargin = -3mm
+%\evensidemargin = 1mm
+\usepackage{tikz,pgfplots,pgfplotstable}
+\pgfplotsset{compat=1.16}
+%\usepgfplotslibrary{external}
+%\tikzsetexternalprefix{pictures/}
+%\tikzexternalize
+
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{shapes,patterns}
+\definecolor{histcolor}{rgb}{0.97858, 0.678934, 0.157834}
+
+%ellipses aroujnd symbols
+\newcommand{\paczek}[3][white]{  \node[draw,ellipse,inner sep=1pt, fill=#1] at (#2){\phantom{x}$#3$\phantom{x}};}
+%usage: \paczek[color]{x,y}{symbol}
+
+
+
+\allowdisplaybreaks{}
+\DeclareMathOperator{\supp}{\mathrm{supp}}
+\DeclareMathOperator{\id}{\operatorname{id}}
+\DeclareMathOperator{\Res}{\mathrm{Res}}
+%\DeclareMathOperator{\Ord}{\mathcal{O}}
+%\DeclareMathOperator{\IE}{E}
+\newcommand{\IE}{E}
+\newcommand{\itensor}{\oocirc} %inner tensor
+\newcommand{\llangle}{\langle\!\langle} 
+\newcommand{\rrangle}{\rangle\!\rangle}
+
+\newcommand{\freeprod}{\mathbin{\amalg{}}} 
+\newcommand{\FP}{\freeprod}
+
+\newcommand{\bigfreeprod}{\mathbin{\coprod{}}}
+\renewcommand{\star}{\mathbin{\ast{}}} 
+
+\newcommand{\VNEC}{VNEC}
+
+
+\DeclareMathOperator{\diag}{\mathrm{diag}}
+\DeclareMathOperator{\Ord}{\mathcal{O}}
+
+
+\DeclareMathOperator{\tensT}{\mathcal{T}}
+\DeclareMathOperator{\tensTb}{\overline{\mathcal{T}}}
+\DeclareMathOperator{\deconc}{\Delta_d}
+ \DeclareMathOperator{\bdeconc}{\mbox{$\widebar{\Delta}$}_d}
+\DeclareMathOperator{\fdeconc}{\tilde{\Delta}_d}
+
+
+
+
+
+\DeclareMathOperator{\deconci}{\Delta_d^{\itensor}} 
+\DeclareMathOperator{\bdeconci}{\widebar{\Delta}_d^{\itensor}} 
+
+
+
+\DeclareMathOperator{\IntPart}{\mathit{Int}}
+\DeclareMathOperator{\Comp}{\mathcal{C}}
+\DeclareMathOperator{\descents}{\mathcal{D}}
+
+
+
+% from MnSymbol
+% https://tex.stackexchange.com/questions/36006/importing-single-symbol-from-mnsymbol
+
+
+\DeclareFontFamily{U} {MnSymbolC}{}
+\DeclareFontShape{U}{MnSymbolC}{m}{n}{
+  <-6> MnSymbolC5
+  <6-7> MnSymbolC6
+  <7-8> MnSymbolC7
+  <8-9> MnSymbolC8
+  <9-10> MnSymbolC9
+  <10-12> MnSymbolC10
+  <12-> MnSymbolC12}{}
+\DeclareFontShape{U}{MnSymbolC}{b}{n}{
+  <-6> MnSymbolC-Bold5
+  <6-7> MnSymbolC-Bold6
+  <7-8> MnSymbolC-Bold7
+  <8-9> MnSymbolC-Bold8
+  <9-10> MnSymbolC-Bold9
+  <10-12> MnSymbolC-Bold10
+  <12-> MnSymbolC-Bold12}{}
+
+\DeclareSymbolFont{MnSyC} {U} {MnSymbolC}{m}{n}
+
+\DeclareMathSymbol{\oocirc}{\mathbin}{MnSyC}{99}
+
+
+\newcommand{\bPsi}{\boldsymbol{\Psi{}}} 
+
+
+
+
+\let\Im\undefined
+\DeclareMathOperator{\Im}{\mathrm {Im}}
+\def\R{{\mathbb R}}
+\def\Rr{{\mathcal R}}
+\def\C{{\mathbb C}}
+\newcommand\IC{{\mathbb C}}
+\newcommand\IK{{\mathbb K}}
+\newcommand\IF{{\mathbb F}}
+\newcommand\IZ{{\mathbb Z}}
+\newcommand\IN{{\mathbb N}}
+\newcommand{\nontang}[1]{  \sphericalangle\text{-}\lim_{#1}}
+
+\newcommand\uX{{\underline{X}}}
+\newcommand\uXn{{X_1,X_2,\ldots,X_n}}
+\newcommand\uXk{{X_1,X_2,\ldots,X_k}}
+\newcommand\bX{{\mathcal{X}}}
+
+\newcommand{\Bigmid}{\mathrel{\Big|}}
+\newcommand{\bigmid}{\mathrel{\big|}}
+
+
+\newcommand\bub[1]{\mathring{#1}}
+
+%generating functions
+%\newcommand{\mgf}{\tilde{M}}
+\newcommand{\mgf}{M}
+\newcommand{\mgfpsi}{\psi}
+
+% alternating Boolean cumulant generating function
+\newcommand{\abcgf}[2]{\eta_{#2}^{#1}}
+
+\def\N{{\mathbb N}}
+\def\Z{{\mathbb Z}}
+\def\tr{\;\mathrm{tr}\,}
+\def\Tr{\;\mathrm{Tr}\,}
+\def\<{\langle}
+\def\>{\rangle}
+\def\P{{\mathbb P}}
+\def\Q{{\mathbb Q}}
+\def\E{E}
+\def\U{{\mathbb U}}
+\def\V{{\mathbb V}}
+%\def\S{{\mathbb S}}
+\def\D{{\mathbb D}}
+\def\eps{\epsilon}
+\def\I{\mathbb I}
+%\def\i{\underline i}
+%\def\r{\underline r}
+%\def\e{\underline e}
+\def\X{\mathbb X}
+%\def\a{\underline a}
+%\def\c{\underline c}
+%\def\d{\underline d}
+%\def\w{\underline w}
+%\def\v{\underline v}
+%\def\u{\underline u}
+\def\Y{\mathbb Y}
+\def\var{\mathbb{V}\mathrm{ar}}
+\def\cov{\mathbb{C}\mathrm{ov}}
+\def\corr{\mathbb{C}\mathrm{orr}}
+
+\DeclareMathOperator{\NC}{\mathit{NC}} %
+\DeclareMathOperator{\NCirr}{{\mathit{NC}^\textit{irr}}} %
+\DeclareMathOperator{\VNRPirr}{{\mathit{VNRP}^\textit{irr}}} %
+
+%\DeclareMathOperator[1][]{\NCirr}{
+%\ifthenelse{\equal{{#1}{}
+%  \NC^\mathit{irr}} %
+
+%  inner and outer blocks
+%\DeclareMathOperator{\IB}{\mathrm{inner}} %
+%\DeclareMathOperator{\OB}{\mathrm{outer}} %
+\DeclareMathOperator{\IB}{\mathrm{inn}} %
+\DeclareMathOperator{\OB}{\mathrm{out}} %
+
+
+\DeclareMathOperator{\IP}{\mathrm{Int}} %
+\newcommand{\alg}[1]{\mathcal{#1}}
+\renewcommand{\norm}[1]{\lVert#1\rVert}
+\renewcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\bigabs}[1]{\bigl\lvert#1\bigr\rvert}
+\newcommand{\Bigabs}[1]{\Bigl\lvert#1\Bigr\rvert}
+\newcommand{\biggabs}[1]{\biggl\lvert#1\biggr\rvert}
+%
+% Kreweras
+%
+\newcommand{\Krewl}[1]{\mathpalette\harpleft{#1}}
+\DeclareMathOperator{\KKrewl}{\mathpalette\harpleft{K}}
+\newcommand{\harpleftsign}{\scriptstyle\leftharpoonup}
+\newcommand{\harpleft}[2]{%
+  \ifx\displaystyle#1\doalign{$\harpleftsign$}{#1#2}\fi
+  \ifx\textstyle#1\doalign{$\harpleftsign$}{#1#2}\fi
+  \ifx\scriptstyle#1\doalign{\scalebox{.6}[.9]{$\harpleftsign$}}{#1#2}\fi
+  \ifx\scriptscriptstyle#1\doalign{\scalebox{.5}[.8]{$\harpleftsign$}}{#1#2}\fi
+}
+
+\newcommand{\Krewr}[1]{\mathpalette\harpright{#1}}
+\DeclareMathOperator{\KKrewr}{\mathpalette\harpright{K}}
+\newcommand{\harprightsign}{\scriptstyle\rightharpoonup}
+\newcommand{\harpright}[2]{%
+  \ifx\displaystyle#1\doalign{$\harprightsign$}{#1#2}\fi
+  \ifx\textstyle#1\doalign{$\harprightsign$}{#1#2}\fi
+  \ifx\scriptstyle#1\doalign{\scalebox{.6}[.9]{$\harprightsign$}}{#1#2}\fi
+  \ifx\scriptscriptstyle#1\doalign{\scalebox{.5}[.8]{$\harprightsign$}}{#1#2}\fi
+}
+\newcommand{\doalign}[2]{%
+ {\vbox{\offinterlineskip\ialign{\hfil##\hfil\cr#1\cr$#2$\cr}}}%
+}
+\let\widering\undefined
+\usepackage{yhmath}
+% ,mathabx}
+
+\newcommand{\Krewlr}[1]{ \widetriangle{#1}} %extended Kreweras
+\DeclareMathOperator{\KKrewlr}{\mbox{$\widetriangle{K}$}}
+
+\newcommand{\Krewrl}[1]{ \widecheck{#1}} %extended Kreweras
+\DeclareMathOperator{\KKrewrl}{\mbox{$\widecheck{K}$}}
+%
+
+\newcommand{\hl}[1]{\mathpalette\harpleft{#1}}
+\newcommand{\hr}[1]{\mathpalette\harpright{#1}}
+
+
+
+\DeclareMathOperator{\rDelta}{\mathpalette\harpright{\Delta}}
+\DeclareMathOperator{\lDelta}{\mathpalette\harpleft{\Delta}}
+
+\DeclareMathOperator{\rD}{\mathpalette\harpright{D}}
+\DeclareMathOperator{\lD}{\mathpalette\harpleft{D}}
+\DeclareMathOperator{\rGamma}{\mathpalette\harpright{\Gamma}}
+\DeclareMathOperator{\lGamma}{\mathpalette\harpleft{\Gamma}}
+
+\DeclareMathOperator{\rE}{\mathpalette\harpright{E}}
+\DeclareMathOperator{\lE}{\mathpalette\harpleft{E}}
+
+%\DeclareMathOperator{\rdelta}{\mathpalette\harpright{\delta}}
+%\DeclareMathOperator{\ldelta}{\mathpalette\harpleft{\delta}}
+
+%\DeclareMathOperator{\rnabla}{\hr{\nabla}}
+%\DeclareMathOperator{\lnabla}{\hl{\nabla}}
+
+% https://tex.stackexchange.com/questions/352993/adjusting-subscript-distance-by-redefining-command#
+% reduce space before subscript of \harpright{}{}\delta{}
+\makeatletter
+ \newcommand*{\closeindex}[1]{_{\mkern-4.5mu#1}}
+
+ \DeclareRobustCommand{\rdelta}{\mathpalette\harpright{\delta}\@ifnextchar_{\expandafter\closeindex\@gobble}{}}
+ \DeclareRobustCommand{\ldelta}{\mathpalette\harpleft{\delta}\@ifnextchar_{\expandafter\closeindex\@gobble}{}}
+
+ \DeclareRobustCommand{\rnabla}{\hr{\nabla}\@ifnextchar_{\expandafter\closeindex\@gobble}{}}
+ \DeclareRobustCommand{\lnabla}{\hl{\nabla}\@ifnextchar_{\expandafter\closeindex\@gobble}{}}
+ \makeatother
+
+
+
+
+\makeatletter
+%Table of Contents
+\setcounter{tocdepth}{3}
+
+% Add bold to \section titles in ToC and remove . after numbers
+\renewcommand{\tocsection}[3]{%
+	\indentlabel{\@ifnotempty{#2}{\bfseries\ignorespaces#1 #2\quad}}\bfseries#3}
+% Remove . after numbers in \subsection
+\renewcommand{\tocsubsection}[3]{%
+	\indentlabel{\@ifnotempty{#2}{\ignorespaces#1 #2\quad}}#3}
+%\let\tocsubsubsection\tocsubsection% Update for \subsubsection
+%...
+
+\newcommand\@dotsep{4.5}
+\def\@tocline#1#2#3#4#5#6#7{\relax
+	\ifnum #1>\c@tocdepth % then omit
+	\else
+	\par \addpenalty\@secpenalty\addvspace{#2}%
+	\begingroup \hyphenpenalty\@M
+	\@ifempty{#4}{%
+		\@tempdima\csname r@tocindent\number#1\endcsname\relax
+	}{%
+		\@tempdima#4\relax
+	}%
+	\parindent\z@ \leftskip#3\relax \advance\leftskip\@tempdima\relax
+	\rightskip\@pnumwidth plus1em \parfillskip-\@pnumwidth
+	#5\leavevmode\hskip-\@tempdima{#6}\nobreak
+	\leaders\hbox{$\m@th\mkern \@dotsep mu\hbox{.}\mkern \@dotsep mu$}\hfill
+	\nobreak
+	\hbox to\@pnumwidth{\@tocpagenum{\ifnum#1=1\bfseries\fi#7}}\par% <-- \bfseries for \section page
+	\nobreak
+	\endgroup
+	\fi}
+\AtBeginDocument{%
+	\expandafter\renewcommand\csname r@tocindent0\endcsname{0pt}
+}
+\def\l@subsection{\@tocline{2}{0pt}{2.5pc}{5pc}{}}
+\makeatother
+
+
+
+
+
+
+
+
+\newcommand{\bbeta}[1]{\beta^b_{#1}}
+\newcommand{\bbetan}[2]{\beta^{b^{(\scriptstyle #2)}}_{#1}\!}
+\newcommand{\bbetaC}[2]{\beta^{b^{\scriptstyle #2}}_{#1}}
+
+%block beta with varying state \bbetas{\varphi}{X} produces \beta^{b,\varphi}_X
+\newcommand{\bbetas}[2]{\beta^{b,#1}_{#2}}
+%block beta with varying state and bubble on top
+\newcommand{\bubbetas}[2]{\bub{\beta}^{b,#1}_{#2}}
+
+
+
+\newcommand{\fbeta}[1]{\beta^\delta_{#1}}
+\newcommand{\fbetan}[2]{\beta^{\delta^{(\scriptstyle #2)}}_{#1}\!}
+\newcommand{\fbetaC}[2]{\beta^{\delta^{\scriptstyle #2}}_{#1}}
+
+%full beta with varying state \bbetas{\varphi}{X} produces \beta^{b,\varphi}_X
+\newcommand{\fbetas}[2]{\beta^{\delta,#1}_{#2}}
+
+
+%% Adrian comment commmands
+\setlength {\marginparwidth }{2cm}
+\usepackage{xargs}                      % Use more than one optional parameter in a new commands
+\usepackage{xcolor}  % Coloured text etc. 
+\usepackage[colorinlistoftodos,textsize=tiny]{todonotes}
+\usepackage{todonotes}
+\newcommandx{\question}[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
+\newcommandx{\adrian}[2][1=]{\todo[linecolor=teal,backgroundcolor=teal!25,bordercolor=teal,#1]{#2}}
+\newcommandx{\franz}[2][1=]{\todo[linecolor=teal,backgroundcolor=green!25,bordercolor=teal,#1]{#2}}
+\newcommandx{\kamil}[2][1=]{\todo[linecolor=teal,backgroundcolor=purple!25,bordercolor=teal,#1]{#2}}
+\newcommandx{\info}[2][1=]{\todo[caption={Short note},linecolor=violet,backgroundcolor=violet!25,bordercolor=violet,size=\tiny,#1]{#2}}
+\newcommandx{\thiswillnotshow}[2][1=]{\todo[disable,#1]{#2}}
+
+%g\usepackage[notcite,notref]{showkeys}
+
+%
+%
+
+
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+       
+\theoremstyle{definition}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{assumption}[theorem]{Assumption}
+\newtheorem{algorithm}[theorem]{Algorithm}
+%\newtheorem{example}{Example}[section]
+%\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+%\theoremstyle{example}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remdef}[theorem]{Remark and Definition}
+\newtheorem{remnot}[theorem]{Remark and Notation}
+
+%\begin{frontmatter}
+%\title[An application of Boolean cumulants to subordination results in free
+%probability]{An application of Boolean cumulants to subordination results in
+%free probability}
+
+
+
+%
+% IMPAN
+%
+
+\makeatletter
+\@namedef{subjclassname@2020}{%
+  \textup{2020} Mathematics Subject Classification}
+\makeatother
+
+
+%\input{impan.tex}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\title[Polynomials in c-free random variables]{Polynomials in $c$-free random variables with applications to free denoising}
+
+\author[A. Celestino]{Adrián Celestino}
+\address[A. Celestino]{Mathematisches Institut\\
+	Universität Münster\\
+	Einsteinstr. 62\\
+	48149 M\"unster, Germany\\
+	ORCID: 0000-0003-3444-5000
+}
+\email{adrian.celestino@uni-muenster.de}
+
+
+\author[F. Lehner]{Franz Lehner}
+\address[F. Lehner]{Institut f\"ur Diskrete Mathematik\\
+Technische Universit\"at Graz\\
+Steyrergasse 30\\
+A-8010 Graz, Austria\\
+ORCID: 0000-0002-6902-5148
+}
+\email{lehner@math.tu-graz.ac.at}
+
+
+\author[K. Szpojankowski]{Kamil Szpojankowski}
+\address[K. Szpojankowski]{Institute of Mathematics of the Polish Academy of Sciences\\ ul. \'Sniadeckich 8\\ 00-656 Warszawa\\ Poland\\ and 
+	Faculty of Mathematics and Information Science\\
+	Warsaw University of Technology\\ Koszykowa 75\\ 00-662 Warszawa\\ Poland.\\
+ORCID: 0000-0003-0926-1285
+}
+\email{kamil.szpojankowski@pw.edu.pl}
+
+
+\thanks{Supported by the Austrian Federal Ministry of Education, Science and
+  Research and the Polish Ministry of Science and Higher Education, grants
+  N$^{\textrm{os}}$ PL 08/2016 and PL 06/2018.\\
+  AC: Funded by the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) under Germany's Excellence Strategy EXC 2044/2 --390685587, Mathematics Münster: Dynamics--Geometry--Structure.\\
+  FL: This research was funded in part by the Austrian Science Fund (FWF) grant
+  I 6232-N BOOMER (WEAVE).\\
+KSz: This research was funded in part by National Science Centre, Poland WEAVE-UNISONO grant BOOMER 2022/04/Y/ST1/00008.
+%\\ For the purpose of Open Access, the authors have applied a CC-BY public copyright licence to any Author Accepted Manuscript (AAM) version arising from this submission.
+}
+
+
+\numberwithin{equation}{section}
+
+
+
+%\usepackage{refcheck}
+
+\begin{document}
+\date{Rev. \SVNRevision, \today}
+
+\begin{abstract}
+  We study distributions of polynomials in conditionally free ($c$-free) random
+  variables, a notion of independence
+  for
+  % in the framework of
+  two-state noncommutative probability spaces $(\mathcal{A},\varphi,\psi)$ introduced by
+  Bo\.zejko, Leinert and Speicher.
+  To this end we establish recursive relations between the
+  joint Boolean cumulants of $c$-free random variables,
+  analogous to previously found recursions for Boolean cumulants of free random variables.
+  The algebraic reformulation of these recursions in terms of the free associative
+  algebra provides an effective formal machinery for the computation
+  of the moment  generating functions and thus  the   distributions
+  of arbitrary self-adjoint polynomials in $c$-free random variables.  
+   
+  As an application of a recent observation, our approach can be used to determine conditional expectations
+  of the form $\E[a|P(a,b)]$, where $P$ is a self-adjoint polynomial
+  in free (in the sense of Voiculescu) random variables $a,b$.
+  We illustrate this with an example where $P(a,b)=i[a,b]$.  
+  
+  Finally we define orthogonal projections
+  that formally play the role of conditional expectations in the framework of
+  $c$-freeness and share some properties with the conditional expectations of
+  free variables. In particular they can be used to re-derive by purely
+  algebraic methods the formula of Popa and Wang for the $\Sigma$-transform for
+  the $c$-free multiplicative convolution.
+\end{abstract}
+
+\keywords{Free Probability, subordination, Boolean cumulants, conditional expectation}
+\subjclass[2020]{Primary: 46L54. Secondary:  15B52.}
+
+\maketitle
+
+% \dominitoc
+%\setcounter{tocdepth}{2}
+\begin{flushright}
+	\itshape
+	Dedicated to professor Marek Bo\.zejko\\ on the occasion of his 80th birthday.
+\end{flushright}
+\tableofcontents{}
+
+\section{Introduction}
+
+The notion of \(c\)-freeness (or conditional freeness) was introduced by
+Bo\.{z}ejko, Leinert, and Speicher in
+\cite{BozejkoSpeicher:psi:1991,BozejkoLeinertSpeicher:1996:convolution}.
+It is a noncommutative notion of independence in the framework
+of a two-state noncommutative probability space \((\alg{M}, \varphi, \psi)\).
+This concept generalizes freeness in the following sense:
+random variables \(a,b \in \alg{M}\) are
+\(c\)-free with respect to the pair \((\varphi,\psi)\), if they are free in the sense of
+Voiculescu with respect to the second state \(\psi\) and satisfy
+a factorization property with respect to the first state $\varphi$.
+For precise definitions of both types of independence see Section~\ref{sec:2} below.
+
+The distribution of a self-adjoint element \(a\) in a two-state probability
+space is described by a pair of measures \(\mu_a^{\varphi}\) and
+\(\mu_a^{\psi}\), corresponding to the distributions with respect to
+\(\varphi\) and \(\psi\), respectively. In this paper, we present a method for
+determining the distribution of polynomials in \(c\)-free variables. More
+precisely, for \(c\)-free variables \(a,b\) and a noncommutative polynomial \(P
+\in \C\langle X,Y\rangle\), we provide a method for determining the (ordinary) moment
+generating function of \(P(a,b)\) with respect to \(\varphi\) (see Theorem
+\ref{thm:cfreeConvolution}). For simplicity, our presentation focuses on the
+case of two variables, but this generalizes easily to the case of $n$
+variables. Our main tools are the same as in
+\cite{LehnerSzpojankowski:2023:freeint1}
+where we studied polynomials in free variables:
+\begin{itemize}
+ \item
+  derivations on the free algebra which translate combinatorial
+  recursions for Boolean cumulants into effective algebraic identities
+  between their generating functions;
+ \item
+  linearization, which allows us to express the resolvent
+  $(1-zP(X,Y))^{-1}$ in the form $u^t (I-zAX-zBY)^{-1}v$ for vectors
+  $u,v\in \IC^n$ and $n\times n$ matrices $A$ and $B$.
+\end{itemize}
+On the combinatorial side of this development we prove a new characterization
+of $c$-freeness in terms of Boolean cumulants (see Theorem
+\ref{thm:VNTPCfree}). It turns out to be very similar to the characterization
+of freeness from \cite{FMNS2}, and involves the so-called Vertical-No-Repeat
+property which identifies maximal elements among coloured noncrossing
+partitions with respect to a partial order denoted by $\ll$, which arises
+naturally in the context of free probability (see
+\cite{BelinschiNicaBBPforKTuples}). 
+
+Our motivation to study this problem comes from the recent developments in
+\cite{FevrierNicaSzpojankowski:2024} where a surprising connection between
+$c$-freeness and so called free denoising was established, which we briefly
+describe below.
+Let  $(\alg{M},\psi)$ be a tracial $W^*$-probability space, i.e.,
+$\alg{M}$ is a von Neumann algebra with a faithful, normal trace
+$\psi$.
+Assume further that two random variables $a,b$ are free with respect to
+$\psi$. We interpret the random variable $a$ as a ``signal'' of interest and
+$b$ as a ``noise'', and we view $P(a,b)$ as a noisy version of $a$, where
+$P\in\IC\langle X,Y \rangle$. We are interested in  the conditional expectation
+$\E[a|P(a,b)]$, which is the best approximation of
+$a$ by a function of $P(a,b)$ with respect to the $L^2$-norm with respect to $\psi$.
+It was shown in \cite{FevrierNicaSzpojankowski:2024} that, under the assumptions
+$a\geq 0$ and $\psi(a)=1$, if we define a new state $\varphi(c)=\psi(a c)$ then
+$a,b$ are $c$-free with respect to the pair $(\varphi,\psi)$, and moreover we
+have $\E[a|P(a,b)]=h(P(a,b))$ where
+$h=d\mu_{P(a,b)}^\varphi/d\mu_{P(a,b)}^\psi$ is the Radon-Nikodym
+derivative. Methods of determining distributions of polynomials in free
+variables are known (see
+\cite{BelinschiMaiSpeicherSubordination,LehnerSzpojankowski:2023:freeint1}),
+and thus we fill this gap and provide a method to compute the Radon-Nikodym
+derivative above, and consequently the conditional expectation. 
+
+
+%In order to illustrate our results we present one example, which is fully
+%discussed in Section~\ref{sec:denoising}. Suppose $a$ is a standard
+%semicircular element and $b$ has distribution
+%$\tfrac{1}{2}\left(\delta_{-1}+\delta_1\right)$.
+%For $s<1/2$ we have
+%\[E\left[(1-sa)^{-1}|i[a,b]\right]=h(i[a,b])\]
+%with 
+%\[h(t)=\frac{2(2+\tilde{\eta}_a(s)^2)}{(1-s\tilde{\eta}_a(s)^2)\left((2+\tilde{\eta}_a(s))^2-\tilde{\eta}_a(s)^2 t^2\right)},\]
+%where $\tilde{\eta}_a(s)=\frac{1-\sqrt{1-4 s^2}}{2 s}$ is the shifted $\eta$-transform (Boolean cumulant generating function) of the standard semicircle distribution.
+%
+%Expanding the above power series at $s=0$ we obtain
+%\begin{align*}
+%	\E[a^2|i[a,b]]&=\frac{(i[a,b])^2+2}{4},\\
+%	\E[a^4|i[a,b]]&=\frac{(i[a,b])^4+6(i[a,b])^2+12}{16}.
+%\end{align*}
+%
+%
+%%
+%%VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+%%
+%\franz{begin variant for better readability}
+In order to illustrate our results we present one example, which is fully
+discussed in Section~\ref{sec:denoising}. Suppose $a$ is a standard
+semicircular element and $b$ has distribution
+$\tfrac{1}{2}\left(\delta_{-1}+\delta_1\right)$.
+Let $c = i[a,b]$ be their commutator, then
+for $-1/2<s<1/2$ we have
+\[
+  E\bigl[(1-sa)^{-1} | c\bigr]=h(c)
+\]
+with 
+\[
+  h(t)=\frac{2(2+\tilde{\eta}_a(s)^2)
+  }{%
+    (1-s\tilde{\eta}_a(s)^2)\left((2+\tilde{\eta}_a(s)^2)^2-\tilde{\eta}_a(s)^2
+      t^2\right)},
+\]
+where $\tilde{\eta}_a(s)=\frac{1-\sqrt{1-4 s^2}}{2 s}$ is the shifted Boolean transform of the standard semicircle distribution.
+
+Expanding the above power series at $s=0$ we obtain
+\begin{align*}
+	\E[a^2|c]&=\frac{c^2+2}{4},\\
+	\E[a^4|c]&=\frac{c^4+6c^2+12}{16}.
+\end{align*}
+The same formulas hold more generally for the anticommutator and in fact 
+any element of the form $c=\theta ab+\bar{\theta}ba$, with $\theta\in\IC$
+arbitrary such that $\abs{\theta}=1$.
+%\franz{end variant}
+%\kamil{I prefer when we write explicitly the commutator}
+%
+%VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+%
+
+
+In the framework of general $c$-free random variables in a two-state
+$W^*$-noncommutative probability space $(\alg{M},\varphi,\psi)$ it is natural
+to ask whether conditional expectations onto $c$-free subalgebras
+with respect to $\varphi$ exist. This
+question is non-trivial because in general $c$-freeness  is incompatible with
+ a tracial state.
+Indeed the examples in Section~\ref{sec:6} below show that in the $c$-free case
+conditional expectations in the strict sense do not exist,
+however the projection in $L^2(\alg{M})$ with respect to the inner product
+\begin{comment}
+In the framework of general $c$-free random variables in a two-state noncommutative probability space $(\alg{M},\varphi,\psi)$ where $\alg{M}$ is a von Neumann algebra, it is natural to ask whether conditional expectations with respect to $\varphi$ exist, this question is non-trivial as $c$-freeness prevents traciality of $\varphi$. As we explain in §\ref{sec:6} below such conditional expectations (as mapping between von Neumann algebras) do not exist, however one can consider projections in $L^2(\alg{M})$ with respect to inner product 
+\end{comment}
+\begin{equation*}
+  \langle a,b\rangle  = \varphi(ab^*)
+\end{equation*}
+exists and serves as a formal analog of the conditional expectation.
+We call this projection a \emph{right quasi-conditional expectation}, as it has
+only the right module property and is not positive. We denote it by
+$\rE_b^{\varphi}$, when we compute the projection onto the subalgebra generated by $b$. We show that this projection shares some properties with the conditional expectations with respect to $\varphi$. In particular for any polynomial $P$ in $c$-free variables $\rE_b^\varphi[P(a,b)]$ is a polynomial in $b$ of degree at most $\mathrm{deg}(P)$. Moreover we provide recursive formulas for $\rE_b[P(a,b)]$ similar to those obtained for conditional expectations for polynomials in free variables from \cite{LehnerSzpojankowski:2023:freeint1}. Using this machinery, we show that the right quasi-conditional expectation of the resolvent of a sum of $c$-free variables is again a resolvent, multiplied by an analytic function. This resembles the phenomenon of subordination for free additive convolution from \cite{Biane98}. In Section~\ref{sec:sigmatransform} we show that using the right quasi-conditional expectation one can derive a formula for the $\Sigma$-transform for $c$-free multiplicative convolution from \cite{PopaWang:2011:multiplicative}.
+
+This paper is organized as follows. In Section~\ref{sec:2} we recall basic definitions and facts concerning freeness and $c$-freeness. In Section~\ref{sec:VNRP} we prove a characterization of $c$-freeness in terms of Boolean cumulants. In Section~\ref{sec:4} we provide a method of computing distributions of polynomials in $c$-free variables. In Section~\ref{sec:denoising} we present an application of our result to a free denoising problem. In Section~\ref{sec:6} we study right quasi-conditional expectations and present a recursion for them based on Boolean cumulants. In Section~\ref{sec:sigmatransform} we derive the $\Sigma$-transform for $c$-free multiplicative convolution using  right quasi-conditional expectations.
+
+\section{Preliminaries}\label{sec:2}
+\subsection{Noncommutative probability spaces}
+A \emph{noncommutative probability space} is a pair
+ $(\alg{M},\psi)$, where $\alg{M}$ is a unital $*$-algebra and
+$\psi:\alg{M}\mapsto\IC$ is a positive unital linear functional, commonly
+called a \emph{state}. When $\alg{M}$ is a von Neumann algebra and $\psi$ is a
+faithful normal state, the pair  $(\alg{M},\psi)$ is  called  a \emph{$W^*$-probability space}.
+
+A \emph{two-state noncommutative probability space} is a triple
+$(\alg{M},\varphi,\psi)$ where $\alg{M}$ is equipped with
+two states $\varphi$ and $\psi$.
+We will assume throughout that the second state $\psi$ is tracial.
+
+
+
+
+\begin{definition}\label{def:2.2}
+  \begin{enumerate}[label=(\roman*)]
+   \item []
+   \item 
+  A family of subalgebras $(\alg{A}_i)_{i\in I}$ of a noncommutative probability space $(\alg{M},\psi)$ is called \emph{free} or \emph{free independent} if
+  \begin{equation*}
+    \psi(u_1u_2\dotsm u_n)=  0
+  \end{equation*}
+  for any choice of $u_j\in \bigcup_i\alg{A}_i$ such that $\psi(u_j)=0$ and
+  $u_j\in\alg{A}_{i_j}$ with $i_j\ne i_{j+1}$ for all $j\in\{1,2,\dots,n-1\}$.
+   \item 
+  A family of subalgebras $(\alg{A}_i)_{i\in I}$ of a two-state noncommutative probability space $(\alg{M},\varphi,\psi)$ is called
+  \emph{conditionally free} or \emph{$c$-free} if
+  \begin{equation*}
+   \psi(u_1u_2\cdots u_n) = 0\qquad\mbox{and}\qquad \varphi(u_1u_2\dotsm u_n)=  \varphi(u_1)\varphi(u_2)\dotsm\varphi(u_n)
+  \end{equation*}
+  whenever $u_j\in \bigcup_i\alg{A}_i$ with $\psi(u_j)=0$ and
+  $u_j\in\alg{A}_{i_j}$ with $i_j\ne i_{j+1}$ for all $j\in\{1,2,\dots,n-1\}$,
+  i.e., the family is free with respect to $\psi$ and in addition satisfies the
+  factorization property with respect to $\varphi$.
+  \end{enumerate}
+\end{definition}
+
+
+
+
+\subsection{Cumulants}
+To quote Fisher  \cite{Fisher:1929:moments},
+ when it comes to the description of joint distributions of random variables,
+\emph{the formulae are
+much simplified by the use of cumulative
+moment functions, or semi-invariants, in
+place of the crude moments}.
+This is even more true for non-commuting ones. In the present paper we will deal with three kinds of cumulants.
+
+\begin{notation}
+  \begin{enumerate}[label=(\roman*), leftmargin=2em]
+   \item []
+   \item We set $[n]\coloneqq\{1,\ldots,n\}$.
+    A \emph{set partition of order $n$}
+    is a collection     $\pi=\{V_1,\ldots,V_m\}$
+    of non-empty pairwise disjoint subsets 
+    $V_i\subseteq [n]$, called \emph{blocks},
+    such that $\bigcup_{i=1}^m V_i = [n]$.
+    Every set partition $\pi$ of order $n$ induces an equivalence relation
+    on $[n]$, denoted by $\sim_\pi$,
+    such that  $k\sim_\pi    l$ if and only if $k$ and $l$ are elements of the
+    same block of $\pi$.
+   \item Conversely, any function $f:[n]\to C$  into some set of ``colours''
+    $C$ induces an equivalence relation $i\sim j:\iff{} f(i)=f(j)$.
+    The corresponding set partition $\pi=\ker f$ is called
+    the \emph{kernel} of $f$.
+   \item We say that a set partition $\pi$ of $[n]$ is
+    \emph{noncrossing} if there is no pair of  blocks $V,W\in \pi$ with
+    elements $a,c\in V$ and $b,d\in W$ such that $a<b<c<d$. The collection of
+    noncrossing partitions of $[n]$ is denoted $\NC(n)$.  
+   \item An \emph{interval partition} of $[n]$ is a noncrossing partition
+    $\pi\in \NC(n)$ such that every block is an  interval of $[n]$. The
+    collection of interval partitions of $[n]$ is denoted by $\IntPart(n)$. 
+   \item Let $\pi\in \NC(n)$ and $V,W\in \pi$ be two different blocks.
+    We say  that a block
+%    that $V$ \emph{covers} $W$ or
+    $W$ is \emph{nested} inside a block $V$
+    if $\min(V)\leq w\leq  \max(V)$ for any $w\in
+    W$. A block $W\in \pi$ is called an \emph{outer block} if there is no $V\in
+    \pi$ such that $W$ is nested inside $V$. A block $W$ that is not outer is called an
+    \emph{inner block}.  We denote the sets of inner and outer blocks of
+    $\pi\in \NC(n)$ by $\IB(\pi)$ and $\OB(\pi)$, respectively. An interval
+    partition contains no inner blocks. 
+    % \item For a partition $\pi$ we denote by
+    %		$\partial\pi$ the incomplete partition formed by its outer blocks and by
+    %		$\bub{\pi}$ the
+    %		complementary partition formed by its inner   blocks.
+    %		For the nesting forest this means that $\partial\pi$ contains the roots of
+    %		the nesting trees it is composed of.
+    %		\franz{Maybe we don't need this}
+    %		\adrian{we are not using $\partial\pi$ and $\bub{\pi}$.}
+   \item  For a family of multilinear functionals
+    $(L_n:\alg{M}^n\to\mathbb{C})_{n\in\IN}$ and a partition $\pi$ we denote by  
+    $L_\pi$ the partitioned multilinear functional
+    $$
+    L_\pi(a_1,a_2,\dots,a_n) = \prod_{V\in\pi} L_{V}( a_1,a_2,\ldots,a_n),
+    $$
+    where for a block $V = \{i_1<i_2<\cdots <i_s\}$
+    we put
+    $$
+    L_{V}( a_1,a_2,\ldots,a_n)    := L_s(a_{i_1},a_{i_2},\ldots,a_{i_s}).
+    $$
+    This notation applies to linear functionals as well by setting
+     $\varphi_n(b_1,b_2,\ldots,b_n):=\varphi(b_1b_2\cdots b_n).$ 
+   \item Both $\NC(n)$ and $\IntPart(n)$ are lattices with respect to
+    the \emph{reversed refinement order}:
+    two partitions $\pi$ and $\rho$ of $[n]$ satisfy the relation $\pi\leq\rho$ 
+    for every block $V\in\pi$ there is a block $W\in\rho$ such that $V\subseteq W$. 
+  \end{enumerate}
+\end{notation}
+
+% DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+\begin{definition}\label{def:cumulants}
+  \begin{enumerate}[label=(\roman*)]
+   \item []
+   \item 
+  Let $(\mathcal{M},\psi)$ be a noncommutative probability space. The following identities uniquely determine families of multilinear
+  functionals $(\beta^\psi_n)_{n\in\IN}$,
+  $(r^\psi_n)_{n\in\IN}$,
+  called \emph{Boolean} and \emph{free} cumulants:
+\begin{align}
+\psi(a_1a_2\dotsm a_n)&=\sum_{\sigma \in \IntPart(n)}\beta^\psi_{\sigma}(a_1,a_2,\ldots,a_n),\label{eq:mcboolean}\\
+\psi(a_1a_2\dotsm a_n)&=\sum_{\sigma \in  \NC(n)}r^\psi_{\sigma}(a_1,a_2,\ldots,a_n).\label{eq:mcfree}
+\end{align}
+\item 
+	Let $(\mathcal{M},\varphi,\psi)$ be a two-state noncommutative probability space. The following identity uniquely determines the family of \emph{$c$-free cumulants}: $(r_{n}^{\varphi,\psi})_{n\in\mathbb{N}}$
+\begin{align}
+  \varphi(a_1a_2\cdots a_n)
+  &=\sum_{\sigma\in \NC(n)}
+    \prod_{
+%    \substack{
+%    V\in\sigma  \\
+%  \text{$V$  outer block}  
+%  }
+  V\in\OB(\sigma)              
+  }
+  r_{V}^{\varphi,\psi}(a_1,\ldots,a_n)
+  \prod_{
+%          \substack{
+%				V\in\sigma  \\
+%				\text{ $V$  inner block}  
+%  }
+  W\in\IB(\sigma)  
+  }
+  r_{W}^{\psi}(a_1,\ldots,a_n)
+  .\label{eq:mccfree}
+	\end{align}
+
+  \end{enumerate}
+\end{definition}
+% DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+\begin{remark}
+	Note that when dealing with a two-state noncommutative probability space $(\mathcal{M},\varphi,\psi)$ we will use Boolean cumulants $\beta^{\varphi}$ and $\beta^\psi$ with respect to both states $\varphi$ and $\psi$.
+\end{remark}
+
+\begin{proposition}
+  \label{prop:vanishingmixedcumulants}
+  \begin{enumerate}[label=(\roman*)]
+   \item []
+   \item Subalgebras are free if and only if mixed free cumulants vanish \cite{SpeicherNC}.
+   \item Subalgebras are $c$-free if and only if mixed free cumulants and mixed
+    $c$-free cumulants vanish \cite{BozejkoLeinertSpeicher:1996:convolution}.
+
+  \end{enumerate}
+\end{proposition}
+
+A similar result holds for Boolean independence which however we do not
+consider in this paper. Although one might conclude from this characterization
+that every notion of independence is best studied in terms of its ``native''
+variant of cumulants,  it turned out recently that Boolean cumulants are the
+most universal ones and useful for different kinds of independences
+\cite{JekelLiu:2019:operad}, 
+in particular
+free probability \cite{FMNS2,LehnerSzpojan,LehnerSzpojankowski:2023:freeint1},
+but there are also applications in classical probability
+\cite{SaulisStatulevicius:1991:limit,VanWerdeSanders:2026:matrix}.
+In the present paper we show that they are  useful for
+the study of $c$-freeness as well.
+
+The following recursive reformulations of the Boolean moment-cumulant relations
+turn out to be most useful for our study:
+\begin{align}
+  \label{eq:recurrenceboolcum}
+  \varphi(a_1a_2\dotsm a_n)
+  &= \sum_{k=1}^n
+    \beta_k^\varphi(a_1,a_2,\dots,a_k)\,\varphi(a_{k+1}a_{k+2}\dotsm a_n),
+    \\
+  \label{eq:recurrenceboolcumpsi}
+  \psi(a_1a_2\dotsm a_n)
+  &= \sum_{k=1}^n
+    \beta_k^\psi(a_1,a_2,\dots,a_k)\,\psi(a_{k+1}a_{k+2}\dotsm a_n).
+\end{align}
+
+\begin{remark}
+The previous recursion has a natural translation into the language of
+generating functions. More precisely, let $(\alg{M},\psi)$ be a noncommutative
+probability space and let $a\in \alg{M}$. Then, the (ordinary) \emph{moment
+  generating function} (or \emph{moment transform}) of a random variable $a$ with respect to $\psi$ is defined by
+\[M_a^\psi(z) \coloneqq 1 + \sum_{n=1}^\infty \psi(a^n)z^n.\]
+Similarly, we define the \emph{Boolean transform} and the \emph{shifted Boolean
+  transform of a random variable $a$} as the generating function of its cumulants
+\[
+\eta_a^\psi(z) \coloneqq  \sum_{n=1}^\infty \beta_n^\psi(a)z^n,\qquad \tilde\eta^\psi_a(z) \coloneqq  \frac{1}{z}\eta_a^\psi(z) = \sum_{n=1}^\infty \beta_n^\psi(a)z^{n-1},
+\]
+respectively, where $\beta_n^\psi(a) := \beta_n^\psi(a,a,\ldots,a).$
+It is not difficult to verify that the recurrence
+\eqref{eq:recurrenceboolcumpsi} is equivalent to the functional equation
+\[
+M_a^\psi(z) = \frac{1}{1-\eta_a^\psi(z)}.
+\]
+\end{remark}
+
+\subsection{Closure operators and Möbius inversion}
+The following simple lemma subsumes most combinatorial proofs
+of the present paper.
+\begin{definition}
+  Let $P$ be a poset. A map $c:P\to P$ is called \emph{closure operator}
+ (or   \emph{sample operator}  \cite {BarnabeiBriniRota:1986:moebius})
+  if the following conditions are satisfied:
+  \begin{enumerate}[label=(\roman*)]
+   \item it is \emph{increasing}, i.e., $x\leq c(x)$ for every $x\in P$; 
+   \item it is \emph{order preserving}, i.e., if $x\leq y$ then $c(x)\leq c(y)$; 
+   \item it is \emph{idempotent}, i.e., $c\circ c=c$.
+  \end{enumerate}
+  An element $x\in P$ is called \emph{closed} if $x=c(x)$.
+  The set of closed elements is denoted by $\overline{P}$
+  and inherits the order.
+\end{definition}
+
+\begin{lemma}\label{lem:closure}
+  Let $(P,\leq)$ be a finite poset and $c:P\to P$ a closure operator
+  and $(\overline{P},\leq)$ the subposet of closed elements with the induced order.
+  Given a function $f:P\to \IC$,  define its partial sums
+  $$
+  F(x) = \sum_{\substack{y\in P\\ y\leq x}} f(y)
+  .
+  $$
+  Assume that there is a function $g:\overline{P}\to \IC$
+  such that for every $x\in\overline{P}$ we also have
+  $F(x) = \sum_{ 
+    \substack{y\in \overline{P}\\ y\leq x}} g(y)$.
+  Then
+  $$
+  g(y) = \sum_{\substack{z\in P\\ c(z)=y}} f(z)
+  $$
+   for all $y\in\overline{P}$.
+\end{lemma}
+
+\begin{proof}
+   For every $x\in \overline{P}$ we can write
+  $$
+  F(x) 
+  = \sum_{z\leq x} f(z)
+  = \sum_{\substack{y\in\overline{P}\\ y\leq x}} \sum_{\substack{z\in P\\ c(z)=y}}f(z)
+  $$
+  and apply M\"obius inversion on $\overline{P}$.
+    
+  \end{proof}
+
+%We will apply this lemma in several situations.
+
+\subsection{Cumulants in terms of cumulants}
+\begin{definition}
+  \label{def:intervalclosure}
+  The \emph{interval closure} $\overline{\pi}$ of a noncrossing partition $\pi$
+  is the smallest interval partition $\rho$ such that $\pi\leq\rho$.
+  Its blocks are  the convex hulls of the outer blocks of $\pi$.
+  A noncrossing partition $\pi\in \NC(n)$ is called \emph{irreducible} if
+  $\overline{\pi}=\hat{1}_n$, i.e., it has a unique outer block or equivalently,
+  $1\sim_\pi n$.
+  The restrictions of $\pi$ to the blocks of $\overline{\pi}$
+  are called its \emph{irreducible components} and
+  it follows that $\pi$ is the concatenation of its irreducible components.
+  We denote the set of irreducible noncrossing partitions by
+  $\NCirr(n)$.
+\end{definition}
+
+Irreducible partitions are a natural means to express mutual relations between
+different kinds of cumulants
+\cite {Lehner:2002:connected,ArizmendiHasebeLehnerVargas:2015:relations},
+in particular:
+
+\begin{proposition}
+  \begin{enumerate}[label=(\roman*)]
+   \item []
+    
+   \item 
+    Let $(\alg{M},\psi)$ be a noncommutative probability space and
+    $(r^\psi_n)_{n\geq1},(\beta_n^\psi)_{n\geq1}$ be the sequences of free and
+    Boolean cumulant functionals, respectively. Then
+    \begin{equation}
+      \label{eq:beta=sumNCirrpi}
+      \beta_n^{\psi}(a_1,a_2,\dots,a_n) = \sum_{\pi\in\NCirr(n)}    r_\pi^{\psi}(a_1,a_2,\dots,a_n)
+    \end{equation}
+    for every $n\geq1$ and $a_1,a_2,\ldots,a_n\in \alg{M}$.
+   \item 
+    Let $(\alg{M},\varphi,\psi)$ be a noncommutative probability space,
+%    and let     denote by 
+%    $\{r_n^{\varphi,\psi}\}_{n\ge 1}$, $\{r_n^\psi\}_{n\ge 1}$, and
+%    $\{\beta_n^\varphi\}_{n\ge 1}$
+%    the sequences of $c$-free cumulants with respect to $(\varphi,\psi)$, free
+%    cumulants with respect to $\psi$, and Boolean cumulants with respect to
+%    $\varphi$, respectively.
+    then for every $n\geq1$ and $a_1,\ldots,a_n\in \alg{M}$
+    the Boolean cumulants can be expressed in terms of the $c$-free and free
+    cumulants as follows:
+    \begin{equation}
+      \label{eq:betaphi=sumNCirrpi}
+      \beta_n^{\varphi}(a_1,a_2,\dots,a_n) = \sum_{\pi\in\NCirr(n)}
+      \prod_{V\in \OB(\pi)}
+      r_V^{\varphi,\psi}(a_1,a_2,\dots,a_n)
+      \prod_{W\in \IB(\pi)}
+      r_W^{\psi}(a_1,a_2,\dots,a_n)
+      .
+    \end{equation}
+    \begin{proof}
+      We note that \eqref{eq:betaphi=sumNCirrpi}
+      appears in \cite[Section~6]{EbrahimiFardPatras2020}.
+      Just like \eqref{eq:beta=sumNCirrpi}
+      it follows
+      from Lemma~\ref{lem:closure}
+      applied to the poset $\NC(n)$ with
+      the interval closure operator
+      from Definition~\ref{def:intervalclosure},
+      where for $\pi\in\NC(n)$, we set
+      \begin{align*}
+        f(\pi)&=\prod_{V\in \OB(\pi)} 
+        r_V^{\varphi,\psi}(a_1,a_2,\dots,a_n)
+        \prod_{W\in \IB(\pi)}
+                r_W^{\psi}(a_1,a_2,\dots,a_n) ,\\
+        F(\pi)&= \sum_{\substack{\sigma\in\NC(n)\\ \sigma\leq\pi}} f(\sigma)\\
+        \intertext{and for $\pi\in\IntPart(n)$ we set}
+        g(\pi)&=\beta_{\pi}(a_1,a_2,\dots,a_n)
+                .
+      \end{align*}
+      Then  indeed for $\pi\in\IntPart(n)$ (but not for general $\pi\in\NC(n)$)
+      we have $F(\pi)=\varphi_\pi(a_1,a_2,\ldots,a_n)$ and the triple $(f,F,g)$
+      satisfies
+      the hypotheses
+      of Lemma~\ref{lem:closure}. 
+
+      
+    \end{proof}
+  \end{enumerate}
+	
+\end{proposition}
+
+\begin{remdef}
+  \label{remdef:fNEC}
+  \begin{enumerate}[label=(\roman*)]
+   \item []
+    
+   \item
+    Let $(\alg{M},\psi)$ be a noncommutative probability space.
+    Assume that $\alg{A}_1,\alg{A}_2,\ldots,\alg{A}_s$ are free subalgebras of $\alg{M}$.
+    As an immediate consequence of the vanishing of mixed cumulants
+    (Proposition~\ref{prop:vanishingmixedcumulants}) and the preceding
+    proposition, Boolean cumulants of free random variables satisfy the
+    property of \emph{vanishing of nonmatching end point Cumulants},
+    in short property (\VNEC):
+    \begin{align*}
+      \beta_n^\psi(a_1,a_2,\dots,a_n) &= 0
+    \end{align*}
+    whenever $a_1,a_2,\dots,a_n\in\bigcup_{i=1}^s\alg{A}_i$ and
+    $a_1$ and $a_n$ come from different subalgebras.
+   \item
+    Similarly, in a two-state noncommutative probability space
+    $(\alg{M},\varphi,\psi)$ 
+      property (\VNEC) is satisfied
+    by the Boolean cumulants with respect to both states:
+    Assume
+    that $\alg{A}_1,\alg{A}_2,\ldots,\alg{A}_s$ are $c$-free subalgebras of $\alg{M}$. 
+    Then
+    \begin{align*}
+      \beta_n^\psi(a_1,a_2,\dots,a_n) &= 0\\
+      \beta_n^\varphi(a_1,a_2,\dots,a_n) &= 0
+    \end{align*}
+    whenever $a_1,a_2,\dots,a_n\in\bigcup_{i=1}^s\alg{A}_i$ and
+    $a_1$ and $a_n$ come from different subalgebras.
+  \end{enumerate}
+  
+\end{remdef}
+
+
+\begin{definition}
+  \label{def:irrreford}
+  The  \emph{irreducible refinement order} on $\NC(n)$ is defined as follows: Let $\pi,\sigma\in \NC(n)$. 
+  We say that $\pi\ll\sigma$ if $\pi\leq\sigma$ and in addition the restrictions of $\pi$ to the blocks of
+  $\sigma$ are irreducible, i.e., for every $W\in\sigma$ we have $\min(W)\sim_\pi \max(W)$.
+\end{definition}
+
+The irreducible refinement order was introduced in
+\cite {BelinschiNicaBBPforKTuples}
+and \cite {PetrulloSenato:2011:kerov} 
+(see also \cite {Nica:2010:linked}, \cite {BianeJosuatVerges:2019:bruhat})
+and it generalizes formula \eqref{eq:beta=sumNCirrpi} to partitioned
+cumulants.
+
+\begin{proposition}
+	Let $(\alg{M},\psi)$ be a noncommutative probability space and
+        $(r^\psi_n)_{n\geq1},(\beta_n^\psi)_{n\geq1}$ be the sequences of free
+        and Boolean cumulant functionals, respectively. Then
+	\begin{equation}
+		\label{eq:betarho=sumNCirrpi}
+		\beta_\rho^\psi(a_1,a_2,\dots,a_n) = \sum_{\pi\ll\rho}    r_\pi^\psi(a_1,a_2,\dots,a_n)
+	\end{equation}
+	for every $n\geq1$, $\rho\in \NC(n)$ and $a_1,a_2,\ldots,a_n\in \alg{M}$.
+\end{proposition}
+
+
+
+\subsection{Recurrence diagrams}
+Let $(\alg{M},\varphi,\psi)$ be a two-state noncommutative probability space. We take the basic pattern of the recurrences from
+\cite[p.366]{BozejkoLeinertSpeicher:1996:convolution}.
+The free and $c$-free cumulants satisfy the so-called \emph{unshuffle}  recurrence
+$$
+\begin{tikzpicture}[anchor=base,baseline]
+	\paczek{0.0,0.0}{\psi}
+\end{tikzpicture}
+=
+\sum
+% \begin{tikzpicture}[baseline=(current bounding box.center)]
+\begin{tikzpicture}[anchor=base,baseline]
+  \node at (-0.75,0.8) {$r^{\psi}$};
+  \draw (-0.75,-0.4)--(-0.75,0.75)--(5.25,0.75)--(5.25,-0.4);
+  \draw (0.75,-0.4)--(0.75,0.75);
+  \draw (2.25,-0.4)--(2.25,0.75);
+  \draw (3.75,-0.4)--(3.75,0.75);
+  
+  \paczek{0.0,0.0}{\psi}
+  \paczek{1.5,0.0}{\psi}
+  \node at (3.0,0.0){$\cdots$};
+  \paczek{4.5,0.0}{\psi}
+  \paczek{6.0,0.0}{\psi} 
+\end{tikzpicture}
+$$
+$$
+\begin{tikzpicture}[anchor=base,baseline]
+  \paczek[lightgray]{0.0,0.0}{\varphi}
+\end{tikzpicture}
+=
+\sum
+% \begin{tikzpicture}[baseline=(current bounding box.center)]
+\begin{tikzpicture}[anchor=base,baseline]
+  \node at (-0.75,0.8) {$r^{\varphi,\psi}$};
+  \draw (-0.75,-0.4)--(-0.75,0.75)--(5.25,0.75)--(5.25,-0.4);
+  \draw (0.75,-0.4)--(0.75,0.75);
+  \draw (2.25,-0.4)--(2.25,0.75);
+  \draw (3.75,-0.4)--(3.75,0.75);
+  
+  \paczek{0.0,0.0}{\psi}
+  \paczek{1.5,0.0}{\psi}
+  \node at (3.0,0.0){$\cdots$};
+  \paczek{4.5,0.0}{\psi}
+  \paczek[lightgray]{6.0,0.0}{\varphi} 
+\end{tikzpicture}
+$$
+while the respective Boolean cumulants satisfy the so-called
+\emph{deconcatenation} recurrence  \eqref{eq:recurrenceboolcum} and
+\eqref{eq:recurrenceboolcumpsi}: 
+\begin{equation}\label{fig:boolRecPsi}
+  \begin{tikzpicture}[anchor=base,baseline]
+    \paczek{0.0,0.0}{\psi}
+  \end{tikzpicture}
+  =
+  \sum
+  % \begin{tikzpicture}[baseline=(current bounding box.center)]
+  \begin{tikzpicture}[anchor=base,baseline]
+    \node at (-0.25,0.45) {$\beta^{\psi}$};
+    \draw (-0.25,-0.25)--(-0.25,0.4)--(3.25,0.4)--(3.25,-0.25);
+    \draw (0.25,-0.25)--(0.25,0.4);
+    \draw (0.75,-0.25)--(0.75,0.4);
+    \draw (1.25,-0.25)--(1.25,0.4);
+    % \draw (2.25,-0.4)--(2.25,0.75);
+    % \draw (3.75,-0.4)--(3.75,0.75);
+    % 
+    % \paczek{0.0,0.0}{\psi}
+    % \paczek{1.5,0.0}{\psi}
+    \node at (2.0,-0.1){$\cdots$};
+    % \paczek{4.5,0.0}{\psi}
+    \draw (2.75,-0.25)--(2.75,0.4);  
+    \paczek{4.0,0.0}{\psi} 
+  \end{tikzpicture}
+\end{equation}
+			
+$$
+\begin{tikzpicture}[anchor=base,baseline]
+  \paczek[lightgray]{0.0,0.0}{\varphi}
+\end{tikzpicture}
+=
+\sum
+% \begin{tikzpicture}[baseline=(current bounding box.center)]
+\begin{tikzpicture}[anchor=base,baseline]
+  \node at (-0.25,0.45) {$\beta^{\varphi}$};
+  \draw (-0.25,-0.25)--(-0.25,0.4)--(3.25,0.4)--(3.25,-0.25);
+  \draw (0.25,-0.25)--(0.25,0.4);
+  \draw (0.75,-0.25)--(0.75,0.4);
+  \draw (1.25,-0.25)--(1.25,0.4);
+  % \draw (2.25,-0.4)--(2.25,0.75);
+  % \draw (3.75,-0.4)--(3.75,0.75);
+  % 
+  % \paczek{0.0,0.0}{\varphi}
+  % \paczek{1.5,0.0}{\varphi}
+  \node at (2.0,-0.1){$\cdots$};
+  % \paczek{4.5,0.0}{\varphi}
+  \draw (2.75,-0.25)--(2.75,0.4);  
+  \paczek[lightgray]{4.0,0.0}{\varphi} 
+\end{tikzpicture}
+$$
+and consequently
+%These diagrams summarize the combinatorial structure underlying the proofs of
+the relations between noncrossing and Boolean cumulants follow a similar pattern:
+$$
+\begin{tikzpicture}[anchor=base,baseline]
+  \paczek{0.0,0.0}{\beta^\psi}
+\end{tikzpicture}
+=
+\sum
+% \begin{tikzpicture}[baseline=(current bounding box.center)]
+\begin{tikzpicture}[anchor=base,baseline]
+  \node at (-0.75,0.8) {$r^{\psi}$};
+  \draw (-0.75,-0.4)--(-0.75,0.75)--(5.25,0.75)--(5.25,-0.4);
+  \draw (0.75,-0.4)--(0.75,0.75);
+  \draw (2.25,-0.4)--(2.25,0.75);
+  \draw (3.75,-0.4)--(3.75,0.75);
+  
+  \paczek{0.0,0.0}{\psi}
+  \paczek{1.5,0.0}{\psi}
+  \node at (3.0,0.0){$\cdots$};
+  \paczek{4.5,0.0}{\psi}
+\end{tikzpicture}
+$$
+$$
+\begin{tikzpicture}[anchor=base,baseline]
+  \paczek[lightgray]{0.0,0.0}{\beta^\varphi}
+\end{tikzpicture}
+=
+\sum
+% \begin{tikzpicture}[baseline=(current bounding box.center)]
+\begin{tikzpicture}[anchor=base,baseline]
+  \node at (-0.75,0.8) {$r^{\varphi,\psi}$};
+  \draw (-0.75,-0.4)--(-0.75,0.75)--(5.25,0.75)--(5.25,-0.4);
+  \draw (0.75,-0.4)--(0.75,0.75);
+  \draw (2.25,-0.4)--(2.25,0.75);
+  \draw (3.75,-0.4)--(3.75,0.75);
+  
+  \paczek{0.0,0.0}{\psi}
+  \paczek{1.5,0.0}{\psi}
+  \node at (3.0,0.0){$\cdots$};
+  \paczek{4.5,0.0}{\psi}
+\end{tikzpicture}.
+$$
+The unshuffle and deconcatenation recurrences find a conceptual explanation
+within the Hopf-algebraic approach to moments and different kinds of cumulants
+developed in \cite{EbrahimiFardPatras2020}.
+
+\subsection{Cumulants with products as entries}
+The classical formula of Leonov-Shiryaev for cumulants with products as entries
+has its natural analogue for Boolean cumulants
+\cite[Theorem~4.2]{Speicher:2000:conceptual}.
+It is again a consequence of Lemma~\ref{lem:closure},
+this time the closure operator being $c(\pi)=\pi\vee\rho$.
+\begin{proposition}
+  \label{prop:boolprod}
+  Let $a_1,a_2,\dots,a_n\in \alg{A}$ be random variables
+  then
+  \begin{equation}
+    \label{eq:BoolProd}
+    \beta_{m+1}(a_1a_2\cdots a_{d_1},a_{d_1+1}a_{d_1+2}\cdots a_{d_2},\ldots,a_{d_{m}+1}a_{d_{m}+2}\cdots a_{n})
+    =\sum_{\substack{\pi \in \IntPart(n)\\ \pi \vee \rho=1_n}}\beta_\pi(a_1,a_2,\ldots,a_n),
+  \end{equation}
+  where
+  $\rho=\{\{1,2,\ldots,d_1\},\{d_1+1,d_1+2,\ldots,d_2\},\ldots,\{d_m+1,\ldots,n\}\}\in
+  \IntPart(n)$, and $\vee$ is the join operation in the lattice of interval partitions.
+%  \franz{as the referee noted, this is not entirely correct, and I guess  we actually don't need it?}
+%  The condition $\pi \vee \rho=1_n$ is equivalent to
+%  \begin{equation*}
+%    % \label{eq:piveesigmacondition}
+%    \pi \geq \{\{1\},\{2\},\dots,\{d_1-1\},\{d_1,d_1+1\},\{d_1+2\},\dots,\{d_m-1\},\{d_m,d_m+1\},\dots,\{d_{n}\}\}.
+%  \end{equation*}
+%  %	or $\descents(\pi)\cap \descents(\rho)=\emptyset$.
+\end{proposition}
+
+The expansion \eqref{eq:BoolProd} has the following recursive reformulation
+\cite{LehnerSzpojankowski:2023:freeint1}.
+\begin{corollary}
+  \label{cor:RecursiveBoolProd}
+  Let $a_1,a_2,\dots,a_n\in \alg{A}$ be random variables.
+  Given an  interval partition
+  $\rho=\{\{1,\ldots,d_1\},\{d_1+1,\ldots,d_2\},\ldots,\{d_{m-1}+1,\ldots,n\}\}\in
+  \IntPart(n)$, the Boolean cumulant with the corresponding products as entries
+  is
+      \begin{equation}
+    \label{eq:RecursiveBoolProd}
+    \begin{multlined}
+      \beta_{m}(a_1a_2\cdots a_{d_1},a_{d_1+1}a_{d_1+2}\cdots a_{d_2},\ldots,a_{d_{m-1}+1}a_{d_{m-1}+2}\cdots a_{n})
+      =
+      \beta_{n}(a_1,a_2,\ldots, a_{n})
+      \\
+      + 
+      \sum_{k=1}^m \sum_{d_{k-1}<j<d_k} 
+      \beta_{j}(a_1,a_2,\ldots,a_j)\beta_{m-k+1}(a_{j+1}%a_{j+2}
+      \cdots
+      a_{d_k},a_{d_k+1}%a_{d_k+2}
+      \dotsm a_{d_{k+1}},\ldots,a_{d_{m-1}+1}\cdots a_n).
+    \end{multlined}
+  \end{equation}
+\end{corollary}
+
+%SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+\section{VNRP for $c$-freeness}
+\label{sec:VNRP}
+%SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+
+In this section, we derive a formula for the Boolean cumulants of $c$-free
+elements, generalizing the results from \cite{FMNS2} which express Boolean
+cumulants of free elements using noncrossing partitions with so-called
+\emph{vertical no-repeat property}.  
+\par In order to state the next combinatorial result, we fix $m \in \mathbb{N}$
+and a colouring $c:\{1,\ldots,m\}\to\{1,\ldots,s\}$.
+%Also, denote by $\ker c$
+%the partition of $[m]$ in which $r$ and $t$ belong to the same block if and
+%only if $c(r) = c(t)$.
+Then, we define 
+$$
+\NC(m;c) := \{\sigma\in \NC(m)\;|\; \sigma\leq \ker c\},
+$$
+the set of noncrossing partitions compatible with the coloring $c$. We also set $\NCirr(m;c):=\NC(m;c)\cap\NCirr(m)$.
+
+\begin{theorem}[{\cite[Theorem 1.1]{FMNS2}}]
+  \label{thm:vnrp}
+  \noindent
+  For every $\sigma \in \NC(m; c)$ there exists a unique maximal $\rho \in \NC(m;
+  c)$ such that $\sigma \ll \rho$, which is characterized by the
+  \emph{Vertical-No-Repeat property (VNRP)}, that is,
+  every inner block of $\rho$ is nested immediately inside a block of a different colour.
+\end{theorem}
+%The formula between free and Boolean cumulants together with Theorem~\ref{thm:vnrp}, gives immediately the following characterization of freeness.
+%\begin{proposition}[\cite{FMNS2}]
+%\label{prop:FreenessVNRP}
+%		Let $( \mathcal{M} , \psi )$ be a noncommutative probability space and let $( \beta^\psi_n)_{n=1}^{\infty}$ be the family of Boolean cumulant functionals associated to it. Let $\mathcal{A}_1,\ldots,\mathcal{A}_s\subseteq \mathcal{M}$ be unital subalgebras.
+%		The following two statements are equivalent.
+%		
+%		\vspace{6pt}
+%		
+%		(1) $\mathcal{A}_1,\ldots,\mathcal{A}_s$ are freely independent with respect to $\psi$.
+%		
+%		\vspace{6pt}
+%		
+%		(2) For every $n \in \mathbb{N}$, every colouring 
+%		$c : \{ 1, \ldots , n \} \to \{ 1, \ldots , s \}$, and every 
+%		$x_1 \in \mathcal{A}_{c(1)}, \ldots, x_n \in \mathcal{A}_{c(n)}$, one has
+%		\begin{equation}  
+	%			\beta^\psi_n (x_1, \ldots , x_n) = 
+	%			\sum_{ \substack{
+			%					 \pi \in \NCirr(n;c)\\
+			%					\textnormal{with VNRP}
+			%                                      } }
+	%                                    \ \prod_{V \in \pi} 
+	%			\beta^\psi_{|V|} \bigl( (x_1, \ldots , x_n) | V \bigr).
+	%		\end{equation}
+%\end{proposition}
+Our goal is to extend the characterization of freeness from \cite{FMNS2} to the setting of a two-state
+noncommutative probability space $(\mathcal{M},\varphi,\psi)$ and give a similar characterization of conditional freeness of Bożejko, Leinert and Speicher
+\cite{BozejkoLeinertSpeicher:1996:convolution}.
+%\begin{align}
+%  \varphi(a_1\cdots a_n)
+%  =\sum_{\pi\in \NC(n)}
+%  \prod_{\substack{
+		%   V\in\pi  \\
+		%	\text{$V$  outer block}  
+		%} }
+%  r_{|V|}^{\varphi,\psi}\bigl((a_1,\ldots,a_n)|V\bigr)
+%  \prod_{\substack{
+		%   V\in\pi  \\
+		%	\text{ $V$  inner block}  
+		%}}
+%r_{|V|}^{\psi}\bigl((a_1,\ldots,a_n)|V\bigr)
+%\end{align}
+
+The following ``$c$-free Boolean cumulant functionals''
+$\beta^{\varphi,\psi}$,
+depending on both states like the $c$-free cumulants \eqref{eq:mccfree},
+appear naturally in the generalization of \eqref{eq:betaphi=sumNCirrpi}.
+\begin{definition}
+	\label{def:BooleanChiPhi}
+	Let $(\alg{M},\varphi,\psi)$ be a two-state noncommutative probability space, and fix $n \in \mathbb{N}$ and $\pi \in \NC(n)$.  
+	We define the \emph{nested two-state Boolean cumulant functional} $\beta^{\varphi,\psi}_\pi:\mathcal{M}^n\to\mathbb{C}$ by the formula
+	\begin{align*}
+		\beta^{\varphi,\psi}_\pi(a_1,\ldots,a_n)
+		:=\prod_{
+			%          \substack{
+				%           V\in\pi  \\
+				%		\text{$V$  outer block}  
+				%          }
+			V\in\OB(\pi)            
+		}
+		\beta_{V}^{\varphi}\bigl(a_1,\ldots,a_n\bigr)
+		\prod_{
+			%          \substack{
+				%           V\in\pi  \\
+				%		\text{$V$  inner block}  
+				% }
+			W\in\IB(\pi)  
+		}
+		\beta_{W}^{\psi}\bigl(a_1,\ldots,a_n\bigr),
+	\end{align*}
+	for every $a_1,\ldots,a_n\in \alg{M}$.
+\end{definition}
+\begin{remark}
+	Observe that for an interval partition $\pi\in \IntPart(n)$ we have 
+	\[\beta^{\varphi,\psi}_\pi(a_1,\ldots,a_n)=\beta^{\varphi}_\pi(a_1,\ldots,a_n).\]
+\end{remark}
+%With the definition of $\beta^{\varphi,\psi}$ we can extend the results from \cite{Lehner:2002:connected} to a general noncrossing partition $\pi$.
+
+\begin{proposition} \label{prop:35}
+	Let $(\alg{M},\varphi,\psi)$ be a two-state noncommutative probability space,
+	fix $n \in \mathbb{N}$ and $\pi \in \NC(n)$. Then for every
+	$a_1,\ldots,a_n\in\alg{M}$ the nested two-state Boolean cumulants are given by
+	\[\beta_\pi^{\varphi,\psi}(a_1,\ldots,a_n)=\sum_{\rho\ll \pi}
+	\prod_{
+		%      \substack{
+			%         V\in\rho   \\
+			%         \textnormal{$V$  outer  block}  
+			%       }
+		V\in\OB(\rho)                   
+	}
+	r_{V}^{\varphi,\psi}\bigl(a_1,\ldots,a_n\bigr)
+	\prod_{
+		%        \substack{ V\in\rho    \\
+			%          \textnormal{$V$  inner block } 
+			%        }
+		W\in\IB(\rho)
+	}
+	r_{W}^{\psi}\bigl(a_1,\ldots,a_n\bigr).\]
+\end{proposition}
+\begin{proof}
+	We know that
+	\begin{align*}
+		\beta^\varphi_n(a_1,\ldots,a_n)
+		=& \sum_{\substack{
+				\rho\ll 1_n   \\
+				1\in V_0
+		} }
+		r_{V_0}^{\varphi,\psi}\bigl(a_1,\ldots,a_n\bigr)
+		\prod_{\substack{
+				V\in\rho  \\
+				V\neq V_0
+		}}
+		r_{V}^{\psi}\bigl(a_1,\ldots,a_n\bigr),
+		\\
+		\beta_n^{\psi}(a_1,a_2,\dots,a_n) = & \sum_{\pi\in\NCirr(n)}    r_\pi^{\psi}(a_1,a_2,\dots,a_n)
+	\end{align*}
+	Plugging both formulas into the formula from Definition~\ref{def:BooleanChiPhi} we immediately obtain the claim.
+	%	where $V_0$ stands for the unique outer block of an irreducible noncrossing partition $\rho$. Indeed, if we call $\tilde\beta_n^\varphi(a_1,\ldots,a_n)$ the right-hand side of the above equation, we have that
+	%	\begin{align*}
+		%          \sum_{\pi\in \IntPart(n)} \tilde\beta_\pi^\varphi(a_1,\ldots,a_n)
+		%          &= \sum_{\pi\in \IntPart(n)} \prod_{V\in \pi} \tilde\beta_{|V|}^\varphi\bigl( (a_1,\ldots,a_n)|V\bigr)
+		%          \\
+		%          &=  \sum_{\pi\in \IntPart(n)} \prod_{V\in \pi}
+		%               \left( \sum_{
+			%               \substack{
+				%                \rho_V\ll 1_{|V|}\\
+				%            1\in V_0
+				%          }          } 
+		%          r_{|V_0|}^{\varphi,\psi}\bigl((a_1,\ldots,a_n)|V_0\bigr)
+		%          \prod_{\substack{
+				%          W\in\rho_V  \\
+				%		 W\neq V_0
+				%}          }
+		%	r_{|W|}^{\psi}\bigl((a_1,\ldots,a_n)|W\bigr) \right).
+		%	\end{align*}
+	%	Now, notice that there is a natural bijection between noncrossing
+	%        partitions $\pi\in \NC(n)$ and pairs $(\bar{\pi}, (\rho_V)_{V\in
+		%          \pi})$, where $\bar{\pi}\in\IntPart(n)$ is the interval closure and
+	%        for each $V\in \rho$, $\rho_V$ is an irreducible partition in $\NC(V)$. The bijection is given by the irreducible components of $\pi$, so that $\bar{\pi}$ is given by the interval closure of $\pi$, and for any $V\in \bar{\pi}$, $\rho_V$ is the restriction of $\pi$ to $V$. In particular, the set of outer blocks of $\pi$ is given by the collection of unique outer blocks of the irreducible partitions $\rho_V$. Using this bijection, we can write the above equation as
+	%	\begin{align*}
+		%          \sum_{\pi\in \IntPart(n)} \tilde\beta_\pi^{\varphi}(a_1,\ldots,a_n)
+		%          &=  \sum_{\pi\in \NC(n)}
+		%            \prod_{
+			%%            \substack{
+				%%		 V\in\pi    \\
+				%%		\text{$V$  outer block}  
+				%%          }
+			%          V\in\OB(\pi)
+			%          }
+		%          r_{|V|}^{\varphi,\psi}\bigl((a_1,\ldots,a_n)|V\bigr)
+		%          \prod_{
+			%%          \substack{
+				%%               V\in\pi    \\
+				%%          \text{$V$  inner block}  
+				%%          }
+			%            V\in\IB(\pi)  
+			%          }
+		%r_{|V|}^{\psi}\bigl((a_1,\ldots,a_n)|V\bigr)
+		%\\ &= \varphi(a_1\ldots a_n),
+		%	\end{align*}
+	%	where we have used the definition of c-free cumulants in the last
+	%        equality. Hence, we obtain \eqref{eq:BooleanCumulantsCFree} by using
+	%        Möbius inversion, i.e., $\beta_n^\varphi = \tilde\beta_n^\varphi$.
+	%%	\par On the other hand, we also recall the relation between free and Boolean cumulants
+	%%	\begin{equation}
+		%%	\label{eq:FreeToBool}
+		%%	\beta^\psi_n(a_1,\ldots,a_n) = \sum_{\substack{\pi\in \NC(n)\\ \pi\ll 1_n}} r_\pi^{\psi}(a_1,\ldots,a_n). 
+		%%	\end{equation}
+	%	Finally, we get the result in the proposition by writing
+	%        $\beta^\varphi$ as in \eqref{eq:BooleanCumulantsCFree} and $\beta^\psi$
+	%        as in \eqref{eq:beta=sumNCirrpi} in Definition~\ref{def:BooleanChiPhi}.
+	%\adrian{check the terminology of this proof in relation with the notation in Subsection Closure operators}
+	%\kamil{maybe rewrite using closure operator and introduce in preliminaries}
+\end{proof}
+
+The above proposition is crucial in the proof of the characterization of $c$-freeness in terms of Boolean cumulants below.
+
+\begin{theorem}
+  \label{thm:VNTPCfree}
+  Let $( \mathcal{M} , \varphi,\psi )$ be a two-state noncommutative
+  probability space. Assume that  unital subalgebras
+  $\mathcal{A}_1,\mathcal{A}_2,\ldots,\mathcal{A}_s\subseteq \mathcal{M}$
+  are free with respect to $\psi$. 
+  Then the following two assertions are equivalent.
+  \begin{enumerate}[label=(\roman*)]
+   \item
+    $\mathcal{A}_1,\mathcal{A}_2,\ldots,\mathcal{A}_s$ are $c$-free
+    independent with respect to $(\varphi,\psi)$.
+    
+   \item 	
+    For every $n \in \mathbb{N}$, every colouring 
+    $c : \{ 1,2, \ldots , n \} \to \{ 1,2, \ldots , s \}$, and every choice of variables
+    $a_j \in \mathcal{A}_{c(j)}$, $1\leq j\leq n$, the cumulant has the expansion
+    \begin{equation}
+      \label{eq:VNRP:cfree}
+      \beta_n^{\varphi} (a_1,a_2, \ldots , a_n) = 
+      \sum_{
+%        \pi \in \VNRPirr(n;c) \\
+        \substack{
+          \pi \in \NCirr(n;c) \\
+          \textnormal{with VNRP}
+        }
+      }
+      \beta_{\pi}^{\varphi,\psi}(a_1,a_2,\ldots,a_n).
+    \end{equation}
+  \end{enumerate}
+\end{theorem}
+
+\begin{remark}
+  \label{rmk:VNRPDiagrammatic}
+  \begin{enumerate}[label=(\roman*)]
+   \item []
+   \item 
+  The special case $\varphi=\psi$ reproduces
+  the characterization of freeness from \cite{FMNS2}.
+ \item 
+  In the case of alternating free arguments,
+  formula \eqref{eq:VNRP:cfree}
+  can be represented in a diagram as follows:
+  In the free case we have
+  \cite[Proposition~3.1]{SzpojankowskiWesolowski:2020:conditional}
+  \begin{align}
+    \label{eq:VNRPpsi:pic}
+    \beta^\psi(a_0,b_1,a_1,\dots,b_n,a_n)
+    &=
+      \sum
+      % \begin{tikzpicture}[baseline=(current bounding box.center)]
+      \begin{tikzpicture}[anchor=base,baseline]
+        \node at (-1,0.8) {$\beta^{\psi}$};
+        \draw (-1,-0.4)--(-1,0.75)--(7,0.75)--(7,-0.4);
+        \draw (1,-0.4)--(1,0.75);
+        \draw (3,-0.4)--(3,0.75);
+        \draw (5,-0.4)--(5,0.75);
+        % 
+        \node at (-1,-0.8){$a_0$};
+        \node at (1,-0.8){$a_{i_1}$};
+        \node at (3.1,-0.8){$a_{i_2}$};
+        \node at (5.3,-0.8){$a_{i_{k-1}}$};
+        \node at (7,-0.8){$a_{n}$};
+        % 
+        \paczek{0.0,0.0}{\beta^\psi}
+        \paczek{2,0.0}{\beta^\psi}
+        \node at (4,0.0){$\cdots$};
+        \paczek{6,0.0}{\beta^\psi}
+      \end{tikzpicture}
+    \\
+    \intertext{
+    and the $c$-free generalization \eqref{eq:VNRP:cfree}
+%    Theorem~\ref{thm:VNTPCfree} shows that alternating $c$-free arguments
+    follows the same pattern:}
+    \label{eq:VNRPphi:pic}
+    \beta^\varphi(a_0,b_1,a_1,\dots,b_n,a_n)
+    &=
+      \sum
+      % \begin{tikzpicture}[baseline=(current bounding box.center)]
+      \begin{tikzpicture}[anchor=base,baseline]
+        \node at (-1,0.8) {$\beta^{\varphi}$};
+        \draw (-1,-0.4)--(-1,0.75)--(7,0.75)--(7,-0.4);
+        \draw (1,-0.4)--(1,0.75);
+        \draw (3,-0.4)--(3,0.75);
+        \draw (5,-0.4)--(5,0.75);
+        % 
+        \node at (-1,-0.8){$a_0$};
+        \node at (1,-0.8){$a_{i_1}$};
+        \node at (3.1,-0.8){$a_{i_2}$};
+        \node at (5.3,-0.8){$a_{i_{k-1}}$};
+        \node at (7,-0.8){$a_{n}$};
+        % 
+        \paczek{0.0,0.0}{\beta^\psi}
+        \paczek{2,0.0}{\beta^\psi}
+        \node at (4,0.0){$\cdots$};
+        \paczek{6,0.0}{\beta^\psi}
+      \end{tikzpicture}
+  \end{align}
+  \end{enumerate}
+\end{remark}
+		
+		
+		
+\begin{proof}[Proof of Theorem~\ref{thm:VNTPCfree}]
+  The implication $(i)\implies (ii)$.
+ is essentially another application of Lemma~\ref{lem:closure}
+  where   this time the poset is $(\NC(m;c), \ll)$
+  and the closure   $c(\pi)$ of an element $\pi$ is the unique VNRP
+  closure of $\pi$ guaranteed by Theorem~\ref{thm:vnrp}.
+  
+  
+  We start with an application of
+  Proposition~\ref{prop:35},
+  which asserts that for every interval partition $\pi$ we have $\beta^{\varphi,\psi}_\pi=\beta^{\varphi}_\pi$
+  \begin{align*}
+    \beta_n^{\varphi} (a_1,a_2, \ldots , a_n)
+    =\sum_{\rho\in \NCirr(n)}
+    \prod_{
+      % \substack{ V\in\rho  \\
+      % \text{$V$  outer block}  
+      % }
+    V\in\OB(\rho)
+    }
+    r_{V}^{\varphi,\psi}(a_1,a_2,\ldots,a_n)
+    \prod_{
+      % \substack{
+      % V\in\rho  \\
+      % \text{$V$  inner block}
+      % }
+    W\in\IB(\rho)            
+    }
+    r_{W}^{\psi}(a_1,a_2,\ldots,a_n).
+  \end{align*}
+  Observe that from $c$-freeness, we immediately see that if $\rho$ does not
+  respect the colouring then the right-hand side vanishes. Recall that by
+  $\NCirr(n;c)$ we denote the set of irreducible noncrossing partitions  coloured with respect to
+  $c$. Then we have: 
+  \begin{align*}
+    \beta_n^{\varphi} (a_1,a_2,\ldots, a_n)
+    =\sum_{\substack{\rho\in \NCirr(n;c)}}
+    \prod_{V\in \OB(\rho)}
+    r_{V}^{\varphi,\psi}(a_1,a_2,\ldots,a_n)
+    \prod_{
+      % \substack{
+      % V\in\rho  \\
+      % \text{$V$  inner block}  
+      % }
+    W\in\IB(\rho)                      
+    }
+    r_{W}^{\psi}(a_1,a_2,\ldots,a_n).
+  \end{align*}
+  Now we use Theorem~\ref{thm:vnrp}
+  and observe that we can reorganize the sum
+  above according to the maximal elements with respect to the
+  irreducible refinement order
+  $\ll$
+  from Definition~\ref{def:irrreford}
+  among   coloured partitions,
+  and these maximal elements are exactly those with VNRP
+  property: 
+  \begin{align*}
+    \beta_n^{\varphi} (a_1,a_2, \ldots , a_n)
+    &= \sum_{
+%        \pi \in \VNRPirr(n;c) 
+        \substack{
+          \pi \in \NCirr(n;c) \\
+          \textnormal{with VNRP}
+        }
+    }
+    \sum_{
+    %\substack{
+    \rho\ll\pi %, \\
+%     V_o\in\rho \text{ the unique}
+%    \\
+%    \text{outer block}
+%  }
+    }
+    r_{V_o}^{\varphi,\psi}(a_1,a_2,\ldots,a_n)
+    \prod_{
+      % \substack{
+      % V\in\rho  \\
+      % \text{$V$  inner block}  
+      % }
+    V\in\IB(\rho)            
+    }
+    r_{V}^{\psi}(a_1,a_2,\ldots,a_n)
+  \end{align*}
+  where for each $\rho$ we denote by $V_o$ its unique outer block.
+  We conclude by invoking again Proposition~\ref{prop:35} and we obtain 
+  
+  \begin{equation*}    
+    \beta_n^{\varphi} (a_1, a_2,\ldots , a_n) = 
+    \sum_{ \substack{
+        \pi \in \NCirr(n;c)\\
+        \text{with VNRP}
+      }}
+    \beta_{\pi}^{\varphi,\psi}(a_1,a_2,\ldots,a_n).
+  \end{equation*}
+%\franz{maybe call this $\VNRPirr(n;c)$}
+
+
+The proof of the converse implication $(ii)\implies (i)$ follows standard arguments based on the
+  fact that joint cumulants determine all joint moments.  
+\end{proof}
+
+		
+\begin{remark}
+  The above gives another proof of (\VNEC) property from Remark and
+  Definition~\ref{remdef:fNEC}, because in the above characterization if the first and last
+  element are $c$-free, the sum runs over the empty set. 
+\end{remark}
+		
+		
+		
+		
+\section{Distribution of polynomials in $c$-free variables} \label{sec:4}
+		
+In this section, we derive a method for determining the distribution of
+polynomials in $ c $-free variables. Our main tool is the ``differential calculus'' on
+the algebra of noncommutative polynomials developed in
+\cite{LehnerSzpojankowski:2023:freeint1}.
+%and more generally on formal power
+%series whose coefficients are noncommutative polynomials.
+This framework is
+essential for analyzing distributions of $ c $-free variables. In a general
+noncommutative probability space, elements may satisfy nontrivial relations
+(e.g., \( a^2 = 1 \))  that invalidate the Leibniz rule of the derivations defined
+below. No such obstructions arise in the algebra of noncommutative
+polynomials, making this setting more suitable for our purposes. 
+		
+\subsection{Noncommutative polynomials and formal power series}
+\label{ssec:nc_polynomials}
+\begin{notation}\label{notation:nc_polynomials}
+  Let $\alg{X}=\{X_1,X_2,\ldots,X_n\}$ be an alphabet, i.e.~a set of letters.
+  We denote by 
+  \[
+    \alg{X}^+=\{X_{i_1}X_{i_2}\cdots X_{i_k}\mid k\in\IN, i_j\in
+    \{1,2,\dots,n\}\}
+  \]
+  the free semigroup generated by $\alg{X}$ and by
+  $\alg{X}^*=\alg{X}^+\cup\{1\}$ the free monoid.
+  Furthermore, we also denote by $\IC\langle\alg{X}\rangle= \IC\langle
+  X_1,X_2,\ldots,X_n\rangle$ the free associative algebra generated by the
+  variables $X_1,X_2,\ldots,X_n$, i.e., the linear span of $\alg{X}^*$ with the
+  concatenation product, also known as the algebra of noncommutative
+  polynomials. 
+			
+			
+			
+			
+  For elements $a_1,a_2,\ldots,a_n\in\alg{M}$ and
+  $P\in\IC\langle X_1,X_2,\dots,X_n\rangle$ we denote by
+  $P(a_1,a_2,\ldots,a_n)$ the evaluation of a polynomial
+  $P\in\IC\langle X_1,X_2,\ldots,X_n\rangle$, i.e., the element of $\alg{M}$
+  obtained after substituting every $X_i$ with $a_i$ for $i=1,2,\ldots,n$.
+
+  
+\end{notation}
+\begin{definition}
+  Fix a noncommutative probability space $(\alg{M},\psi)$.
+  The \emph{noncommutative joint distribution} of a tuple of random variables
+  $a_1,a_2,\ldots,a_n\in \alg{M}$ is the linear functional
+  $\psi_{a_1,a_2,\dots,a_n}:\IC\langle X_1,X_2,\ldots,X_n\rangle\to\IC$
+  given by the evaluation
+  \[
+    \psi_{a_1,a_2,\dots,a_n}(P(X_1,X_2,\ldots,X_n)):=\psi\left(P(a_1,a_2,\ldots,a_n)\right).
+  \]
+\end{definition}
+\begin{remark}
+  \label{rem:freealgebra}
+  \begin{enumerate}[label=\arabic*., leftmargin=2em]
+   \item []
+   \item 
+ The distribution of any polynomial $Q(a_1,a_2,\ldots,a_n)$ with respect to
+  $\psi$ is the same as the distribution of $Q(X_1,X_2,\ldots,X_n)$ with respect to
+  $\psi_{a_1,a_2,\dots,a_n}$,
+  and it suffices to study the distribution of polynomials in
+  $(\IC\langle X_1,X_2,\ldots,X_n\rangle,\psi_{a_1,a_2,\dots,a_n})$.
+  This has the following advantages.
+  \begin{enumerate}[label=(\roman*)]
+   \item   The augmentation homomorphism  $\epsilon_0:\mathcal{M}\to\mathbb{C}$
+    which maps a polynomial to its constant coefficient $\epsilon_0(P)=P(0)$
+    allows the identification of the free product with the tensor algebra
+    and thus the unambiguous translation of multilinear maps into
+    linear maps on the free product.
+   \item
+    The derivations on the free algebra to be defined below
+    turn the combinatorial recursions for Boolean cumulants and conditional expectations
+    into concise algebraic identities.
+  \end{enumerate}
+  The disadvantage is a possible loss of faithfulness and positivity which has
+  to be kept in mind.
+  Nevertheless we will abuse notation and write $\psi$ instead of
+  $\psi_{a_1,a_2,\dots,a_n}$, which should not lead to any confusion.
+
+ \item
+   For the sake of simplicity we will stick to the two-variable case,
+  i.e., focus on the noncommutative probability space $\mathbb{C}\langle
+  X,Y\rangle
+  $ with states $\psi=\psi_{a,b}$ and $\varphi=\varphi_{a,b}$
+%  where $\alg{M} = \mathbb{C}\langle X,Y\rangle$ is
+%the algebra of polynomials in two noncommutative indeterminates, endowed with
+  The generalization to the multivariate case is straightforward and left to 
+  the reader.
+
+  
+ \item
+  It is straightforward to extend the formulas from polynomials
+  to formal power series with polynomial coefficients and
+  we will tacitly do this without further comment.
+  \end{enumerate}
+  
+\end{remark}
+
+  		
+
+\subsection{Boolean cumulant functionals and derivations}
+
+It will be important to factor monomials into alternating blocks of ``pure''
+monomials coming from different subalgebras.
+
+\begin{definition}
+  The \emph{support} of a polynomial is the set of letters which appear in its
+  terms.
+  The \emph{block factorization} of a monomial
+  $W\in \IC \langle X,Y\rangle $ is the (unique) decomposition
+  $W=U_1U_2\cdots  U_n$ into nontrivial monomials $U_i$, each supported either on $X$ alone or on $Y$ alone, alternating between the two.
+  % are non-constant (i.e. $\eps(U_i)=0$) and are alternating (i.e. $U_i$ and
+  % $U_{i+1}$ are from different subalgebras).
+  The  block length of the monomial $W$ is then equal to the number $n$ of blocks. For example the block length of the word $W=X^3Y^2X$ is equal to 3.
+\end{definition}
+
+
+We can now define two kinds of linear functionals related to Boolean cumulants,
+one which operates on blocks, and another which operates in letters. 
+\begin{definition}
+  \label{def:blockcumulant}
+   The \emph{block Boolean cumulant functional} is the linear functional
+  $\beta^{b,\psi}:\IC\langle  X,Y\rangle\to\mathbb{C}$
+  determined by the following values on the monomial basis:
+  \begin{equation}
+    \label{eq:blockbeta}
+    \begin{aligned}
+      \beta^{b,\psi}(1)&=1\\
+    % \beta^{b,\psi}(U_1U_2\cdots U_n) = \beta_n^\psi(U_1,U_2,\ldots,U_n)
+        \beta^{b,\psi}(W)& = \beta_n^\psi(U_1,U_2,\ldots,U_n)
+    \end{aligned}
+  \end{equation}
+  where  $W=U_1U_2\cdots U_n$ is the block factorisation of the monomial $W$.  
+  Similarly we  define the  \emph{partial block Boolean cumulant functional}
+  $\beta^{b,\psi}_X:\IC\langle X,Y\rangle\to\mathbb{C}$ as 
+  \begin{align*}
+    \beta^{b,\psi}_X(1)
+    &= 1,
+    \\ \beta^{b,\psi}_X(W)
+    &=
+      \begin{cases}
+        \beta^{b,\psi}(W) & \text{if $W=X V$ with
+          $V\in \IC\langle X,Y\rangle$}\\
+        $0$ & \text{otherwise}
+      \end{cases}
+  \end{align*}
+  The linear functional  $\beta^{b,\psi}_Y:\alg{M}\to\mathbb{C}$ is defined analogously.
+\end{definition}
+
+For example we have $\beta^{b,\psi}_X(X^3Y^2X)=\beta_3^{\psi}(X^3,Y^2,X)$.
+
+\begin{definition}
+  The   \emph{letter-wise Boolean cumulant functional} is the linear functional
+  $\beta^{\delta,\psi}:\alg{M}\to \IC$
+  determined by the following values on the monomial basis:
+  \begin{equation}
+    \label{eq:betaDelta}
+    \begin{aligned}
+      \beta^{\delta,\psi}(1) &= 1 \\
+    \beta^{\delta,\psi}(Z_1Z_2\cdots Z_k) &= \beta^\psi_k(Z_1,Z_2,\ldots,Z_k),
+    \end{aligned}
+  \end{equation}
+  where $Z_i\in \{X,Y\}$ for $1\leq i\leq k$.
+  In a similar way to $\bbetas{\psi}{X}$, we define the
+  \emph{partial letter-wise Boolean cumulant functional}
+  $\beta^{\delta,\psi}_X:\alg{M}\to\mathbb{C}$ on the monomial basis by
+  \begin{align*}
+    \beta^{\delta,\psi}_X(1)
+    &= 1,
+    \\
+    \beta^{\delta,\psi}_X(Z_1Z_2\cdots Z_k)
+    &= \left\{
+      \begin{tabular}{ll}
+        $\beta^{\psi}_k(Z_1,Z_2,\ldots,Z_k)$ & if $Z_1=Z_k = X$,
+        \\ $0$ & otherwise
+      \end{tabular}\right.
+  \end{align*}
+\end{definition}
+For example we have $\beta^{\delta,\psi}_X(X^3Y^2X)=\beta_6^{\psi}(X,X,X,Y,Y,X)$.
+
+\begin{remark}
+  These cumulant functionals can be constructed for any state on $\IC\langle
+  X,Y\rangle$, in particular we will
+  consider these functionals $\beta^{b,\varphi}$ and $\beta^{\delta,\varphi}$
+  for both states of a two-state noncommutative probability space.
+  Note that if the joint distribution of $X$ and $Y$ satisfies Property (\VNEC)
+  with respect to a state $\varphi$ then
+  \begin{equation}
+    \label{eq:beta=betaX+betaY}
+    \bbetas{\varphi}{} =   \bbetas{\varphi}{X}+ \bbetas{\varphi}{Y}-\epsilon_0
+    \qquad
+    \fbetas{\varphi}{} =   \fbetas{\varphi}{X}+ \fbetas{\varphi}{Y}-\epsilon_0
+    .
+  \end{equation}
+\end{remark}
+The following derivations will be useful for  the algebraic
+reformulation
+of the recursive version     \eqref{eq:RecursiveBoolProd} of the  Leonov-Shiryaev formula
+%between the functionals  $\beta^{b,\varphi}$ and $\beta^{\delta,\varphi}$,
+%based on the
+for Boolean cumulants with products as entries.
+\begin{definition}
+  \label{def:derivations}
+  The
+  \emph{free difference quotient}
+  is the unique derivation such that
+  $\partial_{X}(X)=1\otimes 1$ and $\partial_{X}(Y)=0$.
+  Thus we have
+  \begin{equation*}
+%    \label{eq:freediffquotient}
+    \partial_X (X^n)
+    = \sum_{k=0}^{n-1} X^k\otimes X^{n-k-1}
+    .
+  \end{equation*}
+  This operator is coassociative and we define
+  \[
+    \partial_X^2=(\id\otimes \partial_X)\circ \partial_X=( \partial_X \otimes
+    \id)\circ \partial_X
+  \]
+  and similarly with higher powers $\partial_X^k$. 
+  We will also need the right and left \emph{free divided power derivations}
+  or \emph{partial deconcatenation operators} defined by
+  \begin{align*}
+    \rdelta_{X}(P) &=  (1\otimes X)\partial_{X}(P),
+    &
+    \ldelta_{{X}}(P) &=  \partial_{X}(P)(X\otimes 1),
+  \end{align*}
+  i.e.,
+  \begin{align*}
+    \rdelta_X (X^n)
+    &= \sum_{k=0}^{n-1} X^k\otimes X^{n-k}
+    &
+    \ldelta_X (X^n)
+    &= \sum_{k=1}^{n} X^k\otimes X^{n-k}
+  \end{align*}
+\end{definition}
+
+\begin{remark}
+  Observe that the linear functionals $\bbeta{X}$, $\fbeta{X}$ and the
+  derivations discussed above preserve their properties
+  when they are extended to formal power series with
+  polynomials as coefficients. 
+\end{remark}
+
+		
+		
+\subsection{Calculus for Boolean cumulant functionals}
+		
+		
+\begin{comment}
+  Moreover, we need to define an additional derivation to keep track of the variable we are taking derivative with respect to. 
+			
+  \begin{definition}[{\cite[Def.~5.4]{LehnerSzpojankowski:2023:freeint1}}]
+    For a subset of variables $\alg{Y} = \{Y_1.\ldots,Y_k\}\subseteq \alg{X}$ define the operator $L_\alg{Y}^*\odot \partial_\alg{Y}:\IC\langle \alg{X}\rangle \to \IC\langle \alg{Y}\rangle \otimes \IC\langle \alg{X}\rangle\otimes \IC\langle \alg{X}\rangle$ by
+    \[
+      (L_\alg{Y}^*\odot \delta_\alg{Y})(W) = \sum_{i=1}^k Y_j\otimes \partial_{Y_j} W,
+    \]
+    where iterations are defined on the left component as follows:
+    \[
+      (L_\alg{Y}^*\odot \delta_\alg{Y})^p(W) = \sum_{i_1,i_2,\ldots,i_p} Y_{i_1}Y_{i_2}\cdots Y_{i_p} \otimes (\partial_{Y_{i_1}}\otimes\id^{\otimes(p-1)})(\partial_{Y_{i_2}}\otimes\id^{\otimes(p-2)})\cdots \partial_{Y_{i_p}}(W).
+    \]
+  \end{definition}
+  
+\end{comment}
+
+The following theorem subsumes the functional relations between the maps
+$\beta^{b,\psi}$ and $\beta^{\delta,\psi}$ in an algebraic way which will
+allow us to evaluate these functionals effectively. 
+The main ingredient is property (\VNEC{}) which makes many terms in the
+recurrences \eqref{eq:recurrenceboolcum} and
+\eqref{eq:recurrenceboolcumpsi} vanish; indeed,
+given a word in block factorization $W=Y_0X_1Y_1\dotsm X_nY_n$ (where possibly
+$Y_n=1$),
+the following identities hold:
+\begin{align}
+  \varphi(W)
+  &=
+\sum_{k=0}^n \beta^{\varphi}_{2k+1}(Y_0,X_1,Y_1,\dots, Y_k)\,\varphi(X_{k+1}Y_{k+1}\dotsm X_nY_n)
+  \label{eq:booleanrecYXY}
+  \\
+  &=(\bbetas{\varphi}{Y}(W)\otimes\varphi)(\ldelta_YW)\\
+  &=\bbetas{\varphi}{Y}(W) + (\bbetas{\varphi}{Y}(W)\otimes\varphi)(\rdelta_XW)
+%  \varphi(Y_0X_1Y_1\dotsm X_nY_n)
+\end{align}
+and similarly for $\psi$.
+\begin{proposition}
+  \label{thm:FIC5.5}
+  Assume that the random variables $X$ and $Y$ are free  with
+  respect to the state $\psi$ on
+  the  noncommutative probability space $\IC \langle X,Y\rangle$.
+  \begin{enumerate}[label=(\roman*)]
+   \item 
+    For any element $P\in \IC\langle X,Y \rangle$ we have
+    \begin{equation}
+      \label{eq:intro_betas_prod_as_entries}
+      \begin{aligned}
+        \bbetas{\psi}{{X}}(P) 
+        &= \epsilon_0(P) + (\fbetas{\psi}{{X}}\otimes\bbetas{\psi}{{X}})(\ldelta_{X} P)
+        \\
+        &= \epsilon_0(P) +
+        (\bbetas{\psi}{{X}}\otimes\fbetas{\psi}{{X}})(\rdelta_{{X}} P)
+        .
+      \end{aligned}
+    \end{equation}
+   \item
+    For any element $P\in \IC\langle X,Y \rangle$ we have  
+%    \begin{comment}
+%      \begin{equation}
+%        \label{eq:IntroVNRP_for_betas}
+%        \begin{aligned}
+%          \fbetas{\psi}{{X}}(P)
+%          &=\epsilon_0(P)+\sum_{k=1}^\infty
+%          \fbetas{\psi}{X}\otimes\left[\epsilon_0\otimes
+%            \left(\bbetas{\psi}{ {Y}}\right)^{\otimes(k-1)}\otimes
+%            \epsilon_0\right]\left( (L_{ {X}}^*\odot\partial_{ {X}})^k(P)\right)
+%          \\
+%          &= \epsilon_0(P)+\sum_{k=1}^\infty
+%          \sum_{i_1,i_2,\dots,i_k} \beta^\psi_k(X_{i_1},X_{i_2},\dots, X_{i_k})
+%          \left[\epsilon_0\otimes
+%            \left(\bbetas{\psi}{ {Y}}\right)^{\otimes(k-1)}\otimes
+%            \epsilon_0\right]\left(
+%            \partial_{X_{i_1}}\partial_{X_{i_2}}\dotsm\partial_{X_{i_k}} (P)
+%          \right).
+%        \end{aligned}
+%      \end{equation}
+%    \end{comment}
+    \begin{equation}
+      \label{eq:IntroVNRP_for_betas:uni}
+      \fbetas{\psi}{X}(P)
+      = \epsilon_0(P)+\sum_{k=1}^\infty
+      \beta^\psi_k(X)
+      \left[\epsilon_0\otimes
+        \left(\bbetas{\psi}{ {Y}}\right)^{\otimes(k-1)}\otimes
+        \epsilon_0\right]\left(
+        \partial_X^k (P)
+      \right).
+    \end{equation}
+   \item 
+    If in addition  $X$ and $Y$ are $c$-free with respect to the pair
+    of states $(\varphi,\psi)$ on
+    $\mathbb{C}\langle X,Y\rangle$
+    then \eqref{eq:intro_betas_prod_as_entries} holds for Boolean functionals
+    with respect to $\varphi$ as well.
+    Moreover for any element $P\in \IC\langle X,Y \rangle$ we have 
+  \begin{equation}
+    \label{eq:ProductsasEntriesCFree}
+    \fbetas{\varphi}{X}(P)
+    = \epsilon_0(P)+\sum_{k=1}^\infty
+    \beta^\varphi_k(X)
+    \left[\epsilon_0\otimes
+      \left(\bbetas{\psi}{{Y}}\right)^{\otimes(k-1)}\otimes
+      \epsilon_0\right]\left(
+      \partial_X^k (P)
+    \right).
+  \end{equation}
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  The statement concerning free variables follows from \cite[Theorem
+  5.5]{LehnerSzpojankowski:2023:freeint1}. The proof for $c$-free variables
+  follows the same arguments, using the fact that the VNRP also holds
+  for the $c$-free case as proved in Theorem~\ref{thm:VNTPCfree}. In
+  particular, \eqref{eq:intro_betas_prod_as_entries} is a simple consequence
+  of the Leonov-Shiryaev formula \eqref{eq:BoolProd}
+  for $\beta^\varphi_n$, noticing that the extra
+  terms vanish by Property (\VNEC) from Remark~\ref{remdef:fNEC}. Equation
+  \eqref{eq:ProductsasEntriesCFree} can be obtained by the same argument as in
+  \cite[Theorem 5.5]{LehnerSzpojankowski:2023:freeint1}, except that, in 
+  identity \eqref{eq:VNRP:cfree} of Theorem~\ref{thm:VNTPCfree}, the unique
+  outer block is evaluated using $\beta^\varphi_n$ while the inner blocks are
+  evaluated using $\beta^\psi_n$. 
+\end{proof}
+		
+\subsection{Amplification to matrices}
+Recall that the \emph{amplification} of a linear map $f:\alg{A}\to \alg{B}$
+is the linear map
+$f^{(N)}:= \id_{M_N}\otimes f:M_N(\alg{A})\to M_N(\alg{B})$,
+i.e., the entry-wise application $f^{(N)}([a_{ij}]_{ij}) = [f(a_{ij})]_{ij}$.
+This is then a matrix bimodule map in the sense that
+\[
+  f^{(k)}(UAV) = Uf^{(N)}(A)V
+\]
+for any $A\in M_N(\IC\langle X,Y\rangle)$ and scalar matrices
+$U\in M_{k\times N}(\mathbb{C})$ and $V\in M_{N\times k}(\IC)$.
+As discussed in \cite{LehnerSzpojankowski:2023:freeint1} the functionals
+and derivations introduced above have amplifications to noncommutative
+polynomials with matrix coefficients.
+In particular,
+%Let $M_N(\mathbb{C})$ be the algebra of $N\times N$ complex
+%matrices and consider
+$(M_N(\IC\langle X,Y\rangle),\psi^{(N)})$
+is  a matrix-valued noncommutative probability space
+and we will
+identify $M_N(\IC\langle X,Y\rangle)
+\cong M_N(\mathbb{C})\otimes \IC\langle X,Y\rangle$
+and write  $AX$ resp.\ $BY$ for $A\otimes X$ resp.\
+$B\otimes Y$.
+ Observe that freeness of $X$ and $Y$ implies that for any $A,B\in
+ M_{N\times N}(\mathbb{C}) $ the elements $AX$ and $BY$ are free
+ with amalgamation over $M_{N}(\mathbb{C})$ in the matrix-valued probability
+ space $(M_N(\IC\langle X,Y\rangle),\psi^{(N)})$
+ and this is also true for c-freeness \cite{Mlotkowski:2002:operator,Popa:2009:multilinear,PopaVinnikov:2013:functions}.
+
+
+		
+
+
+\begin{comment}
+The \emph{amplification} of the linear functional $\psi$
+is the linear map
+$\psi^{(N)}:= \id_{M_N}\otimes\psi:M_N(\IC\langle X,Y\rangle)\to M_N(\mathbb{C})$
+obtained from entry-wise application:
+$\psi^{(N)}([a_{ij}]_{ij}) = [\psi(a_{ij})]_{ij}$. Clearly $\psi^{(N)}$ is a
+matrix bimodule map in the sense that 
+\begin{equation}
+  \label{eq:bimodule}
+  \psi^{(k)}(UAV) = U\psi^{(N)}(A)V,
+\end{equation}
+for any $A\in M_N(\IC\langle X,Y\rangle)$ and scalar matrices $U\in M_{k\times
+  N}(\mathbb{C})$ and $V\in M_{N\times k}(\IC)$. 
+
+		
+% 
+% \kamil{probably we will remove this proposition}
+% \begin{proposition}[{\cite[Cor.~6.3]{LehnerSzpojankowski:2023:freeint1}}]
+%   Let $(\alg{M},\psi)$ be a noncommutative probability space and consider the amplification $\psi^{(N)}:M_N(\alg{M})\to M_N(\IC)$.
+% \begin{enumerate}[label=(\roman*)]
+%  \item Let $\alg{B}\subseteq \alg{M}$ be a subalgebra and consider $\E_\alg{B}^\psi:\alg{M}\to\alg{B}$ a conditional expectation for $\psi$. Then the entry-wise application maps $\E_\alg{B}^{\psi,(N)}\left[[a_{ij}] \right] = \left[ \E_\alg{B}^\psi[a_{ij}]\right]$ form a family of $M_N(\alg{B})$-bimodule maps (as in \eqref{eq:bimodule}). Moreover, it is a conditional expectation for the map $\psi^{(N)}$ in the sense that $\psi^{(N)}\left( \E_\alg{B}^{\psi,(N)}(A)B\right) = \psi^{(N)}(AB)$ for any $A\in M_N(\alg{M})$ and $B\in M_N(\alg{B})$.
+%  \item The entries of the $M_N(\IC)$-valued Boolean cumulants defined by the amplification of the recurrence
+% $$
+% \psi^{(N)}(A_1A_2\cdots A_n) = \sum_{k=1}^n \beta_k^{\psi,(N)}(A_1,\ldots,A_k)\psi^{(N)}(A_{k+1}A_{k+2}\cdots A_n)
+% $$
+% are given by
+% $$
+% \beta^{\psi,(N)}_n(A_1,A_2,\ldots,A_n)_{ij} = \sum_{i_1,i_2,\ldots,i_{n-1}} \beta_n^\psi(a_{ii_1}^{(1)},a_{i_1i_2}^{(2)},\ldots,a_{i_{n-1}j}^{(n)}),
+% $$
+% where for any $1\leq k\leq n$, $a_{ij}^{(k)}$ stands for the $(i,j)$-entry of $A_k$.
+% \end{enumerate}
+% \end{proposition}
+We can define matrix-valued analogues of the functionals $\beta^{b,\psi}_X$ and
+$\beta^{\delta,\psi}_X$ as follows. For an $N \times N$ matrix $A =
+[a_{ij}]_{ij}$ with entries in $\IC\langle X,Y \rangle$, we define: 
+$$
+\beta^{b,\psi,(N)}_X(A)_{ij}
+= \beta^{b,\psi}_X(a_{ij}),
+\qquad \beta_X^{\delta,\psi,(N)}(A)_{ij} = \beta^{\delta,\psi}_X(a_{ij}). 
+$$
+  
+\end{comment}
+
+
+When it is clear from the context that we are working in a matrix-valued
+probability space, we will omit the superscript and write
+$\varphi,\psi,\bbeta{X}$ and $\fbeta{X}$ for the matrix-valued functionals and
+$I$ for the identity matrix $I_N\in M_N(\mathbb{C})$. 
+		
+\begin{remark}
+  In the matrix-valued probability space $(M_N(\IC\langle X,Y\rangle),\psi^{(N)})$ for an element $A\in M_N(\IC\langle X,Y\rangle)$, we define its moment transform for $B\in M_N(\IC)$ by
+  \[M_A^\psi(B)=I_N+\sum_{n=1}^\infty \psi^{(N)}\left((AB)^n\right),\]
+  and similarly
+  \[\eta_A^{\psi}(B)=\sum_{n=1}^\infty \beta_n^{\psi,(N)}\left(AB,AB,\dots,AB\right).\]
+  We still have
+  \[M_A^\psi(B)=\left(I_N-\eta_A^{\psi}(B)\right)^{-1}.\]
+
+  %In what follows we will always assume that $B=zI_N$ for $z\in \mathbb{C}$.
+\end{remark}
+		
+\begin{remnot}
+  \begin{enumerate}[label=\arabic*., leftmargin=2em]
+   \item []
+   \item 
+  The derivations $\partial_X,\rdelta_X, \ldelta_X$ introduced in the previous
+  section can also be extended to the matrix-valued framework (see
+  \cite[Cor.~6.6]{LehnerSzpojankowski:2023:freeint1}). We apply the respective
+  derivations entry-wise to a matrix with polynomial coefficients.
+  %One should  note that
+  The  Leibniz rule for the derivations from   \eqref{def:derivations}
+  takes the   form 
+  \[
+    D(a\cdot b)=D(a) \cdot (1\otimes b)+(a\otimes 1) \cdot D(b),
+  \]
+  and  the amplified version is
+  \[
+    D^{(N)}(A\cdot B)=D^{(N)}(A) \cdot (1\odot B)+(A\odot 1) \cdot D^{(N)}(B),
+  \]
+  where for a matrix $A\in M_N(\mathbb{C})$ with entries $A=[a_{ij}]_{ij}$ 
+  we denote $1\odot A=[1\otimes a_{ij}]_{ij}$
+  and 
+  $A\odot 1=[ a_{ij} \otimes 1]_{ij}$.
+ \item    A simple argument using Leibniz' rule shows that for invertible matrices
+  \begin{equation}
+    \label{eq:DA-1}
+    D^{(N)}(A^{-1}) = -(A^{-1}\odot 1) D^{(N)}(A) (1\odot A^{-1})
+    .
+  \end{equation}
+ \item
+  More generally, we define $A\odot B= (A\odot 1)\cdot(1\odot B)$, i.e.,
+  \[
+    (A\odot B)_{ij}=\sum_{k=1}^N a_{ik} \otimes b_{kj}.
+  \]
+ \item 
+  The entry-wise application of linear functionals then turns $\odot$ into a simple
+  multiplication of scalar   matrices:
+  $$
+  (f\otimes g)^{(N)} (A\odot B) = f^{(N)}(A)\cdot g^{(N)}(B)
+  $$
+  and the formulas
+  \eqref{eq:intro_betas_prod_as_entries}--%\eqref{eq:IntroVNRP_for_betas:uni}
+\eqref{eq:ProductsasEntriesCFree}
+  from  Proposition~\ref{thm:FIC5.5} remain valid after amplification to the
+  matrix valued case.
+\end{enumerate}
+
+\end{remnot}
+
+
+
+
+\begin{comment}
+  Furthermore, derivations such as $\rnabla$ or $\rdelta$ can also be lifted to the matrix-valued framework.
+  \begin{lemma}[{\cite[Cor.~6.6]{LehnerSzpojankowski:2023:freeint1}}]
+    Let $\mathfrak{M}$ be an $\alg{M}$-bimodule and $D:\alg{M}\to\mathfrak{M}$ be a derivation. Then $M_N(\mathfrak{M})$ is an $M_N(\alg{M})$-bimodule with action
+    $$
+    [a_{ij}']_{ij}\cdot [\mathfrak{m}_{ij}]_{ij}\cdot [a^{\prime\prime}_{ij}]_{ij} = \left[ \sum_{k,l=1}^N a'_{ik}\cdot \mathfrak{m}_{kl}\cdot a^{\prime\prime}_{lj}\right]_{ij}
+    $$
+    and the matrix amplification $D^{(N)}:M_N(\alg{M})\to M_N(\mathfrak{M})$ satisfies the Leibniz rule.
+  \end{lemma}
+\end{comment}
+
+
+
+% \adrian{the next theorem is the multivariate case. should we state only the bivariate case?}
+% \kamil{keep only bivariate}
+% \begin{theorem}[{\cite[Thm.~4.12]{LehnerSzpojankowski:2023:freeint1}}]
+% \label{thm:4.12}
+% Let $\mu:\IC\langle X_1,X_2,\ldots,X_n\rangle \to \IC$ be a distribution such that $X_1,X_2,\ldots,X_n$ are free. Denote by $\E_I^\psi$ the conditional expectation onto the subalgebra generated by the subset $\{X_i\}_{i\in I}$, where $I\subseteq[n]$. Also, assume that the resolvent of a given polynomial $P = P(X_1,X_2,\ldots,X_n)\in \IC\langle X_1,X_2,\ldots,X_n\rangle$ of degree $m$ has a linearization given by
+% \begin{equation}
+%   \Psi = (1-z^mP)^{-1} = u^t{\bf{\Psi}}v,\quad\mbox{where }\;{\bf{\Psi}} = \bigl(I_N-z(C_1X_1+C_2X_2+\cdots + C_nX_n)\bigr)^{-1}
+% \end{equation}
+% with $C_1,C_2,\ldots,C_n\in M_N(\IC)$ and $u,v\in \mathbb{C}^N$.
+% \par Then the conditional expectation of $\Psi$ is given by
+% \begin{equation}
+% \begin{aligned}
+%   \E_I^{\psi}\big[ (1-z^mP)^{-1} \big] &= u^t\left( I_N-zH_J\Big( \sum_{i\in I} C_iX_i\Big)\right)^{-1}H_jv
+%   \\ &=  u^t\left( I_N-z\Big( \sum_{i\in I} C_iX_i - \sum_{j\in J}C_jF_j\Big)\right)^{-1}v
+% \end{aligned}
+% \end{equation}
+% where $J = [n]\backslash I$, $H_J = \Big(I_N- z\sum_{j\in J}C_jF_j \Big)^{-1}$ and $F_i = \beta_{X_i}^{\delta,\psi,(N)}(X_i{\bf{\Psi}})\in M_N(\IC)$ for $i=1,\ldots,n$ are the unique solution of the system of matrix equations
+% \begin{equation}
+%   F_i = \tilde{\eta}_{X_i}\left( z\Big(I_N-z\sum_{j\neq i}C_jF_j \Big)^{-1}C_i \right),\quad i=1,\ldots,n,
+% \end{equation}
+% which is analytic at $z=0$. In particular, we have that the moment generating function of $P$ is given by
+% \begin{equation}
+%   \psi\left((1-z^mP)^{-1}\right) = u^t\Bigg( I_N- z\Big(\sum_{j=1}^n C_jF_j\Big)\Bigg)^{-1} v.
+% \end{equation}
+% \end{theorem}
+
+		
+		
+		
+		
+		
+\begin{comment}
+  \begin{itemize}
+   \item 	Below is just a copy-paste from ''Free Integral I'', needs to be reformulated for new Boolean cumulants.
+    %\item There is notational problem, because now we have to decorate $\beta$ additionally with $\varphi,\psi$
+   \item have to check the product formula.
+  \end{itemize}
+  
+  
+  Then we say why we want to calculate block beta (again we need to adjust the notation)
+  
+  
+  \begin{itemize}
+   \item Next After we have to discuss operator valued conditional freeness (new section?)
+   \item Next State the update of the above theorem in the matrix-valued case
+   \item Final section 
+  \end{itemize}
+\end{comment}
+
+\subsection{Matrix-valued $c$-free additive convolution}
+
+% \phantom{x}
+% \franz{notes p.750}
+Assume that we have a polynomial $P\in \mathbb{C}\langle X,Y\rangle$ of degree 
+$m$ together with the regular linearization of its resolvent
+$$
+(1-z^mP)^{-1} = u^t(I_N-zL)^{-1}v
+$$
+constructed in \cite[Appendix]{LehnerSzpojankowski:2023:freeint1}
+with vectors $u,v\in \mathbb{C}^N$ and the matrix pencil $L=A X+BY$.
+The coefficient matrices $A(z)$ and $B(z)$ may depend on $z$, but in order to keep
+the formulas readable we will usually not indicate this in writing.
+The resolvent $(1-z^mP)^{-1}=\sum_{n=0}^{\infty} (z^mP)^n$ is considered here
+as
+a formal power series with coefficients in $\mathbb{C}\langle X,Y\rangle$ and similarly $(I_N-zL)^{-1}$ is a formal power series with coefficients in $M_N(\mathbb{C}\langle X,Y\rangle)$. 
+Then
+\[\varphi\left((1-z^m
+    P)^{-1}\right)=u^t\varphi^{(N)}\left((I_N-zL)^{-1}\right)v
+\]
+and since 
+the moment generating function uniquely determines the distribution of $P$, the
+problem of computing the distribution of a polynomial $P$ boils down to
+matrix-valued additive convolution.
+This is done via the matrix valued Boolean cumulant generating functions which
+satisfy the fixed point equation featuring in the following Proposition.
+
+
+\begin{proposition}
+  \label{lem:SeveralEquations}
+  Assume that $X$ and $Y$ are $c$-free in the two-state noncommutative
+  probability space $(\mathbb{C}\langle X,Y\rangle,\varphi,\psi)$.
+  Given matrices  $A,B\in M_N(\mathbb{C})$,
+  denote by $\bPsi = \bigl(I - z(AX+BY)\bigr)^{-1}$ the resolvent and let
+  \begin{align}
+    H_X & :=\bbetas{\psi}{X}(\bPsi),
+    &
+      F_X & :=\fbetas{\psi}{X}(X\bPsi), \\
+    H_Y & :=\bbetas{\psi}{Y}(\bPsi),
+    &
+      F_Y & :=\fbetas{\psi}{Y}(Y\bPsi) ,
+  \end{align}
+  \begin{align}
+    F_X^\varphi & :=\fbetas{\varphi}{X}(X\bPsi), \\
+    F_Y^\varphi & :=\fbetas{\varphi}{Y}(Y\bPsi).
+  \end{align}
+  Then the following identities hold:
+  \begin{align}
+    H_X &=  (I-zAF_X)^{-1},\label{eq:HAdditive}\\
+    H_Y &= (I-zBF_Y)^{-1},\label{eq:HYAdditive}\\
+    F_X &= \tilde{\eta}_X^{\psi}\left(z H_Y A \right),\label{eq:Fx=betasubordination}\\
+    F_Y &= \tilde{\eta}_Y^{\psi}\left(zH_X B \right).
+  \end{align}
+  \begin{align}
+    F_X^\varphi &= \tilde{\eta}^\varphi_X(zH_YA),\label{eq:Fxphi=betasubordination}\\
+    F_Y^\varphi &= \tilde{\eta}^\varphi_Y(zH_XB)\label{eq:Fyphi=betasubordination}.
+  \end{align}
+\end{proposition}
+\begin{remark}
+  In Proposition~\ref{lem:SeveralEquations}
+  we have assumed for the sake of simplicity that
+  the coefficient matrices $A$ and $B$ are scalar matrices.
+  In practice the linearization of nonhomogeneous polynomials
+  leads to matrices $A$ and $B$ with nonlinear dependence on $z$,
+  however it is easy to see that all formulas remain valid.
+\end{remark}
+\begin{remark}
+  The matrices
+  \begin{align*}
+    H_X^\varphi & :=\bbetas{\varphi}{X}(\bPsi), 
+    \\
+    H_Y^\varphi & :=\bbetas{\varphi}{Y}(\bPsi), 
+  \end{align*}
+  satisfy the identities
+  \begin{align}
+    \label{eq:HXphi=1-zBFXphi}
+    H_X^\varphi &=  (I-zAF_X^\varphi)^{-1},\\
+    \label{eq:HYphi=I-zAFXphi}
+    H_Y^\varphi &=  (I-zBF_Y^\varphi)^{-1},
+  \end{align}
+  similar to the identities   \eqref{eq:HAdditive}
+  and   \eqref{eq:HYAdditive} satisfied by $H_X$ and $H_Y$,
+  however they are not needed because we can obtain
+  the matrices $F^\varphi_X$ and
+  $F^\varphi_Y$ directly from  on $H_X$ and $H_Y$ via formulas
+  \eqref{eq:Fxphi=betasubordination} and \eqref{eq:Fyphi=betasubordination}.
+  In fact this was already observed in \cite {Belinschi:cfree} to the effect
+  that the very same  subordination  functions underlying free additive
+  convolution keep their role in the subordination approach to $c$-free
+  additive convolution.
+\end{remark}
+\begin{proof}
+  %	\adrian{the proof is for the matrix-valued case. Should we use $\odot$? Or just omit the proof?}
+  For the reader's convenience, we present a proof of \eqref{eq:HAdditive} and
+  \eqref{eq:Fxphi=betasubordination}.
+  The proofs of the remaining statements are entirely similar.
+  By definition of $\bPsi$ and $\rdelta_X$, we have
+  $$
+  \rdelta_X(\bPsi) = z\bPsi A \odot X\bPsi = z\bPsi \odot AX\bPsi.
+  $$
+  Then the matricial amplification of the Leonov-Shiryaev formula
+  \eqref{eq:intro_betas_prod_as_entries}
+  reads
+  $$
+  \beta^{b,\psi}_X(\bPsi) = I + z\beta_X^{b,\psi}(\bPsi)\beta_X^{\delta,\psi}(AX\bPsi),
+  $$
+  and hence
+  $$
+  H_X=\beta_X^{b,\psi}(\bPsi) = \left(I-zA\beta_X^{\delta,\psi}(X\bPsi)\right)^{-1} = (I-zAF_X)^{-1}.
+  $$
+  Finally, it is not difficult to show that
+  \[
+    \partial_X^n(X\bPsi) = z^{n-1} I\odot (\bPsi A)^{\odot n-1}\odot \bPsi + z^n X(\bPsi A)\odot (\bPsi A)^{\odot n-1}\odot \bPsi
+  \]
+  and after plugging this into the recurrence \eqref{eq:ProductsasEntriesCFree} we conclude
+  \begin{align*}
+    F_X^\varphi = \beta_X^{\delta,\varphi}(X\bPsi) &= \sum_{k=1}^\infty \beta_k^\varphi(X)z^{k-1} \beta^{b,\psi}_Y(\bPsi A)^{k-1}
+    \\ &= \tilde{\eta}_X^{\varphi}\bigl( z \beta_Y^{b,\psi}(\bPsi)A\bigr).
+  \end{align*}
+\end{proof}
+
+
+\begin{comment}
+  \phantom{x}
+  \subsubsection{Equations}
+  \begin{align}
+    H_X & =\bbetas{\psi}{X}(\bPsi) &
+                                     F_X & =\fbetas{\psi}{X}(X\bPsi) &
+                                                                       F_X^\varphi & =\fbetas{\varphi}{X}(X\bPsi) \\
+    H_Y & =\bbetas{\psi}{Y}(\bPsi)
+                                   &
+                                     F_Y & =\fbetas{\psi}{Y}(Y\bPsi) &
+                                                                       F_Y^\varphi & =\fbetas{\varphi}{Y}(Y\bPsi) 
+  \end{align}
+  Then by the product formula
+  \begin{align}
+    H_X &= \bbetas{\psi}{X}(\bPsi) = (I-zBF_X)^{-1}\\
+    H_Y &= \bbetas{\psi}{Y}(\bPsi) = (I-zAF_Y)^{-1}\\
+    H_X^\varphi &= \bbetas{\varphi}{X}(\bPsi) = (I-zBF_X^\varphi)^{-1}\\
+    \label{eq:HYphi=I-zAFXphi}
+    H_Y^\varphi &= \bbetas{\varphi}{Y}(\bPsi) = (I-zAF_Y^\varphi)^{-1}
+  \end{align}
+  \adrian{I think $H_X$ and $H_Y$ are swapped}
+  and by VNRP
+  \begin{align}
+    % F_X &= \tilde{\eta}^\psi_X(zH_YA)\\
+    % F_Y &= \tilde{\eta}^\psi_Y(zH_XB)\\
+    F_X^\varphi &= \tilde{\eta}^\varphi_X(zH_YA)\\
+    F_Y^\varphi &= \tilde{\eta}^\varphi_Y(zH_XB)
+  \end{align}
+\end{comment}
+		
+		
+		
+The solutions of the previous fixed point equations can now be used to
+compute  distributions of polynomials in $c$-free variables via linearization
+as shown in the next theorem.
+% \franz{notes p.755}
+\begin{theorem}
+  \label{thm:cfreeConvolution}
+  With the notation from Proposition~\ref{lem:SeveralEquations},
+  assume that $X$ and $Y$ are $c$-free
+  in the   two-state noncommutative probability space  $(\mathbb{C}\langle X,Y\rangle,\varphi,\psi)$.
+  Assume moreover that the resolvent of a given polynomial $P \in
+  \mathbb{C}\langle X,Y\rangle$ of degree $m$ has a linearization given by
+  $\Psi= \Psi(z) = (1-z^mP)^{-1} = u^t\bPsi v$, where $\bPsi=\bPsi(z) = \bigl(I-z(AX+BY)\bigr)^{-1}$, with $A=A(z),B=B(z)\in M_N(\mathbb{C}[z])$ and $u,v\in \mathbb{C}^N$. Then
+  \begin{equation}
+    M^\varphi_{AX+BY}(z):=\varphi(\bPsi)
+    = (I-zAF^\varphi_X(z)-zBF_Y^\varphi(z))^{-1}
+    \label{eq:AX+BY:phi(Psi)}
+  \end{equation} and
+  consequently
+  \[M^{\varphi}_{P(X,Y)}(z^m)=u^t M^\varphi_{AX+BY}(z) v.\]
+\end{theorem}
+
+\begin{proof}
+  % \franz{notes p.759}
+  By the definition of the resolvent, observe that
+  \begin{equation}
+    \label{eq:resolventIdentity}
+    \bPsi = I + zAX\bPsi + zBY\bPsi.
+  \end{equation}
+  Then, we have%\adrian{this means that the words in $\bPsi$ are alternating so that $\beta^ b = \beta^ \delta$?} we have by the previous identity:
+  \begin{align*}
+    \eta^\varphi_{AX+BY}(z)
+    &=\sum_{n=1}^{\infty}\beta_n^{\varphi}(AX+BY) z^n\\
+    &=\sum_{n=1}^{\infty}\beta^{\delta,\varphi}\left((AX+BY)^n\right) z^n\\
+    &= \beta^{\delta,\varphi}(\bPsi) - I\\
+    &= \beta^{\delta,\varphi}(zAX\bPsi+zBY\bPsi)\\
+    &= zA\beta_{X}^{\delta,\varphi}(X\bPsi)+zB\beta_{Y}^{\delta,\varphi}(Y\bPsi)\\
+    &= zAF^\varphi_X(z)+zBF^\varphi_Y(z),
+  \end{align*}
+  where we simply use the definition of $\eta^\varphi$,
+  properties of $\beta^\delta$ and
+  %Property (\VNEC) 
+  \eqref{eq:beta=betaX+betaY}.
+  The result follows from the identity $M^\varphi(z)=(I-\eta^\varphi(z))^{-1}$.
+  % \subsubsection{Proof of \eqref{eq:AX+BY:rEphiX[Psi]=bbeta*res}}
+  % latex does not understand this eqref?
+\end{proof}
+		
+\section{Applications to free denoising}
+\label{sec:denoising}
+We will now apply the above result to the problem of free denoising. First, we
+briefly recall conditional expectations and the framework of free denoising. 
+
+\subsection{Conditional expectations}
+Recall that a \emph{conditional expectation}
+is a state-preserving projection $\E_{\alg{A}}:\alg{M}\to \alg{A}$
+% $\varphi(ab)=\varphi(\E_{\alg{B}}(a)b)$ for all $a\in\alg{A}$, $b\in\alg{B}$.
+from a noncommutative probability space $\alg{M}$ onto a subalgebra $\alg{A}$
+such that in addition
+for every $u\in\alg{M}$ and
+every $a_1,a_2\in\alg{A}$
+\begin{align}
+  \label{eq:phiua=phiEua}
+  \varphi(a_1u)&=\varphi(a_1\E_{\alg{A}}[u]),
+  &
+    \varphi(ua_2)
+  &=\varphi(\E_{\alg{A}}[u]a_2)
+    .
+\end{align}
+In general such a map does not necessarily exist.
+A sufficient condition is that $\alg{M}$ is a finite
+von Neumann algebra and $\varphi$ is tracial,
+i.e.~$\varphi(ab) =\varphi(ba)$ for all $a,b\in \alg{M}$
+\cite[Proposition~5.2.36]{Takesaki1};
+for a characterization in the general case see \cite {Takesaki:1972}.
+If it does exist and the state $\varphi$ is faithful, then the conditional expectation
+$\E_{\alg{A}}[u]$ is uniquely determined by the invariance property \eqref{eq:phiua=phiEua}
+% is the unique  element $\tilde{u}\in\alg{A}$ such that for any
+% $a\in\alg{A}$ 
+% one has $\varphi(ua)=\varphi(\tilde{u}a)$.
+and it follows that
+$\E_{\alg{A}}:\alg{M}\to\alg{A}$ is a unital completely positive $\alg{A}$-bimodule map, i.e.,
+\begin{equation}
+  \label{eq:modularproperty}
+  \E_{\alg{A}}[a_1ua_2]=a_1\E_{\alg{A}}[u]a_2 
+\end{equation}
+for all $u\in\alg{M}$ and $a_1,a_2\in\alg{A}$. 
+
+
+
+A note on notation:
+The standard notation for the conditional expectation onto a subalgebra
+$\alg{A}$ is $\E_{\alg{A}}$ and when the subalgebra  $\alg{A}$ is generated
+by a single element $a$ we also write $\E_{a}$ 
+Occasionally we write the latter also as $E[x|a]=E_a[x]$,
+for example in Section~\ref{sec:denoising} in order to avoid clumsy expressions like
+$\E_{i[a,b]}$.
+
+
+\subsection{Review of free denoising}
+Consider a tracial $W^*$-probability space $(\mathcal{M},\psi)$. Fix two free
+self-adjoint elements $a,b\in \mathcal{M}$. We view $a$ as a signal and $b$ as
+a noise. For a self-adjoint polynomial $P\in\mathbb{C}\,\langle X,Y\rangle$ we
+consider the element $P(a,b)$, which represents a noisy element. Our goal is to
+recover the signal $a$ from the noisy element $P(a,b)$, and we observe that
+$\E[a|P(a,b)]$ solves this problem in the sense of $L^2$ distance, i.e.,
+$\lVert a-\E[a|P(a,b)]\rVert_2\leq \lVert a-g(P(a,b))\rVert_2$ among all bounded
+Borel functions $g$. We will work with a slightly more general problem and we
+will consider $\E[f(a)|P(a,b)]$. The crucial observation from \cite{FevrierNicaSzpojankowski:2024} is that $c$-freeness provides a framework to find $\E[f(a)|P(a,b)]$. Fix a non-negative function $f$ such that $\psi(f(a))=1$ and define a new state $\varphi(c)=\psi(f(a)c)$. The main observations from \cite{FevrierNicaSzpojankowski:2024} are the following:
+\begin{enumerate}[label=\arabic*.]
+ \item The elements $a,b$ are $c$-free with respect to the pair $(\varphi,\psi)$.
+ \item Given the distributions of $P$ with respect to both states
+  $\mu_{P(a,b)}^{\psi}$ and $\mu_{P(a,b)}^{\varphi}$, the measure
+  $\mu_{P(a,b)}^{\varphi}$ is absolutely continuous with respect to
+  $\mu_{P(a,b)}^{\psi}$ and we denote  the Radon-Nikodym
+  derivative  $\tfrac{d \mu_{P(a,b)}^{\varphi}}{d \mu_{P(a,b)}^{\psi}}$  by $h$. 
+ \item The Radon-Nikodym derivative above coincides with the conditional
+  expectation
+  in the sense that
+  \[
+    \E[f(a)|P(a,b)]=h(P(a,b)).
+  \]
+\end{enumerate}
+This reduces the problem of free denoising to the computation of the
+distributions of
+polynomials in
+free variables and $c$-free variables. In \cite{FevrierNicaSzpojankowski:2024}
+this general framework is provided, however it was not possible to apply it
+beyond addition and multiplication of variables for lack of a general
+method to determine distributions of polynomials in $c$-free
+variables. Theorem~\ref{thm:cfreeConvolution} fills this gap.
+		
+		
+\subsection{A worked out example}
+
+Given a noncommutative probability space $(\alg{M},\psi)$,
+let $a$ be a standard semicircular element and
+$b$ free from $a$ with distribution $\frac{1}{2}(\delta_{-1}+\delta_1)$.
+In this subsection we present a worked out example which shows how to find for fixed $-1/2<s<1/2$ the conditional expectation
+\[
+  \E\bigl[(1-sa)^{-1} \big| i[a,b]\bigr],
+\]
+where $i[a,b] = i(ab - ba)$ is the commutator of $a$ and $b$. Define a state
+\[\varphi(c):=\frac{\psi\left((1-sa)^{-1}c\right)}{M_a^{\psi}(s)}.\]
+As we observed above, we need to determine the distribution of $i[a,b]$ with
+respect to both states $\psi$ and $\varphi$.
+As discussed in Subsection~\ref{ssec:nc_polynomials},
+we will work on the free algebra $\left(\C\langle
+  X,Y\rangle,\varphi_{a,b},\psi_{a,b} \right)$
+where we have $\varphi_{a,b}(R(X,Y))=\varphi(R(a,b))$ and
+$\psi_{a,b}(R(X,Y))=\psi(R(a,b))$
+and after fixing $a$ and $b$ we will simply write $\varphi, \psi$
+instead of $\varphi_{a,b},\psi_{a,b}$, which should not lead to any confusion.
+
+For $z$ in some neighbourhood of zero we have
+\begin{align*}
+  M_X^{\varphi}(z)&=\varphi\left((1-zX)^{-1}\right)=\frac{\psi\left((1-sX)^{-1}(1-zX)^{-1}\right)}{M_X^{\psi}(s)}\\
+                  &=\frac{\psi\left(\frac{s}{1-s X}-\frac{z}{1-z X}\right)}{(s-z)M_X^{\psi}(s)}=\frac{sM_X^\psi(s)- zM_X^\psi(z)}{(s-z)M_X^\psi(s)},
+\end{align*}
+or,  equivalently,
+\begin{align}\label{eqn:61}
+  \tilde{\eta}^{\varphi}_X(z)=\frac{M^{\psi}_X(s)-M_X^{\psi}(z)}{sM^{\psi}_X(s)-zM_X^{\psi}(z)}.
+\end{align}
+The linearization is
+\[\Psi(z^2)=(1-z^2 i[X,Y])^{-1}=\left[(1-z C_X X-z C_Y Y)^{-1}\right]_{1,1} \]
+with
+\begin{align*}
+  C_X=
+  \begin{bmatrix}
+    0&0&i\\
+    1&0&0\\
+    0&0&0
+  \end{bmatrix}
+         \qquad
+         C_Y=
+         \begin{bmatrix}
+           0&-i&0\\
+           0&0&0\\
+           1&0&0
+         \end{bmatrix}
+\end{align*} 
+and  we can construct the system of equations for matrices $F_X,F_Y,F_X^{\varphi}, F_Y^{\varphi}$ as follows:
+\begin{equation*}
+  \label{eq:cfree:systemFXHX}
+  \begin{cases}
+    H_X&=(I-z C_X F_X)^{-1},\\
+    H_Y&=(I-z C_Y F_Y)^{-1},\\
+    F_X&=\tilde{\eta}^{\psi}_X(z H_Y C_X),\\
+    F_Y&=\tilde{\eta}^{\psi}_Y(z H_X C_Y),\\
+    F_X^{\varphi}&=\tilde{\eta}_X^{\varphi}(z H_Y C_X),\\
+    F_Y^{\varphi}&=\tilde{\eta}_Y^{\varphi}(z H_X C_Y).\\
+  \end{cases}
+\end{equation*}
+Note that by the freeness assumption, the distributions of  $Y$ with respect to
+$\varphi$ and $\psi$ coincide and hence
+$\tilde{\eta}^{\varphi}_Y(z H_X C_Y)=\tilde{\eta}^{\psi}_Y(z H_X C_Y)=zH_X
+C_Y$,
+where the latter equality follows from the fact that $b$ has the Bernoulli
+distribution.
+As a consequence $F_Y^{\varphi}=F_Y$ as well.
+
+Since $a$ was assumed to be the standard semicircular element, its moment
+generating function satisfies the equation
+\[
+  M_X^{\psi}(z)=z^2 M_X^{\psi}(z)^2+1
+\]
+and for the $\eta$-transform  $\eta_X^\psi(z)=1-1/M_X^\psi(z)$
+it follows that $\tilde{\eta}_X^{\psi}=z M_X^{\psi}(z)$.
+ Together with \eqref{eqn:61} this implies that
+\[
+  \tilde{\eta}^{\varphi}_X(z)=\frac{s^2 M_X^{\psi}(s)^2-z^2 M_X^{\psi}(z)^2}{s
+    M_X^{\psi}(s)-z M_X^{\psi}(z)}=s M_X^{\psi}(s)+z
+  M_X^{\psi}(z)=\tilde{\eta}_X^{\psi}(s)+\tilde{\eta}_X^{\psi}(z)
+\]
+and finally
+\[
+  F_X^{\varphi}(z)
+  =\tilde{\eta}_X^{\psi}(s)I+\tilde{\eta}_X^{\psi}(z H_Y(z)C_X)=\tilde{\eta}_X^{\psi}(s)I+F_X(z);
+\]
+ in particular we have
+ \[
+   \eta_{C_X X+C_Y Y}^{\varphi}(z)
+   =z C_X F_X^{\varphi}(z)+z C_Y F_Y^{\varphi}(z)
+   =z C_X \tilde{\eta}^\psi_X(s)+\eta_{C_X X+C_Y Y}^{\psi}(z)
+   .
+ \]
+ Solving the system
+  \eqref{eq:cfree:systemFXHX}
+  and using the fact that the involved moment and $\eta$-transforms
+  have analytic continuations to the upper half-plane
+  we obtain 
+\[
+  G^{\varphi}_{i[a,b]}(z)
+  =G^{\varphi}_{i[X,Y]}(z)
+  =\frac{(2+\tilde{\eta}_X(s)^2)\sqrt{z^2-8}+(\tilde{\eta}_X(s)^2-2)z
+  }{%
+    2\tilde{\eta}_X(s)^2 z^2-2(\tilde{\eta}_X(s)^2+2)^2 }
+\]
+for $z\in \IC^+$, where the branch of the square root is chosen such that
+$\sqrt{z^2-8}\sim z$ as $z\to\infty$.
+Stieltjes inversion formula and a direct calculation gives 
+\[
+  d\mu^{\varphi}_{i[a,b]}(x)=-\frac{1}{\pi}\frac{(2+\tilde{\eta}_X(s)^2)\sqrt{8-x^2}}{2\tilde{\eta}_X(s)^2
+    x^2-2(\tilde{\eta}_X(s)^2+2)^2}.
+\]
+
+Since it is well known that the distribution of the commutator of a semicircular
+variable and a Bernoulli variable is equal to the free convolution of two
+semicircle distributions of variance one
+(see, e.g., the discussion in \cite[Example~3.12]{HaagerupLarsen}),
+we obtain the density $\tfrac{1}{4 \pi}\sqrt{8-x^2}$.
+We finally obtain the Radon-Nikodym derivative and the conditional expectation
+\[h(t)=M_a^\psi(s)\frac{d\mu^{\varphi}_{i[a,b]}}{d\mu^{\psi}_{i[a,b]}}=\frac{2(2+\tilde{\eta}_X(s)^2)}{(1-s\tilde{\eta}_X(s))\left((2+\tilde{\eta}_X(s)^2)^2-\tilde{\eta}_X(s)^2 t^2\right)}.\]
+Extracting the first few coefficients from the generating function we obtain
+the conditional moments
+\begin{align*}
+  \E[a^2|i[a,b]]&=\frac{(i[a,b])^2+2}{4},\\
+  \E[a^4|i[a,b]]&=\frac{(i[a,b])^4+6(i[a,b])^2+12}{16}.
+\end{align*}
+		
+\section{Algebraic conditional expectations of $c$-free variables}\label{sec:6}
+
+In this section, we study formal analogues of conditional expectations for
+$c$-free random variables.
+It turns out that after some modifications the algebraic machinery from
+\cite{LehnerSzpojankowski:2023:freeint1} still works in the $c$-free setting,
+and we obtain projections onto subalgebras which formally
+act like conditional expectations,
+but lack important analytic properties like positivity.
+Yet they are useful for practical computations and as an example
+in Section~\ref{sec:sigmatransform} we recompute the
+$c$-free analog of the $\Sigma$-transform  from \cite{PopaWang:2011:multiplicative}
+by purely algebraic means.
+
+
+
+%Our goal is to understand how projections onto subalgebras interact with
+%$c$-freeness, and to identify maps that formally behave like conditional
+%expectations but lack 
+
+%In this section we will use the standard notation.
+		
+		%Standard notation for the conditional expectation onto a subalgebra $\alg{A}$ is $\E_{\alg{A}}$ and $\E_{a}$ when $\alg{A}$ is generated by a single element $a$. The conditional expectation from §\ref{sec:denoising} could be written $\E_{i[a,b]}$. In this section we will use the standard notation.
+
+
+% In the present paper we will always assume that
+% the algebra $\alg{M}$ is freely generated by two of its subalgebras
+% $\alg{A},\alg{B}\subseteq\alg{M}$,
+% or more specifically, $\alg{M}$ is freely generated by 
+% some subalgebras $\alg{A}_i$, $i\in I$
+% and the subalgebra $\alg{A}$ is generated by some subset of these,
+% i.e., $\alg{A}=\langle\alg{A}_j\rangle_{j\in J}$ where $J\subseteq I$,
+% and $\alg{B}=\langle \alg{A}_i\rangle_{i\in I\setminus J}$.
+% In this case the existence of the conditional expectation $\E_{\alg{A}}$ onto $\alg{A}$
+% is generally warranted by combinatorial arguments \cite[\S2.5]{MingoSpeicher}.
+% Alternatively, in the C${}^*$-algebraic context, if the state is faithful,
+% then $\alg{M}$ is isomorphic to the reduced free product 
+% $(\alg{A},\varphi|_{\alg{A}})*(\alg{B},\varphi|_{\alg{B}})$
+% and the existence of the conditional expectation also follows from  \cite[Proposition~1.3]{Avitzour:1982:free}.
+
+
+% For a fixed subalgebra $\alg{A}\subset\alg{M}$ we denote by $\E_{\alg{B}}$ 
+% the conditional expectation (if it exists) onto the % von Neumann
+% subalgebra generated by $X$.
+
+
+
+% Let $x_1,x_2,\ldots,x_n\in\alg{A}$ be freely independent self-adjoint elements.
+% 
+% 
+% The goal of this paper is to provide an effective way of calculating conditional expectations of the form 
+% \begin{align}\label{eq:condExpOfPoly}
+% \E_{x_i}\left[(1-z P(x_1,x_2,\ldots,x_n))^{-1}\right],
+% \end{align}	
+% where $P$ is a noncommutative polynomial,
+% which
+% we will consider as a formal power series.
+% Indeed in some neighbourhood of the origin
+% the series expansion $(1-z P(x_1,x_2,\ldots,x_n))^{-1}=\sum_{k=0}^{\infty}
+% (zP(x_1,x_2,\ldots,x_n))^k$ holds and the problem of finding the conditional
+% expectation onto the algebra generated by $x_i$ is reduced to the problem of
+% finding the conditional expectation of polynomials in variables
+% $x_1,x_2,\ldots,x_n$.
+
+% Note that in order to be sure that the conditional expectation displayed in equation \eqref{eq:condExpOfPoly} exists one has to assume, that $(\alg{A},\varphi)$ is a $W^*$-probability space. However in the present paper we provide a solution to this problem, which is by design combinatorial (or rather algebraic) and does not require that we work in a $W^*$-probability space. Formulas which we derive provide the conditional expectations as defined in the framework of von Neumann algebras.
+
+
+
+\subsection{Left and right quasi-conditional expectations}
+\label{ssec:ExistenceCondExp}
+From a technical point of view,
+the computation of the conditional expectation
+of an element $u\in\alg{M}$
+onto a subalgebra $\alg{A}\subseteq\alg{M}$
+boils down to the construction
+of an element $E_{\alg{A}}[u]\in \alg{A}$ which satisfies
+the conditions \eqref{eq:phiua=phiEua}.
+This amounts to the computation of the orthogonal projection
+$L^2(\alg{M},\varphi)\to L^2(\alg{A},\varphi)$.
+
+Let $(\alg{M},\varphi)$ be a $W^*$-probability space with faithful state $\varphi$, $\alg{A}\subseteq\alg{M}$
+a subalgebra and $L^2(\alg{M})_r$ and $L^2(\alg{A})_r$  the right $L^2$-spaces,
+i.e., the respective completions
+of $\alg{M}$ and $\alg{A}$ with respect to the scalar product
+\begin{equation*}
+  \langle x,y\rangle  = \varphi(xy^*)
+  .
+\end{equation*}
+Then the orthogonal projection $\rE_{\alg{A}}:L^2(\alg{M},\varphi)_r\to L^2(\alg{A},\varphi)_r$ exists
+and satisfies the right module property $\rE_{\alg{A}}[ua]=\rE_{\alg{A}}[u]a$
+for $u\in\alg{M}$ and  $a\in\alg{A}$.
+Similarly,
+the left Hilbert spaces $L^2(\alg{M},\varphi)_l$ and $L^2(\alg{A},\varphi)_l$
+are obtained from the scalar product
+\begin{equation*}
+  \langle x,y\rangle  = \varphi(y^*x)
+\end{equation*}
+and the projection  $\lE_{\alg{A}}:L^2(\alg{M},\varphi)_l\to L^2(\alg{A},\varphi)_l$ satisfies
+the left module property $\lE_{\alg{A}}[au]=a\lE_{\alg{A}}[u]$.
+Note that it is not necessarily true
+that  the restriction of a map  $F:L^2(\alg{M})_r\to L^2(\alg{A})_r$
+to the subspace $\alg{M}\subseteq L^2(\alg{M})_r$ automatically
+gives rise to a map $F:\alg{M}\to\alg{A}$.
+In the $c$-free setting below both $\alg{M}$ and $\alg{A}$ will be algebras of
+polynomials and we will show that the projections
+indeed restrict to mappings from $\alg{M}$ to $\alg{A}$.
+We will call these mappings \emph{left} and \emph{right quasi-conditional expectations}.
+
+Another issue to note here is faithfulness: if the state $\varphi$ is not faithful,
+then the scalar product is not positive definite and the projection is not unique,
+i.e., it is only defined up to a one-sided ideal.
+However we will simply ignore this issue
+and define a formally consistent
+map
+% conditional expectation
+satisfying all essential algebraic requirements needed for the actual computations.
+
+\subsection{Failure of positivity and the modular property}
+\label{ssec:failurepositive}
+The following examples show that in the case of $c$-freeness the quasi-conditional expectations with
+respect to $\varphi$ are not positive and fail the modular property
+\eqref{eq:modularproperty}.
+More precisely,
+positive elements are not necessarily mapped to positive elements
+the left modular property does
+not hold for the right  quasi-conditional expectation and vice versa.
+%as the following examples show.
+
+		
+\begin{example}[Failure of the left modular property]
+%  \franz{notes p.695}
+  Assume $\mathcal{A}$ and $\mathcal{B}$ are $c$-free subalgebras in
+  $(\alg{M},\varphi,\psi)$.
+  Then for $a\in\mathcal{A}$ and $b\in \mathcal{B}$  we have
+  \begin{equation*}
+    \varphi(ba^n) = \varphi(b)\varphi(a^n)
+  \end{equation*}
+  for every $n\in\IN$ 
+  and consequently the right conditional expectation onto $\alg{A}$ is
+  \begin{equation*}
+    \rE^\varphi_\mathcal{A}[b] = \varphi(b)1_\alg{M}.
+  \end{equation*}
+  On the other hand, the conditional free pyramidal law asserts
+  \begin{equation*}
+    \varphi(a_1ba_2)
+    = \varphi(a_1a_2)\psi(b) + \varphi(a_1)\varphi(a_2)(\varphi(b)-\psi(b))
+  \end{equation*}
+  i.e.,
+  \begin{align*}
+    \varphi(aba^n)
+    &= \varphi(a^{n+1})\psi(b) + \varphi(a)\varphi(a^n)(\varphi(b)-\psi(b))\\
+    &= \varphi( (a\psi(b) + \varphi(a)(\varphi(b)-\psi(b)))a^n)
+      .
+  \end{align*}
+ Consequently
+  \begin{equation}
+    \label{eq:rEab}    
+    \rE^\varphi_\alg{A}[ab]
+    = a\psi(b) + \varphi(a)(\varphi(b)-\psi(b))1_\alg{M}
+  \end{equation}
+  and the difference
+  \begin{equation}
+    \rE^\varphi_\alg{A}[ab]- a\rE^\varphi_\mathcal{A}[b] = (a-\varphi(a)1_\alg{M})(\psi(b)-\varphi(b))
+  \end{equation}
+%  \begin{equation}
+%  \begin{aligned}
+%    \rE^\varphi_\alg{A}[ab]
+%    &= a\psi(b) + \varphi(a)(\varphi(b)-\psi(b))1_\alg{M}\\
+%    &\ne a\rE^\varphi_\mathcal{A}[b] = a\varphi(b)
+%  \end{aligned}
+%  \end{equation}
+  is nonzero   unless $\varphi(b)=\psi(b)$ or $a$ is a multiple of the identity
+  $1_\alg{M}$.
+\end{example}
+
+
+\begin{example}[Failure of positivity]
+%  \franz{notes p.826}
+  The example at the origin of conditional freeness has its roots
+  in harmonic analysis of the free group
+  \cite{BozejkoLeinertSpeicher:1996:convolution}.
+  Let $\Gamma=\IZ_2*\IZ_2 = \langle a,b\mid a^2=b^2=1\rangle$
+  be the free Coxeter group with two generators.
+  Then $a$ and $b$ are free with respect to the von Neumann trace
+  $\psi(w) = \delta_{e,w}$ and $c$-free with respect
+  to the regular state $\varphi(w)=e^{-\lambda\abs{w}}$ with $0<\lambda<\infty$,
+  where by $\abs{w}$ we denote length of a (reduced) word $w\in\Gamma$.
+  These functionals define states on the group von Neumann algebra
+  $L(\Gamma)$.
+  Let $T=a+ib$. Then
+  % $(a+ib)^*(a+ib)=2 + i(ab-ba)$
+  $T^*T=2 + i(ab-ba)$  
+  is a positive element,
+  however evaluating its conditional expectation onto the subalgebra generated by
+  $a$ with the help of \eqref{eq:rEab} we obtain
+  $$
+  \rE^\varphi_\alg{A}[T^*T] = 2 + i(e^{-2\lambda}-e^{-\lambda}a)
+  $$
+  which is not self-adjoint and thus not positive.
+\end{example}
+
+
+%\begin{example}[Failure of positivity (incorrect)] 
+%%  \franz{notes p.811}
+%  The example at the origin of conditional freeness has its roots
+%  in harmonic analysis of the free group
+%  \cite{BozejkoLeinertSpeicher:1996:convolution}.
+%  Let $\Gamma=\IZ_2*\IZ_2 = \langle a,b\mid a^2=b^2=1\rangle$
+%  be the free Coxeter group with two generators.
+%  Then $a$ and $b$ are free with respect to the von Neumann trace
+%  $\psi(w) = \delta_{e,w}$ and $c$-free with respect
+%  to the regular state $\varphi(w)=e^{-\lambda\abs{w}}$ with $0<\lambda<\infty$,
+%  where by $\abs{w}$ we denote length of a (reduced) word $w\in\Gamma$.
+%  These functionals define states on the group von Neumann algebra
+%  $L(\Gamma)$.
+%  Let $x=1+a$ and $y=b$. Then $x$ is positive and so is $bxb$,
+%  however plugging $bxb$ into     \eqref{eq:rEab} we obtain
+%  $$
+%  \rE^\varphi_\alg{B}[bxb] = b^2+(1+e^{-\lambda})e^{-\lambda}b
+%  $$
+%  which is not positive for sufficiently small $\lambda$.
+%\end{example}
+
+Note however, that in the context of denoising in Section~\ref{sec:denoising}
+the left and right conditional expectations coincide with the free one.
+\begin{proposition}
+  Let $f$ be a strictly positive function on the spectrum of $a$
+  such that $\psi(f(a))=1$.
+  Then the state $\varphi(x)=\psi(f(a)x)$ is faithful
+  and  the right quasi-conditional expectation $\rE_a^{\varphi}$ coincides with
+  the free conditional expectation $E^{\psi}_a$.
+\end{proposition}
+\begin{proof}
+  Indeed,
+  \begin{align*}
+    \varphi\bigl(E_a^\psi[x]g(a)\bigr)
+    &=     \psi\bigl(f(a)E_a^\psi[x]g(a)\bigr)\\
+    &=     \psi(f(a)xg(a))\\
+    &=     \varphi(xg(a))
+  \end{align*}
+  and therefore $\rE^\varphi_a[x] = E_a^\psi[x]$.  
+\end{proof}
+\begin{remark}
+This does not contradict \eqref{eq:rEab} as we have $\varphi(b)=\psi(b)$ when
+$b$ is free from $a$ with respect to $\psi$.  
+\end{remark}
+
+
+\begin{comment}
+  We will also make use of the original non-recursive version of the formula
+  found in \cite[Proposition~1.1]{LehnerSzpojan}.
+  \begin{multline}
+    \E^\psi_{\alg{B}}\left[a_1b_1a_2\dotsm b_{n-1}a_n\right]
+    = \beta^\psi_{2n-1}\left(a_1,b_1,a_2,\ldots ,b_{n-1},a_n\right)+\\
+    \sum_{k=1}^{n-1}\sum_{1\leq i_1<i_2<\dots< i_k\leq n-1}
+    b_{i_1}b_{i_2}\dotsm b_{i_k}\prod_{j=0}^{k}\beta^\psi_{2(i_{j+1}-i_j)-1}(a_{{i_j}+1},b_{i_{j}+1},a_{{i_j}+2},\ldots,a_{i_{j+1}}).
+  \end{multline}
+\end{comment}
+% \begin{equation}
+% \label{eq:Epsi:full:pic}
+%	E^\psi_X[X_0 Y_1 X_1 \dots Y_n X_n]
+%	=
+%	\sum
+%	% \begin{tikzpicture}[baseline=(current bounding box.center)]
+% \begin{tikzpicture}[anchor=base,baseline]
+%			\node at (-1,0.8) {$\times$};
+%			\draw (-1,-0.4)--(-1,0.75)--(7,0.75)--(7,-0.4);
+%			\draw (1,-0.4)--(1,0.75);
+%			\draw (3,-0.4)--(3,0.75);
+%			\draw (5,-0.4)--(5,0.75);
+%			
+%			\node at (-1,-0.8){$X_0$};
+%			\node at (1,-0.8){$X_{i_1}$};
+%			\node at (3.1,-0.8){$X_{i_2}$};
+%			\node at (5.3,-0.8){$X_{i_{k-1}}$};
+%			\node at (7,-0.8){$X_{n}$};
+%			
+%			\paczek{0.0,0.0}{\beta^\psi}
+%			\paczek{2,0.0}{\beta^\psi}
+%			\node at (4,0.0){$\cdots$};
+%			\paczek{6,0.0}{\beta^\psi}
+% \end{tikzpicture}
+% \end{equation}
+
+
+\begin{comment}
+  \begin{remark}
+    By definition of the free product, any element $w \in \alg{M}=\alg{A}*\alg{B}$ is a linear combination of monomials, each of which admits a unique factorization as an alternating product of elements from $\overline{\alg{A}}$ and $\overline{\alg{B}}$. Such a monomial is of one of the following four types:
+    \begin{itemize}
+     \item type $\alg{A}$–$\alg{A}$: $w = a_1 b_1 a_2 \cdots b_{n-1} a_n$,
+     \item type $\alg{A}$–$\alg{B}$: $w = a_1 b_1 a_2 \cdots b_{n-1} a_n b_n$,
+     \item type $\alg{B}$–$\alg{A}$: $w = b_1 a_1 b_2 \cdots a_{n-1} b_n a_n$,
+     \item type $\alg{B}$–$\alg{B}$: $w = b_1 a_1 b_2 \cdots a_{n-1} b_n$,
+    \end{itemize}
+    where $a_1,a_2,\ldots,a_n \in \overline{\alg{A}}$ and $b_1,\ldots,b_n \in \overline{\alg{B}}$. We refer to this factorization as the $\alg{A}$–$\alg{B}$ block factorization.
+  \end{remark}
+\end{comment}
+
+\subsection{A recurrence for the right quasi-conditional expectation}
+%In this subsection we provide a recurrence which allows to compute right
+%quasi-conditional expectation of polynomials in $c$-free random variables and
+%more generally power series whose coefficients are polynomials in $c$-free
+%random variables.
+Before embarking on the $c$-free problem,
+we recall the algebraic framework for the free conditional expectation from
+\cite{LehnerSzpojankowski:2023:freeint1}.
+
+Recall that for the construction of the conditional expectation of
+a noncommutative polynomial $u$
+in variables $a_1,a_2,\ldots,a_n\in\alg{M}$ 
+onto the algebra $\alg{A}$ generated by a subset of the variables
+$a_1,a_2,\ldots,a_k$  one has to find suitable expressions for moments of the form 
+\begin{equation*}
+  % \label{eq:generalCondExp}
+  \varphi\left(a_{i_1}a_{i_2}\dotsm a_{i_r} b\right),
+\end{equation*}
+where $i_1,i_2,\ldots,i_r\in \{1,2,\ldots,n\}$ and $b\in\alg{A}$.
+It is a fundamental property of freeness
+(as one of the  universal notions of independence in the sense of \cite{Muraki:2002:five})
+that all joint moments of
+freely independent random variables are uniquely determined by the marginal moments
+of the variables in question. Thus for each moment of the form indicated above
+there is a universal formula (not depending on the particular choice of the
+distributions of $a_1,a_2,\ldots,a_n$) which expresses any joint moment as a sum
+of products of marginal moments.
+%
+% \input{variantEY}
+  
+  We will work in the formal setting of noncommutative polynomials
+  $\IC\langle X,Y\rangle$   with $c$-free state $\varphi$ and free state $\psi$
+  as described in Subsection~\ref{ssec:nc_polynomials}.
+  The states are possibly not faithful and the conditional expectation
+  therefore not unique, yet the following formula
+  % from  \cite{LehnerSzpojankowski:2023:freeint1}
+  consistently defines a   conditional expectation
+  with respect to $\psi$ and specifies to the correct one when
+  evaluated on free elements in von Neumann algebras.
+  \begin{proposition}[\cite{LehnerSzpojan}]
+    \label{prop:freecondexpX}
+    Assume that $\psi$ is a state on $\IC\langle X,Y\rangle$ such that $X$ and
+    $Y$ are free.
+    Given a word  in block-factorization $W=X_0Y_1X_1Y_2\dotsm X_{n-1}Y_nX_n$
+    (with $X_0$ and $X_n$ possible being empty),
+    we define the linear map $\E^\psi_X:\IC \langle X,Y \rangle\to \IC \langle X \rangle$
+    by
+      \begin{multline}
+      \label{eq:Epsi:full}
+        % \nonumber
+        \E^\psi_{X}\left[X_0Y_1X_1Y_2\dotsm X_{n-1}Y_nX_n\right]
+        \\
+  =
+    \sum_{p=0}^{n-1}\sum_{0=i_0 < i_1<i_2<\dots< i_{p+1}= n}
+    X_{0}X_{i_1}\dotsm X_{i_{p}}X_n\prod_{j=0}^p \beta^\psi_{2(i_{j+1}-i_j)-1}(Y_{i_j+1},X_{i_j+1},\ldots, Y_{i_{j+1}}).        
+      \end{multline}      
+%    where $Y_1,\ldots,Y_n$ are non-constant monomials in $Y$,
+%    $X_0$ and $X_n$ are possibly constant
+%    and $X_1,X_2,\ldots,X_{n-1}$ are non-constant monomials in $X$
+    Then $E_X^\psi$ is  a conditional expectation with respect to the state $\psi$,
+    i.e., it has the bimodule property $E_X^\psi[X_0WX_n]=X_0E_X^\psi[W]X_n$
+    and preserves the state $\psi$.
+\end{proposition}
+
+The expansion \eqref{eq:Epsi:full} has a diagrammatic representation similar to VNRP as in
+Remark~\ref{rmk:VNRPDiagrammatic}:
+\begin{multline}
+  \label{eq:Epsi:full:pic}
+  E^\psi_X[X_0 Y_1 X_1 \dotsm Y_n X_n]
+  \\=
+  \sum
+  % \begin{tikzpicture}[baseline=(current bounding box.center)]
+  \begin{tikzpicture}[anchor=base,baseline]
+    % \node at (-1,0.8) {$\times$};
+    \draw (-1.5,-0.4)--(-1.5,0.75)--(10.5,0.75)--(10.5,-0.4);
+    \draw (1.5,-0.4)--(1.5,0.75);
+    \draw (4.5,-0.4)--(4.5,0.75);
+    \draw(7.5,-0.4)--(7.5,0.75); 		
+    \node at (-1.5,-0.8){$X_0$};
+    \node at (1.5,-0.8){$X_{i_1}$};
+    \node at (4.5,-0.8){$X_{i_2}$};
+    \node at (7.5,-0.8){$X_{i_p}$};
+    \node at (10.5,-0.8){$X_{n}$};
+    \paczek{0.0,0.0}{\beta^\psi(W_0)}
+    \paczek{3,0.0}{\beta^\psi(W_1)}
+    \node at (6,0.0){$\cdots$};
+    \paczek{9,0.0}{\beta^\psi(W_p)}
+  \end{tikzpicture}
+\end{multline}
+where $W_j=Y_{i_j+1}X_{i_j+1}\dotsm Y_{i_{j+1}}$.
+
+%\input{freecondexpold}
+
+
+
+The main tool in \cite{LehnerSzpojankowski:2023:freeint1} is the following
+recurrence for the conditional expectation $E_X^\psi$, when evaluated on
+monomials starting and ending in $Y$, i.e., when $X_0=X_n=1$ in formula 
+\eqref{eq:Epsi:full} above:
+\begin{equation}
+  \label{eq:Epsi:recurrence}
+  E^\psi_{X}[Y_0X_1Y_1\dotsm X_nY_n] =
+  \sum_{k=0}^n\beta^\psi_{2k+1}(Y_0,X_1,Y_1,\dots, X_k,Y_k) \,  E^\psi_{X}[X_{k+1}Y_{k+1}\dotsm X_nY_n]
+  ,
+\end{equation}
+
+which follows a pattern similar to \eqref{fig:boolRecPsi}
+$$
+E^\psi_X[Y_0 X_1 Y_1 \cdots X_n Y_n]
+=
+\sum
+% \begin{tikzpicture}[baseline=(current bounding box.center)]
+\begin{tikzpicture}[anchor=base,baseline]
+  \node at (-0.25,0.45) {$\beta^{\psi}$};
+  \draw (-0.25,-0.25)--(-0.25,0.4)--(3.25,0.4)--(3.25,-0.25);
+  \draw (0.25,-0.25)--(0.25,0.4);
+  \draw (0.75,-0.25)--(0.75,0.4);
+  \draw (1.25,-0.25)--(1.25,0.4);
+  \draw (2.75,-0.25)--(2.75,0.4);
+  \node at (2.0,-0.1){$\cdots$};
+  \node at (-0.25,-0.7){$Y_0$};
+  \node at (0.25,-0.7){$X_1$};
+  \node at (0.75,-0.7){$Y_1$};
+  % \node at (2.8,-0.7){$Y_{i-1}$};
+  \node at (3.3,-0.7){$Y_{k}$};
+\end{tikzpicture}
+\kern-0.5em
+E^\psi_X[X_{k+1}Y_{k+1}  \dots X_n Y_n]
+$$
+Furthermore in \cite{LehnerSzpojankowski:2023:freeint1} two of the present
+authors have described recursive relations between the functionals $\E_X^\psi$
+and $\beta_Y^{b,\psi}$ in terms of partial deconcatenations. 
+
+% The algebraic formulation of the recursive relations between $\E^\psi_X$ and $\beta_Y^{b,\psi}$ is given below.
+
+\begin{theorem}[{\cite[Thm.~4.12]{LehnerSzpojankowski:2023:freeint1}}]
+  \label{thm:FreeIntCalc4.12}
+  For any monomial $W\in\IC\langle X,Y\rangle$  the following recurrence relations hold:
+  \begin{equation} 
+    \label{eq:condexprec}
+    \begin{aligned}
+      \E_{X}^\psi[W] &= \bbetas{\psi}{Y}(W)
+      + (\bbetas{\psi}{Y}\otimes \E^\psi_{X}) [\rdelta_{X}(W)]\\
+      &= \bbetas{\psi}{Y}(W) + 
+      (\E^\psi_{X}\otimes\bbetas{\psi}{Y})[\ldelta_{X}(W)].
+    \end{aligned}
+  \end{equation}
+\end{theorem}
+
+\begin{remark}
+  %If one is interested in stating
+  For the multivariate version of the previous theorem
+  the corresponding partial divided power derivations are given by 
+  \begin{align}
+    \rdelta_{\alg{X}}(P) &= \sum (1\otimes X_i)\partial_{X_i}(P),
+    \\
+    \ldelta_{\alg{X}}(P) &= \sum \partial_{X_i}(P)(X_i\otimes 1),
+  \end{align}
+  for any $P\in \mathbb{C}\langle \alg{S}\rangle$, where the alphabet is
+  $\alg{S}=\alg{X}\cup\alg{Y}$
+  and the sums run over the letters  $X_i\in\alg{X}$.
+\end{remark}
+
+
+
+
+%\franz{notes p.705f}
+We now turn to the extension of the preceding results to the $c$-free
+setting.
+%In this section, we assume in addition that $(\IC \langle X,Y
+%\rangle,\varphi,\psi)$ is a two-state noncommutative probability space such
+%that $X$ and $Y$ are $c$-free, as it is easy to extend it to the
+%multivariate setting.
+%\par
+Since $X$ and $Y$ are $c$-free, they are free with respect to
+$\psi$. In addition to the conditional expectation
+$E^\psi_X$ from Proposition~\ref{prop:freecondexpX}
+we will now construct an analogous map $\rE_X^\varphi$
+with respect to $\varphi$, which,
+as we have seen in Section~\ref{ssec:failurepositive},
+is not necessarily positive and only satisfies 
+the right module property.
+%
+%\input{variant1}
+%
+\begin{definition}\label{def:rightcondexp}
+  Let $\varphi:\C\langle X,Y\rangle \to \C$ be a noncommutative
+  distribution. A \emph{right quasi-conditional expectation} for $\varphi$ is a
+  linear projection
+  $E:\C\langle X,Y\rangle \to \C\langle X\rangle$ with the following
+  properties: 
+  \begin{enumerate}[label=(\roman*)]
+   \item
+    \label{def:it:invariance}
+    \emph{Invariance.}
+    For every polynomial $P(X,Y)\in \C\langle X,Y\rangle$ we have
+    \[\varphi(\E[P(X,Y) ])=\varphi(P(X,Y)).\] 
+   \item
+    \label{def:it:rightmodular}
+    \emph{Right modular property.}
+    For any polynomial $P(X,Y)\in \C\langle X,Y\rangle$ and every polynomial
+    $Q(X)\in\C\langle X\rangle$ we have 
+    \[
+      \E[P(X,Y) Q(X)]=\E[P(X,Y)]Q(X)
+      .\]
+  \end{enumerate}
+\end{definition}
+\begin{comment}
+Moreover observe that the previous definition employs the Boolean cumulants
+$(\beta^\varphi_n)_{n\geq1}$ of the noncommutative probability space
+$(\C\langle X,Y\rangle,\varphi)$. In particular, by replacing $\psi$ with
+$\varphi$ in the equations of Definition~\ref{def:blockcumulant}, we obtain the
+corresponding block cumulant functionals $\beta^{b,\varphi}$ and
+$\beta^{b,\varphi}_Y$. 
+\end{comment}
+At the time of this writing we are not able to provide a full formula
+for $\rE_X^\varphi$ like \eqref{eq:Epsi:full} and rather have to rely on an
+analogue of the recurrence \eqref{eq:condexprec} for its definition.
+\begin{theorem} 
+  \label{thm:rEphi:recurrence}
+  Assume that  $X$ and $Y$ are $c$-free
+  with respect to the pair of states $(\varphi,\psi)$
+  on $\IC\langle X,Y\rangle$.
+  Then the following recurrence defines a right quasi-conditional expectation
+  for $\varphi$
+  onto the subalgebra $\IC\langle X \rangle$:
+  \begin{enumerate}[label=(\roman*)]
+   \item
+    $\rE_X^{\varphi}[P(X)]=P(X)$ for any polynomial $P(X)\in\IC\langle X\rangle$.
+   \item 
+    $\rE_X^{\varphi}[P(Y)]=\varphi(P(Y))$ for any polynomial $P(Y)\in\IC\langle Y\rangle$.
+   \item
+    If $W\in \C\langle X,Y\rangle$ is a monomial starting with $Y$,
+    then
+    \begin{equation}
+      \label{eq:rEphiX[YW]:rec}
+      \rE_X^\varphi[W] = \bbetas{\varphi}{Y}(W) +
+      \bigl(\bbetas{\varphi}{Y}\otimes\rE^\varphi_X\bigr)[\rdelta_XW].
+    \end{equation}
+   \item 
+    If $W\in \C\langle X,Y\rangle$ is a monomial starting with $X$,  then
+    \begin{equation}
+      \label{eq:rEphiX[XW]:rec}
+      \rE_X^\varphi[W] =
+      \IE_X^\psi[W] + \bigl(\bbetas{\varphi}{X}\otimes(\rE^\varphi_X-\IE_X^\psi)\bigr)[\rdelta_YW].
+    \end{equation}
+   \item In general, for any monomial $W\in \C\langle X,Y\rangle$, we have
+    \begin{equation}
+      \label{eq:rEphiX[W]:LX}
+      \rE^\varphi_X[W]
+      = \bbetas{\varphi}{Y}(W)
+      +   (\bubbetas{\varphi}{Y}\otimes\rE^\varphi_X)[\rdelta_XW] 
+      +   
+      \bigl(
+      \bubbetas{\varphi}{X}\otimes(\rE^\varphi_X-\IE^\psi_X)
+      \bigr)[\rdelta_YW]
+      + X\IE^\psi_X[L_X(W)],
+    \end{equation}
+    where $\bubbetas{\varphi}{}=\bbetas{\varphi}{}-\epsilon_0$ and $L_X$ is the left annihilation operator, i.e., 
+    \[
+      L_X(W) = \begin{cases}
+        0 & \text{if $W=1$ or $W=YW'$ for some $W'\in \alg{M}$} 
+        \\
+        W' & \text{if $W=XW'$}
+      \end{cases}
+    \]
+  \end{enumerate}
+\end{theorem}
+
+\begin{remark}
+  \begin{enumerate}[label=(\roman*)]
+   \item []
+   \item Note that for possible lack of faithfulness of the state $\varphi$ this conditional
+    expectation is not necessarily unique, however it is well-defined.
+   \item
+    Given a word in block factorization,
+    it is not difficult to see that
+    similar to   \eqref{eq:booleanrecYXY}
+    in the expansion of the derivations in equations 
+    \eqref{eq:rEphiX[YW]:rec} and \eqref{eq:rEphiX[XW]:rec} many terms vanish
+    because of property~(\VNEC{}) 
+    and depending on the first letter we have
+    \begin{equation}
+      \label{eq:rEphi[Y1X1Y2]:rec}
+      \rE_X^\varphi[Y_1X_1Y_2\dotsm Y_nX_n] =
+      \sum_{k=1}^n\beta^\varphi_{2k-1}(Y_1,X_1,Y_2,\dots,Y_k)\rE_X^\varphi[X_{k}Y_{k+1}\dotsm Y_nX_n]
+    \end{equation}
+%    \begin{equation}
+%      \label{eq:rEphi[Y1X1Y2]:rec}
+%      \rE_X^\varphi[Y_0X_1Y_1\dotsm X_nY_n] =
+%      \sum_{k=0}^n\beta^\varphi_{2k+1}(Y_0,X_1,Y_1,\dots,X_k,Y_k)\rE_X^\varphi[X_{k+1}Y_{k+1}\dotsm X_nY_n]
+%    \end{equation}
+    and
+%    \begin{multline}
+%      \rE^\varphi_X[X_1Y_1X_2\dotsm X_nY_n]
+%      =         E_X^\psi[X_1Y_1X_2\dotsm X_nY_n]
+%      \\
+%      + \sum_{k=1}^{n}
+%      \beta^{\varphi}_{2k-1}(X_1,Y_1,X_2,\dots, X_k)
+%      \rE_X^\varphi [Y_{k}X_{k+1}\dotsm X_nY_n]
+%      \\
+%      - \sum_{k=1}^{n} \beta^\varphi_{2k-1}(X_0,Y_1,X_1,\ldots, X_k)\,
+%      \E_X^\psi[Y_{k}X_{k+1}\dotsm X_nY_n]
+%    \end{multline}
+    \begin{multline}
+      \label{eq:rEphi[X_0Y1X1]:rec}
+      \rE^\varphi_X[X_0Y_1X_1Y_2\dotsm Y_nX_n]
+      =         E_X^\psi[X_0Y_1X_1\dotsm Y_nX_n]
+      \\
+      + \sum_{k=0}^{n-1}
+      \beta^{\varphi}_{2k+1}(X_0,Y_1,X_1,Y_2,\dots, X_k)
+      \rE_X^\varphi [Y_{k+1}X_{k+1}\dotsm Y_nX_n]
+      \\
+      - \sum_{k=0}^{n-1} \beta^\varphi_{2k+1}(X_0,Y_1,X_1,\ldots, X_k)\,
+      \E_X^\psi[Y_{k+1}X_{k+1}\dotsm Y_nX_n]
+    \end{multline}
+
+%    \begin{multline}
+%      \label{eq:rEphi[X_0Y1X1]:rec}
+%      \rE^\varphi_X[X_0Y_1X_1Y_2\dotsm Y_nX_n]
+%      =         E_X^\psi[X_0Y_1X_1\dotsm Y_nX_n]
+%      \\
+%      + \sum_{k=0}^{n-1}
+%      \beta^{\varphi}_{2k+1}(X_0,Y_1,X_1,Y_2,\dots, X_k)
+%      \bigl(
+%      \rE_X^\varphi [Y_{k+1}X_{k+1}\dotsm Y_nX_n]
+%      \\
+%      -       \E_X^\psi[Y_{k+1}X_{k+1}\dotsm Y_nX_n]
+%      \bigr)
+%    \end{multline}
+
+    respectively, where $X_i$ are non-constant monomials in $X$
+    (except $X_n$ which is possibly $1$) and
+    $Y_i$ are non-constant monomials in $Y$.  In particular,
+    equation
+    \eqref{eq:rEphi[Y1X1Y2]:rec} is identical to the recurrence in the free
+    case \eqref{eq:Epsi:recurrence}.
+    % ; note however that $\rE_X^\varphi$ fails the modular property on the left.
+  \end{enumerate}
+\end{remark}
+
+\begin{remark}
+  Rearranging identity   \eqref{eq:rEphiX[XW]:rec}, we observe that for any monomial $W$ starting with  $X$, the element $\widetilde{W}= W -
+  (\bbetas{\varphi}{X}\otimes \id)[\rdelta_YW]$ satisfies
+  $$
+  \rE^\varphi_X[\widetilde{W}]=  \IE^\psi_X[\widetilde{W}]
+  .
+  $$
+\end{remark}
+
+The following lemma connects the $c$-free quasi-conditional expectation
+to the free conditional expectation and is the key to the proof of the preceding theorem.
+\begin{lemma}
+  If $W\in \C\langle X,Y\rangle$ is a monomial starting with $X$,  then
+  \begin{equation}
+    \varphi(\E^\psi_X[W]) = \bbetas{\varphi}{}(W) + \bigl(\bbetas{\varphi}{}\otimes(\varphi\circ \E^\psi_X)\bigr)[\rdelta_YW];
+  \end{equation}
+  that is, if $X_0,\ldots,X_n$ are non-constant monomials in $X$ and $Y_0,\ldots,Y_n$ are non-constant monomials in $Y$, then
+  \begin{equation}
+    \label{eq:phi(EpsiX(X0Y1X1))}
+    \varphi(\E_X^\psi[X_0Y_1X_1\dotsm Y_nX_n])
+    = \sum_{k=0}^{n} \beta^\varphi_{2k+1}(X_0,Y_1,X_1,\ldots, X_k)\,
+    \varphi(\E_X^\psi[Y_{k+1}X_{k+1}\dotsm Y_nX_n]).
+  \end{equation}
+  If $X_n=1$, i.e., 
+  if $W=X_0Y_1X_1\cdots X_{n-1}Y_n$, then the identity holds as well, but
+  property (\VNEC{}) makes the
+  term  $\bbetas{\varphi}{}(W)=0$ vanish.
+\end{lemma}
+\begin{proof}
+%  \franz{notes p.754}
+  We use the full expansion   \eqref{eq:Epsi:full} of the conditional expectation and then apply recurrence \eqref{eq:recurrenceboolcum} for the Boolean cumulants as follows:
+  \begin{multline*}
+    \varphi(\IE_X^\psi[X_0Y_1X_1\dotsm Y_nX_n])\\
+    \begin{aligned}
+      &= \sum_{p=0}^{n}\sum_{0=i_0 < i_1<i_2<\dots< i_p=n}
+      \varphi( X_{0}X_{i_1}\dotsm X_{i_{p-1}}X_n)\,
+      \beta^\psi(W_1)\beta^\psi(W_2)\dotsm\beta^\psi(W_p)
+      \\
+      &= \sum_{p=0}^{n}    \sum_{0 < i_1<i_2<\dots< i_p= n}
+      \sum_{k=0}^p \beta^\varphi_{k+1}(X_0,X_{i_1},\dots,X_{i_k})\,
+      \varphi( 
+      X_{i_{k+1}}\dotsm X_{i_{p-1}}X_n)\,
+      \beta^\psi(W_1)\beta^\psi(W_2)\dotsm\beta^\psi(W_p)
+      \\
+      &=
+      \begin{multlined}[t]
+        \sum_{s=0}^{n}
+        \sum_{\substack{0 < i_1<i_2<\dots< i_k=s\\
+            s < i'_1<i'_2<\dots< i'_l<n}
+        }
+        \beta^\varphi_{k+1}(X_0,X_{i_1},\dots,X_{i_{k-1}}X_s)\,
+        \beta^\psi(W_1)\beta^\psi(W_2)\dotsm    \beta^\psi(W_k)
+        \\
+        \times
+        \varphi(X_{i'_1}\dotsm X_{i'_l}X_n)
+        \beta^\psi(W'_0)\beta^\psi(W'_1)\dotsm    \beta^\psi(W'_l)
+      \end{multlined}
+      \\
+      &= \sum_{s=0}^{n} \beta^\varphi(X_0Y_1X_1\dotsm X_s)\,
+      \varphi(\E_X^\psi[Y_{s+1}X_{s+1}\dotsm Y_nX_n])
+    \end{aligned}
+  \end{multline*}
+  where
+  for $j\geq1$ the factors are
+  $W_j=Y_{i_{j-1}+1}X_{i_{j-1}+1}\dotsm Y_{i_j}$,
+  $W'_0=Y_{s+1}X_{s+1}\dotsm Y_{i'_1}$ and
+  $W'_j=Y_{i'_{j}+1}X_{i'_{j}+1}\dotsm Y_{i'_{j+1}}$.
+  At the end  we used
+  VNRP \eqref{eq:VNRP:cfree} and 
+  the full expansion   \eqref{eq:Epsi:full} of
+  the conditional expectation $E^\psi$.
+\end{proof}
+				
+				
+\begin{proof}[Pictorial proof]
+  \begin{align*}
+    \varphi(E_X^\psi[X_0Y_1X_1\dotsm Y_nX_n])
+    &=  \sum
+    % \begin{tikzpicture}[baseline=(current bounding box.center)]
+      \begin{tikzpicture}[anchor=base,baseline]
+        \node at (-1,0.8) {$\varphi$};
+        \draw (-1,-0.4)--(-1,0.75)--(7,0.75)--(7,-0.4);
+        \draw (1,-0.4)--(1,0.75);
+        \draw (3,-0.4)--(3,0.75);
+        \draw (5,-0.4)--(5,0.75);
+        % 
+        \node at (-1,-0.8){$X_0$};
+        \node at (1,-0.8){$X_{i_1}$};
+        \node at (3.1,-0.8){$X_{i_2}$};
+        \node at (5.3,-0.8){$X_{i_{k-1}}$};
+        \node at (7,-0.8){$X_{n}$};
+        % 
+        \paczek{0.0,0.0}{\beta^\psi}
+        \paczek{2,0.0}{\beta^\psi}
+        \node at (4,0.0){$\cdots$};
+        \paczek{6,0.0}{\beta^\psi}
+      \end{tikzpicture}
+    \\
+    &=
+      \begin{multlined}[t]
+        \sum\sum_s
+        \begin{tikzpicture}[anchor=base,baseline]
+          \node at (-1,0.8) {$\beta^\varphi$};
+          \draw (-1,-0.4)--(-1,0.75)--(7,0.75)--(7,-0.4);
+          \draw (1,-0.4)--(1,0.75);
+          \draw (3,-0.4)--(3,0.75);
+          \draw (5,-0.4)--(5,0.75);
+          % 
+          \node at (-1,-0.8){$X_0$};
+          \node at (1,-0.8){$X_{i_1}$};
+          \node at (3.1,-0.8){$X_{i_2}$};
+          \node at (5.3,-0.8){$X_{i_{k-1}}$};
+          \node at (7,-0.8){$X_{s}$};
+          % 
+          \paczek{0.0,0.0}{\beta^\psi}
+          \paczek{2,0.0}{\beta^\psi}
+          \node at (4,0.0){$\cdots$};
+          \paczek{6,0.0}{\beta^\psi}
+        \end{tikzpicture}
+        \\
+        \times
+        \begin{tikzpicture}[anchor=base,baseline]
+          \paczek{0.0,0.0}{\beta^\psi}
+        \end{tikzpicture}
+        \begin{tikzpicture}[anchor=base,baseline]
+          \node at (-1,0.8) {$\varphi$};
+          \draw (-1,-0.4)--(-1,0.75)--(7,0.75)--(7,-0.4);
+          \draw (1,-0.4)--(1,0.75);
+          \draw (3,-0.4)--(3,0.75);
+          \draw (5,-0.4)--(5,0.75);
+          % 
+          \node at (-1,-0.8){$X_{i'_1}$};
+          \node at (1,-0.8){$X_{i'_2}$};
+          \node at (3.1,-0.8){$X_{i_2}$};
+          \node at (5.3,-0.8){$X_{i_{k-1}}$};
+          \node at (7,-0.8){$X_{n}$};
+          % 
+          \paczek{0.0,0.0}{\beta^\psi}
+          \paczek{2,0.0}{\beta^\psi}
+          \node at (4,0.0){$\cdots$};
+          \paczek{6,0.0}{\beta^\psi}
+        \end{tikzpicture}
+      \end{multlined}
+      % \\
+      % &=
+      % \sum_s
+      % \begin{tikzpicture}[anchor=base,baseline]
+      % \node at (-0.25,0.45) {$\beta^{\varphi,\psi}$};
+      % \draw (-0.25,-0.25)--(-0.25,0.4)--(3.25,0.4)--(3.25,-0.25);
+      % \draw (0.25,-0.25)--(0.25,0.4);
+      % \draw (0.75,-0.25)--(0.75,0.4);
+      % \draw (1.25,-0.25)--(1.25,0.4);
+      % \node at (2.0,-0.1){$\cdots$};
+      % \draw (2.75,-0.25)--(2.75,0.4);  
+      % \node at (-0.25,-0.7){$X_{0}$};
+      % \node at (3.25,-0.7){$X_{s}$};
+      % \end{tikzpicture}
+      % \varphi(E_X^\psi[Y_{s+1}X_{s+1}\dotsm X_n])
+  \end{align*}
+  and we recognize both VNRP   \eqref{eq:VNRPphi:pic} and   the expansion of the
+  conditional expectation  \eqref{eq:Epsi:full:pic} with $X_0=1$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:rEphi:recurrence}]
+  By linearity it suffices to    verify both properties   from
+  Definition~\ref{def:rightcondexp}
+  on words. 
+  We proceed by induction  on the block length.
+  
+  For words of block length at most 1, both required properties follow directly from the definition.
+
+%  Pick a word $W$ of length $m$ and 
+%  assume that both \eqref{eq:rEphiX[YW]:rec} and \eqref{eq:rEphiX[XW]:rec}
+%  hold for words of length smaller than $m$.
+  
+  Let us start with the invariance property.
+  In this case we conduct an induction on the number of $Y$-blocks
+  and distinguish two cases, depending on the initial letter.
+
+  \emph{Case $Y$}:
+  Let $W=Y_1X_1Y_2X_2\dotsm Y_nX_n$ with $X_n$ possibly equal to 1.
+  Plug this word into
+% ~\ref{def:it:invariance}  from Definition~\ref{def:rightcondexp}.
+%  For $W=X_1 Y_1 \cdots X_n Y_n X_n$ 
+%  First we prove the invariance property~\ref{def:it:invariance}
+%  for a word which starts with $Y$.
+%  To this end we plug it into
+  recurrence  \eqref{eq:rEphi[Y1X1Y2]:rec}
+  and observe that  the number of $Y$-blocks in each chunk appearing as the
+  argument of $\rE_X^\varphi$ on the  right hand side of the latter
+  is strictly smaller than  in the original  word $W$.
+  Thus   the induction hypothesis applies and immediately reproduces the Boolean
+  recurrence \eqref{eq:booleanrecYXY}:
+  \begin{align*}
+    \varphi(\rE_X^\varphi[Y_1X_1Y_2\dotsm Y_nX_n])
+    &=
+      \varphi\bigl(\sum_{k=1}^n
+      \beta^{\varphi}_{2k-1}(Y_1,X_1,Y_2,\dots, Y_k)
+      \rE_X^\varphi [X_{k}Y_{k+1}\dotsm Y_nX_n]\bigr)\\
+    &=\sum_{k=1}^n
+      \beta^{\varphi}_{2k-1}(Y_1,X_1,Y_2,\dots, Y_k)\,
+      \varphi(X_{k}Y_{k+1}\dotsm Y_nX_n) \\
+    &=\varphi(Y_1X_1Y_2\dotsm Y_nX_n)
+      .
+  \end{align*}
+%  where in the final line we used the fact that
+%  according to property (\VNEC) from Remark and Definition~\ref{remdef:fNEC}
+%  every other cumulant vanishes 
+%  in the  recurrence~\eqref{eq:recurrenceboolcum}.
+  % \begin{align*}
+  % \varphi(Y_1X_1Y_2\dotsm Y_nX_n)
+  % &=\sum_{k=1}^n
+  % \beta^{\varphi}_{2k+1}(Y_1,X_1,Y_2,\dots, Y_k)\,
+  % \varphi(X_{k}Y_{k+1}\dotsm Y_nX_n)
+  % \\
+  % &=\varphi\left(\sum_{k=1}^n
+  % \beta^{\varphi}_{2k-1}(Y_1,X_1,Y_2,\dots, Y_k)
+  % \rE_X^\varphi [X_{k}Y_{k+1}\dotsm Y_n]X_n\right).
+  % \end{align*}
+
+  \emph{Case $X$}:
+  Now let $W=X_0Y_1X_1Y_2X_2\dotsm Y_nX_n$ with $X_n$ possibly equal to 1
+  and plug it into recurrence
+      \eqref{eq:rEphi[X_0Y1X1]:rec}:
+  \begin{multline*}
+    \varphi
+    (\rE_{X}[X_0Y_1X_1Y_2\dotsm Y_nX_n])\\
+    =
+%      \begin{multlined}[t]
+    \sum_{k=0}^{n-1}
+    \beta^{\varphi}_{2k+1}(X_0,Y_1,X_1,Y_2,\dots, X_k)\,
+    \varphi(\rE_X^\varphi [Y_{k+1}X_{k+1}\dotsm Y_nX_n])
+    % \\
+    + \varphi(\IE_X^\psi[X_0Y_1X_1\dotsm Y_nX_n])
+    \\
+    - \sum_{k=0}^{n-1} \beta^\varphi_{2k+1}(X_0,Y_1,X_1,\ldots,X_k)\,
+    \varphi(\E_X^\psi[Y_{k+1}X_{k+1}\dotsm Y_nX_n]).
+    % \end{multlined}
+  \end{multline*}
+  % \intertext{
+  Now from formula     \eqref{eq:phi(EpsiX(X0Y1X1))} in the preceding Lemma
+  we infer that the last two terms combine to
+  the cumulant $\beta^{\varphi}_{2n+1}(X_0,Y_1,X_1,Y_2,\dots, X_n)$;
+    % \begin{multline*}
+    % \beta^{\varphi}_{2n+1}(X_0,Y_1,X_1,Y_2,\dots, X_n)
+    % \\
+    %	=
+    %	\varphi(\IE_X^\psi[X_0Y_1X_1\dotsm Y_nX_n])
+    %	- \sum_{k=0}^{n-1} \beta^\varphi_{2k+1}(X_0,Y_1,X_1,\ldots,X_k)\,
+    %	\varphi(\E_X^\psi[Y_{k+1}X_{k+1}\dotsm Y_nX_n]).
+    % \end{multline*}
+  the number of $Y$-blocks in the summands in the first term is at most
+  $n-1$ except for the last one, which however is covered
+  by case $Y$ proved above.  
+  Applying the induction hypothesis 
+  we arrive again
+  at the Boolean recurrence
+  \eqref{eq:booleanrecYXY} (with $X$ and $Y$ exchanged) and conclude
+%    }
+  \begin{align*}
+      \varphi
+    (\rE^\varphi_{X}[X_0Y_1X_1Y_2\dotsm Y_nX_n])
+    &=
+    \begin{multlined}[t]
+      \sum_{k=0}^{n-1}
+      \beta^{\varphi}_{2k+1}(X_0,Y_1,X_1,Y_2,\dots, X_k)
+      \,
+      \varphi( Y_{k+1}X_{k+1}\dotsm Y_nX_n)
+      \\
+      + \beta^{\varphi}_{2n+1}(X_0,Y_1,X_1,Y_2,\dots, Y_n,X_n)
+    \end{multlined}
+    \\ 
+    &=\varphi(X_0Y_1X_1Y_2\dotsm Y_nX_n). 
+  \end{align*}
+  
+  
+						
+  
+  
+  % and we cannot extract $X_n$ from the cumulant in the very last term.
+  % However from the preceding lemma we infer that
+  % \begin{multline*}
+  % \beta^{\varphi}_{2n+1}(X_0,Y_1,X_1,Y_2,\dots, X_n)\\
+  % =
+  % \varphi(\IE_X^\psi[X_0Y_1X_1\dotsm Y_nX_n])
+  % - \sum_{k=0}^{n-1} \beta^\varphi_{2k+1}(X_0,Y_1,X_1,\ldots,X_k)\,
+  % \varphi(\E_X^\psi[Y_{k+1}X_{k+1}\dotsm Y_nX_n])
+  % \end{multline*}
+  % and thus
+  % \begin{multline*}
+  % \varphi(X_0Y_1X_1Y_2\dotsm Y_nX_n)
+  % = \sum_{k=0}^{n-1}
+  % \beta^{\varphi}_{2k+1}(X_0,Y_1,X_1,Y_2,\dots, X_k)\,
+  % \varphi(\rE_X^\varphi [Y_{k+1}X_{k+1}\dotsm Y_n]X_n)
+  % \\
+  % + \varphi(\IE_X^\psi[X_0Y_1X_1\dotsm Y_n]X_n)\\
+  % - \sum_{k=0}^{n-1} \beta^\varphi_{2k+1}(X_0,Y_1,X_1,\ldots,X_k)\,
+  % \varphi(\E_X^\psi[Y_{k+1}X_{k+1}\dotsm Y_n]X_n).
+  % \end{multline*}
+  
+  % \item
+
+
+  For the proof of the right modular property
+  it suffices to show that $\rE_{X}^\varphi[WX]
+  =\rE_{X}^\varphi[W]X$ for every word $W$.
+  We will conduct an induction
+  on the number of $Y$ blocks and use the recursions 
+  \eqref{eq:rEphiX[YW]:rec} and 
+  \eqref{eq:rEphiX[XW]:rec}, respectively, depending on the first letter
+  of the word. 
+
+  If the number of $Y$ blocks is zero then
+  $W\in\IC\langle X\rangle$ and there is nothing to prove.
+
+  \emph{Case $Y$}:
+  Let $W$ be a word starting in $Y$ and assume
+  $\rdelta_XW=\sum  W_i^{(1)}\otimes W_i^{(2)}$ (or zero if $W\in \IC\langle Y\rangle$).
+  By Leibniz' rule,
+  $$
+  \rdelta_XWX=\sum  W_i^{(1)}\otimes W_i^{(2)}X + W\otimes X.
+  $$
+  Observe that the initial letter $Y$ is never moved to the right and 
+  each chunk $W_i^{(2)}$ contains less
+  $Y$-blocks than the original word $W$.
+  Thus we can  apply  the induction hypothesis  on the right hand side of the recurrence    \eqref{eq:rEphiX[YW]:rec}:
+  \begin{align*}
+    \rE_{X}^\varphi[WX]
+    &= \bbetas{\varphi}{Y}(WX) + ( \bbetas{\varphi}{Y}\otimes
+      \rE_{X}^\varphi)[\rdelta_XWX] \\
+    &=   \sum  \bbetas{\varphi}{Y}(W_i^{(1)})
+      \rE_{X}^\varphi)[W_i^{(2)}X] +   \bbetas{\varphi}{Y}(W) \rE_{X}^\varphi[X]\\
+    &= 
+      \Bigl(
+      \sum  \bbetas{\varphi}{Y}(W_i^{(1)})
+      \rE_{X}^\varphi)[W_i^{(2)}] +   \bbetas{\varphi}{Y}(W)
+      \Bigr)X\\
+    &=     \rE_{X}^\varphi[W]X
+  \end{align*}
+
+
+  \emph{Case $X$}:
+  Consider a  word starting with an  $X$-block, say $X_0$,
+  followed by a word $W$ starting in $Y$
+  and write
+  $\rdelta_YW=\sum  W_i^{(1)}\otimes W_i^{(2)} + 1\otimes W$.
+  Then
+  $$
+  \rdelta_YX_0WX=\sum  X_0W_i^{(1)}\otimes W_i^{(2)}X + X_0\otimes WX
+  $$
+  and again each chunk $W_i^{(2)}$ contains less
+  $Y$-blocks than $W$.
+  Thus the induction hypothesis applies in   \eqref{eq:rEphiX[XW]:rec},
+  except for the last term, which is however covered by Case $Y$ above:
+  \begin{align*}
+    \rE_{X}^\varphi[WX]
+    &=
+      \begin{multlined}[t]
+E_X^\psi[WX] +
+      \sum  \bbetas{\varphi}{X}(W_i^{(1)})
+      (\rE_{X}^\varphi[X_0W_i^{(2)}X] - E_{X}^\psi)[W_i^{(2)}X])\\
+      + \bbetas{\varphi}{}(X_0)
+      (\rE_{X}^\varphi[WX] - E_{X}^\psi)[WX])
+    \end{multlined}
+    \\
+    &=     \rE_{X}^\varphi[W]X
+      .
+  \end{align*}
+  
+  Finally in order to prove the combined formula \eqref{eq:rEphiX[W]:LX},
+  observe that if $W\in \alg{M}$
+  is a monomial starting with $X$, then by definition of $\beta_Y^{b,\varphi}$
+  every term  of  \eqref{eq:rEphiX[YW]:rec} except the last one is annihilated
+  and we have
+  \[
+    \rE_{X}^\varphi[W] = \bigl(\beta_Y^{b,\varphi}\otimes \rE_X^{\varphi} \bigr)[1\otimes W].
+  \]
+  In particular, if we write $\bubbetas{\varphi}{Y} = \bbetas{\varphi}{Y} - \epsilon_0$, we have that
+  \begin{equation}
+    \label{eq:monomialX}
+    0 = \bubbetas{\varphi}{Y}(W) + \bigl( \bubbetas{\varphi}{Y} \otimes \rE_X^\varphi \bigr)[\rdelta_XW].
+  \end{equation}
+  On the other hand, from \eqref{eq:rEphiX[XW]:rec} we observe that for any $W\in \alg{M}$:
+  \begin{align}
+    \IE_X^\psi[W] +
+    \bigl(\bbetas{\varphi}{X}\otimes(\rE^\varphi_X-\IE_X^\psi)\bigr)[\rdelta_YW]
+    \nonumber
+    &= 
+      \bigl(\bubbetas{\varphi}{X}\otimes(\rE^\varphi_X-\IE_X^\psi)\bigr)[\rdelta_YW] + (\epsilon_0\otimes \rE_X^\varphi)[\rdelta_YW] \\ &\phantom{xxx}+\IE_X^\psi[W]- (\epsilon_0\otimes \IE_X^\psi)[\rdelta_YW].\label{eq:monomialY}
+  \end{align}
+  Now, from the definition of $\rdelta_YW$ it is easy to see that
+  \[
+    (\epsilon_0\otimes \rE^\varphi_X)[\rdelta_YW]
+    =
+    \begin{cases}
+      0 & \text{if $W=XW'$ or $W=1$} 
+      \\
+      \rE_X^\varphi[W] & \text{if $W=YW'$}
+    \end{cases}
+  \]
+  and
+  \begin{align*}
+    \IE^\psi_X[W] 
+    - (\epsilon_0\otimes \IE^\psi_X)[\rdelta_YW]
+    &=
+      \begin{cases}
+        \IE^\psi_X[W] & \text{if $W=XW'$ or $W=1$}
+        \\
+        0 & \text{if $W=YW'$}
+      \end{cases}
+    \\
+    &= \epsilon_0(W) + X\E^\psi_X[L_XW].
+  \end{align*}
+  Since $ \bigl(\bubbetas{\varphi}{X}\otimes(\rE^\varphi_X-\IE_X^\psi)\bigr)[\rdelta_YW] =0$ when $W$ is a monomial starting with $Y$, we get that \eqref{eq:rEphiX[XW]:rec} also holds for any $W\in \alg{M}$. Finally, we can combine the above equations so that, for any $W\in \alg{M}$ we conclude that
+  \begin{align*}
+    \rE^\varphi_X[W]
+    % &= \bubbetas{\varphi}{Y}(w)
+    % +   (\bubbetas{\varphi}{}\otimes\rE^\varphi_X)\rDelta[w] + \IE^\psi_X[w]
+    % - (\bbetas{\varphi}{X}\otimes \IE^\psi_X)(\rDelta_Y[w])
+    %	\\
+    %% &= \bubbetas{\varphi}{Y}(w)
+    % + (\bubbetas{\varphi}{Y}\otimes\rE^\varphi_X)\rDelta_X[w] 
+    % + (\bubbetas{\varphi}{X}\otimes \rE^\varphi_X) \rDelta_Y[w]
+    % + \IE^\psi_X[w] 
+    % - (\bbetas{\varphi}{X}\otimes \IE^\psi_X)\rDelta_Y[w]
+    % \\
+      &= \bubbetas{\varphi}{Y}(W)
+        +   (\bubbetas{\varphi}{Y}\otimes\rE^\varphi_X)[\rdelta_XW] 
+        +   
+        \bigl(
+        \bubbetas{\varphi}{X}\otimes(\rE^\varphi_X-\IE^\psi_X)
+        \bigr)[\rdelta_YW]
+        + \IE^\psi_X[W] 
+        - \epsilon_0\otimes \IE^\psi_X[\rdelta_YW]
+    \\
+      &= \bbetas{\varphi}{Y}(W)+   (\bubbetas{\varphi}{Y}\otimes\rE^\varphi_X)[\rdelta_XW] 
+        +   
+        \bigl(
+        \bubbetas{\varphi}{X}\otimes(\rE^\varphi_X-\IE^\psi_X)
+        \bigr)[\rdelta_YW]
+        + X\IE^\psi_X[L_XW].
+  \end{align*}
+\end{proof}
+
+The following result from \cite{LehnerSzpojankowski:2023:freeint1} explains how to compute the conditional expectation of the resolvent for free random variables $X$ and $Y$.
+
+\begin{proposition}
+  \label{prop:6.13}
+  Assume that the random variables $X$ and $Y$ are free in the
+  noncommutative probability  space 
+  $(\mathbb{C}\langle X,Y\rangle,\psi)$.
+  Then with the notations from Proposition~\ref{lem:SeveralEquations} the
+  conditional expectation of the resolvent
+  $\bPsi = (I - z(AX+BY))^{-1}$ 
+  is given by 
+  \begin{align}
+    \label{eq:EpsiX[Psi]=bbetapsi1}
+    \IE^\psi_X[\bPsi]
+    &= \bigl(
+      I-z\bbetas{\psi}{Y}(\bPsi)AX
+      \bigr)^{-1}
+      \bbetas{\psi}{Y}(\bPsi)
+    \\
+    \label{eq:EpsiX[Psi]=bbetapsi2}
+    &= \bbetas{\psi}{Y}(\bPsi)
+      \bigl(
+      I-zAX\bbetas{\psi}{Y}(\bPsi)
+      \bigr)^{-1}\\
+    &=(I-zAX-zBF_Y(z))^{-1}.
+      \label{eq:EpsiX[Psi]=(I-zAXpzBFY)}
+  \end{align}
+\end{proposition}
+
+\begin{proof}
+  Using \eqref{eq:condexprec}, we have
+  \begin{align*}
+    E_X^\psi[\bPsi] &= \beta_Y^{b,\psi}(\bPsi) + z(\beta_Y^{b,\psi}\otimes E_X^\psi)[\bPsi\odot AX\bPsi]
+    \\ &= \beta_Y^{b,\psi}(\bPsi)\bigl(I + zAXE_X^\psi[\bPsi]\bigr).
+  \end{align*}
+  Hence
+  \[
+    E_X^\psi[\bPsi] = \bigl(I- z \beta_Y^{b,\psi}(\bPsi)AX\bigr)^{-1}\beta_Y^{b,\psi}(\bPsi).
+  \]
+\end{proof}
+
+\begin{remark}
+  In the framework of the previous proposition, we have that the respective
+  \emph{subordination functions}   \cite{Biane98}   are given by
+  \begin{align*}
+    \omega_X(1/z) &= (z\bbetas{\psi}{Y}(\bPsi))^{-1},\\
+    \omega_Y(1/z) &= (z\bbetas{\psi}{X}(\bPsi))^{-1}.
+  \end{align*}
+\end{remark}
+
+The last theorem of this section generalizes Proposition~\ref{prop:6.13} to the c‑free setting, i.e., it shows how to compute the right quasi‑conditional expectation for c‑free elements $X$ and $Y$.
+
+\begin{theorem}
+  % \label{thm:cfreeConvolution}
+  Let $(\mathbb{C}\langle X,Y\rangle,\varphi,\psi)$ be a two-state
+  noncommutative probability space such that $X$ and $Y$ are $c$-free.  Assume
+  that the resolvent of a given polynomial $P \in \mathbb{C}\langle X,Y\rangle$
+  of degree $m$ has a linearization given by $\Psi=\Psi(z) = (1-z^mP)^{-1} = u^t\bPsi
+  v$, where $$\bPsi=\bPsi(z) = (I-z(AX+BY))^{-1},$$ with $A=A(z),B=B(z)\in
+  M_N(\mathbb{C}[z])$
+  and $u,v\in \mathbb{C}^N$.
+  Then
+  \begin{align}
+    \rE_X^\varphi[\bPsi]
+    &=
+      \bigl(
+      I-zAF_X^\varphi(z)-zBF_Y^\varphi(z)
+      \bigr)^{-1}
+      \bigl(
+      I  -
+      zAF_X^\varphi(z)-zBF_Y(z)
+      \bigr)
+      (I-zAX-zBF_Y(z))^{-1}.
+      \label{eq:AX+BY:rEphiX[Psi]=AFX} 
+  \end{align}
+\end{theorem}
+
+\begin{proof}
+  We start by proving an auxiliary formula:
+  \begin{align}
+    \rE_X^\varphi[\bPsi]
+    &=
+      \bbetas{\varphi}{Y}(\bPsi)
+      \bigl(
+      I - \bubbetas{\varphi}{X}(\bPsi)
+      \bubbetas{\varphi}{Y}(\bPsi)
+      \bigr)^{-1}
+      \bigl(
+      I
+      -
+      \bubbetas{\varphi}{X}(\bPsi)
+      \bubbetas{\psi}{Y}(\bPsi)
+      \bigr)
+      \bigl(
+      I-zAX\bbetas{\psi}{Y}(\bPsi)
+      \bigr)^{-1}.
+      \label{eq:AX+BY:rEphiX[Psi]=bbeta*res}
+  \end{align}
+  First it follows from 
+  \eqref{eq:DA-1}
+  that
+  $$
+  \rdelta_X\bPsi = z\bPsi A\odot X\bPsi,
+  \qquad
+  \rdelta_Y\bPsi = z\bPsi B\odot Y\bPsi.
+  $$
+  Secondly we apply  $\rE^\varphi_X$ to the resolvent identity
+  \eqref{eq:resolventIdentity} and obtain
+  \begin{equation}
+    \label{eq:AX+BY:resid}
+    \rE^\varphi_X[\bPsi] = I + zA\rE^\varphi_X[X\bPsi] + zB\rE^\varphi_X[Y\bPsi]
+    .
+  \end{equation}
+  Next we apply the recursions from Theorem~\ref{thm:rEphi:recurrence} to each
+  term of    \eqref{eq:AX+BY:resid}.
+  More precisely, the recurrence  in Equation \eqref{eq:rEphiX[W]:LX} yields
+  \begin{equation}
+    \label{eq:AX+BY:rEphiX[Psi]:rec}
+    \rE^\varphi_X[\bPsi] = \bbetas{\varphi}{Y}(\bPsi)
+    + z  \bubbetas{\varphi}{Y}(\bPsi)A\rE^\varphi_X[X\bPsi]
+    + z \bubbetas{\varphi}{X}(\bPsi)B
+    \bigl(
+    \rE^\varphi_X[Y\bPsi] - E^\psi_X[Y\bPsi]
+    \bigr) + zAX E^\psi_X[\bPsi]
+  \end{equation}
+  Now apply recurrence \eqref{eq:rEphiX[YW]:rec} to obtain
+  \begin{align*}
+    \rE^\varphi_X[Y\bPsi]
+    &= \bbetas{\varphi}{Y}(Y\bPsi)
+      + z\bbetas{\varphi}{Y}(Y\bPsi)A  \rE^\varphi_X[X\bPsi]\\
+    &= \bbetas{\varphi}{Y}(Y\bPsi)
+      \bigl(
+      I + zA\rE^\varphi_X[X\bPsi]
+      \bigr)\\
+    &= \bbetas{\varphi}{Y}(Y\bPsi)
+      \bigl(
+      \rE^\varphi_X[\bPsi] - zB\rE^\varphi_X[Y\bPsi]
+      \bigr),
+  \end{align*}
+  where we have used \eqref{eq:AX+BY:resid} in the last equality. Thus, it follows that
+  \begin{equation*}
+    \bigl(I+z\bbetas{\varphi}{Y}(Y\bPsi)B\bigr)  \rE^\varphi_X[Y\bPsi] = \bbetas{\varphi}{Y}(Y\bPsi)    \rE^\varphi_X[\bPsi]
+  \end{equation*}
+  and therefore
+  \begin{equation}
+    \label{eq:AX+BY:rEphiX[YPsi]}
+    \rE^\varphi_X[Y\bPsi] =  
+    \bigl(
+    I+z\bbetas{\varphi}{Y}(Y\bPsi)B
+    \bigr)^{-1}
+    \bbetas{\varphi}{Y}(Y\bPsi)    \rE^\varphi_X[\bPsi].
+  \end{equation}
+  Furthermore, the previous equation implies that
+  \begin{align*}
+    zB  \rE^\varphi_X[Y\bPsi]
+    &=    \bigl(
+      I+zB\bbetas{\varphi}{Y}(Y\bPsi)
+      \bigr)^{-1}
+      zB\bbetas{\varphi}{Y}(Y\bPsi)    \rE^\varphi_X[\bPsi]
+    \\
+    &=    \bigl(
+      I-(I+zB\bbetas{\varphi}{Y}(Y\bPsi))^{-1}
+      \bigr)
+      \rE^\varphi_X[\bPsi]
+    \\
+    &= \bigl(I-\bbetas{\varphi}{Y}(\bPsi)^{-1} \bigr)
+      \rE^\varphi_X[\bPsi]
+  \end{align*}
+  where the last equality follows by applying $\bbetas{\varphi}{Y}$ to the
+  resolvent identity \eqref{eq:resolventIdentity}. In particular, we get
+  \[
+    \rE_{X}^{\varphi}[\bPsi] - zB\rE_X^\varphi[Y\bPsi] = \beta_Y^{b,\varphi}(\bPsi)^{-1}\rE_X^{\varphi}[\bPsi].
+  \]
+  On the other hand, from the above equation and \eqref{eq:AX+BY:resid} we obtain
+  \begin{align*}
+    zA\rE^\varphi_X[X\bPsi]
+    &= \rE^\varphi_X[\bPsi] - zB\rE^\varphi_X[Y\bPsi]  - I \\
+    &=    \bbetas{\varphi}{Y}(\bPsi)^{-1}    \rE^\varphi_X[\bPsi] - I
+      .
+  \end{align*}
+  Plugging everything into
+  \eqref{eq:AX+BY:rEphiX[Psi]:rec}
+  we obtain
+  \begin{multline}
+    \label{eq:rEvarphi_XPlugging}
+    \rE^\varphi_X[\bPsi]
+    = \bbetas{\varphi}{Y}(\bPsi)
+    +   \bubbetas{\varphi}{Y}(\bPsi)
+    \bigl(
+    \bbetas{\varphi}{Y}(\bPsi)^{-1}    \rE^\varphi_X[\bPsi] - I
+    \bigr)
+    \\
+    +  \bubbetas{\varphi}{X}(\bPsi)
+    \bigl(
+    \bigl(
+    I-\bbetas{\varphi}{Y}(\bPsi)^{-1} 
+    \bigr)
+    \rE^\varphi_X[\bPsi]   
+    -
+    zBE^\psi_X[Y\bPsi]
+    \bigr)
+    + zAX E^\psi_X[\bPsi]    
+  \end{multline}
+  Now we focus on $zBE_X^\psi[Y\bPsi]$.  Applying $\E_X^\psi$ to the resolvent identity~\eqref{eq:resolventIdentity}, we obtain
+  $$
+  zBE^\psi_X[Y\bPsi] = E^\psi_X[\bPsi] - zAXE^\psi_X[\bPsi] - I,
+  $$
+  so that we can substitute it into \eqref{eq:rEvarphi_XPlugging} as
+  \begin{multline*}
+    \rE^\varphi_X[\bPsi]
+    = \bbetas{\varphi}{Y}(\bPsi)
+    +   \bubbetas{\varphi}{Y}(\bPsi)
+    \bigl(
+    \bbetas{\varphi}{Y}(\bPsi)^{-1}    \rE^\varphi_X[\bPsi] - I
+    \bigr)
+    +  \bubbetas{\varphi}{X}(\bPsi)
+    \bigl(
+    I-\bbetas{\varphi}{Y}(\bPsi)^{-1} 
+    \bigr)
+    \rE^\varphi_X[\bPsi]
+    \\
+    -
+    \bubbetas{\varphi}{X}(\bPsi)
+    \bigl(
+    (I-zAX)E^\psi_X[\bPsi]-I
+    \bigr)
+    + zAX E^\psi_X[\bPsi] .
+  \end{multline*}
+  Next, we can rearrange the previous equation as follows:
+  \begin{multline}
+    \label{eq:rEphiX[Psi]:equation}
+    \bigl(
+    I-
+    \bubbetas{\varphi}{Y}(\bPsi)
+    \bbetas{\varphi}{Y}(\bPsi)^{-1}
+    -
+    \bubbetas{\varphi}{X}(\bPsi)
+    \bigl(
+    I-\bbetas{\varphi}{Y}(\bPsi)^{-1} 
+    \bigr)
+    \bigr)
+    \rE^\varphi_X[\bPsi]
+    \\
+    \begin{aligned}
+      % &= \bbetas{\varphi}{Y}(\bPsi)
+      % -   \bubbetas{\varphi}{Y}(\bPsi)
+      % -
+      % \bubbetas{\varphi}{X}(\bPsi)
+      % \bigl(
+      % (I-zAX)E^\psi_X[\bPsi]-I
+      % \bigr)
+      % + zAX E^\psi_X[\bPsi]
+      % \\
+      &= \bbetas{\varphi}{Y}(\bPsi)
+      -   \bubbetas{\varphi}{Y}(\bPsi)
+      -
+      \bubbetas{\varphi}{X}(\bPsi)
+      \bigl(
+      (I-zAX)E^\psi_X[\bPsi]
+      \bigr)
+      + \bubbetas{\varphi}{X}(\bPsi)
+      + zAX E^\psi_X[\bPsi]    
+      \\
+      %% 
+      % &= I
+      % + \bubbetas{\varphi}{X}(\bPsi)
+      % +
+      % \bigl(
+      % zAX -
+      % \bubbetas{\varphi}{X}(\bPsi)
+      % +
+      % \bubbetas{\varphi}{X}(\bPsi)zAX
+      % \bigr)
+      % E^\psi_X[\bPsi]
+      % \\
+      % &= \bbetas{\varphi}{X}(\bPsi)
+      % +
+      % \bigl(
+      % \bbetas{\varphi}{X}(\bPsi)zAX
+      % -
+      % \bubbetas{\varphi}{X}(\bPsi)
+      % \bigr)
+      % E^\psi_X[\bPsi]
+      % \\
+      %% 
+      &= I 
+      + \bubbetas{\varphi}{X}(\bPsi)
+      +
+      \bigl(
+      \bbetas{\varphi}{X}(\bPsi)zAX
+      -
+      \bubbetas{\varphi}{X}(\bPsi)
+      \bigr)
+      E^\psi_X[\bPsi] 
+      \\
+      % 
+      &= \bbetas{\varphi}{X}(\bPsi)
+      +
+      \bigl(
+      \bbetas{\varphi}{X}(\bPsi)zAX
+      -
+      \bubbetas{\varphi}{X}(\bPsi)
+      \bigr)
+      \bbetas{\psi}{Y}(\bPsi)
+      \bigl(
+      I-zAX\bbetas{\psi}{Y}(\bPsi)
+      \bigr)^{-1} %\quad\text{by \eqref{eq:EpsiX[Psi]=bbetapsi2}}
+      \\
+      &=
+      \begin{multlined}[t]
+        \bbetas{\varphi}{X}(\bPsi)
+        +
+        \bbetas{\varphi}{X}(\bPsi)
+        \bigl(
+        \bigl(
+        I-zAX\bbetas{\psi}{Y}(\bPsi)
+        \bigr)^{-1}
+        -I
+        \bigr)\\
+        -
+        \bubbetas{\varphi}{X}(\bPsi)
+        \bbetas{\psi}{Y}(\bPsi)
+        \bigl(
+        I-zAX\bbetas{\psi}{Y}(\bPsi)
+        \bigr)^{-1}
+      \end{multlined}
+      \\
+      &=
+      \bigl(
+      \bbetas{\varphi}{X}(\bPsi)
+      -
+      \bubbetas{\varphi}{X}(\bPsi)
+      \bbetas{\psi}{Y}(\bPsi)
+      \bigr)
+      \bigl(
+      I-zAX\bbetas{\psi}{Y}(\bPsi)
+      \bigr)^{-1}
+      \\
+      &=
+      \bigl(
+      I
+      -
+      \bubbetas{\varphi}{X}(\bPsi)
+      \bubbetas{\psi}{Y}(\bPsi)
+      \bigr)
+      \bigl(
+      I-zAX\bbetas{\psi}{Y}(\bPsi)
+      \bigr)^{-1}
+    \end{aligned}
+  \end{multline}
+  where in the third equality, we used the expression   \eqref{eq:EpsiX[Psi]=bbetapsi2} for $E^\psi_X[\bPsi]$.
+  Finally, the prefactor on the left-hand side of \eqref{eq:rEphiX[Psi]:equation} can be written as
+  \begin{multline*}
+    I-
+    \bubbetas{\varphi}{Y}(\bPsi)
+    \bbetas{\varphi}{Y}(\bPsi)^{-1}
+    -
+    \bubbetas{\varphi}{X}(\bPsi)
+    \bigl(
+    I-\bbetas{\varphi}{Y}(\bPsi)^{-1} 
+    \bigr)
+    \\
+    \begin{aligned}
+      &=
+      \bigl(
+      \bbetas{\varphi}{Y}(\bPsi)
+      - \bubbetas{\varphi}{Y}(\bPsi)
+      - \bubbetas{\varphi}{X}(\bPsi)
+      \bbetas{\varphi}{Y}(\bPsi)
+      + \bubbetas{\varphi}{X}(\bPsi)
+      \bigr)
+      \bbetas{\varphi}{Y}(\bPsi)^{-1}
+      \\
+      &=
+      \bigl(
+      I - \bubbetas{\varphi}{X}(\bPsi)
+      \bubbetas{\varphi}{Y}(\bPsi)
+      \bigr)
+      \bbetas{\varphi}{Y}(\bPsi)^{-1}
+    \end{aligned}
+  \end{multline*}
+  and we conclude 
+  \eqref{eq:AX+BY:rEphiX[Psi]=bbeta*res}.
+  
+  Now we proceed with the proof of 	\eqref{eq:AX+BY:rEphiX[Psi]=AFX}.
+  First, observe that 
+  \begin{align*}
+    \bubbetas{\varphi}{X}(\bPsi)
+    &= \bbetas{\varphi}{X}(\bPsi) - I\\
+    &= (I-zAF_X^\varphi(z))^{-1} - I\\
+    &= (I-zAF_X^\varphi(z))^{-1}zAF_X^\varphi(z)\\
+    &= \bbetas{\varphi}{X}(\bPsi)zAF_X^\varphi(z).
+  \end{align*}
+On the other hand, using that $$\beta_Y^{b,\varphi}(\bPsi)^{-1} = I - zBF_Y^\varphi(z),$$the coefficient of $\rE_X^\varphi[\bPsi]$ in \eqref{eq:rEphiX[Psi]:equation}  can be written as
+  \begin{align*}
+    \MoveEqLeft[4] I - \bubbetas{\varphi}{Y}(\bPsi) \bbetas{\varphi}{Y}(\bPsi)^{-1}
+    - \bubbetas{\varphi}{X}(\bPsi) \bigl( I - \bbetas{\varphi}{Y}(\bPsi)^{-1} \bigr) \\
+    &= I - zBF_Y^\varphi(z) - zAF_X^\varphi(z)(I-zAF_X^\varphi(z))^{-1}zBF_Y^\varphi(z) \\
+    &= I - (I-zAF_X^\varphi(z))^{-1}zBF_Y^\varphi(z) \\
+    &= (I-zAF_X^\varphi(z))^{-1} \bigl( I - zAF_X^\varphi(z) - zBF_Y^\varphi(z) \bigr) \\
+    &= \bbetas{\varphi}{X}(\bPsi) M^\varphi_{AX+BY}(z)^{-1},
+  \end{align*}
+  where we have applied Equations \eqref{eq:HXphi=1-zBFXphi} and \eqref{eq:AX+BY:phi(Psi)} in the last step. Finally, the right-hand side in the third equality in \eqref{eq:rEphiX[Psi]:equation} is
+  \begin{multline*}
+    \bbetas{\varphi}{X}(\bPsi)
+    +
+    \bigl(
+    \bbetas{\varphi}{X}(\bPsi)zAX
+    -
+    \bubbetas{\varphi}{X}(\bPsi)
+    \bigr)
+    \bbetas{\psi}{Y}(\bPsi)
+    \bigl(
+    I-zAX\bbetas{\psi}{Y}(\bPsi)
+    \bigr)^{-1}
+    \\
+    \begin{aligned}[t]
+      &=   \bbetas{\varphi}{X}(\bPsi)
+      +
+      \bigl(
+      \bbetas{\varphi}{X}(\bPsi)zAX
+      -
+      \bbetas{\varphi}{X}(\bPsi)zAF_X^\varphi(z)
+      \bigr)
+      \bbetas{\psi}{Y}(\bPsi)
+      \bigl(
+      I-zAX\bbetas{\psi}{Y}(\bPsi)
+      \bigr)^{-1}
+      \\
+      &=   \bbetas{\varphi}{X}(\bPsi)
+      \bigl(
+      I-zAX\bbetas{\psi}{Y}(\bPsi)
+      + zAX  \bbetas{\psi}{Y}(\bPsi)
+      -
+      zAF_X^\varphi(z)  \bbetas{\psi}{Y}(\bPsi)
+      \bigr)
+      \bigl(
+      I-zAX\bbetas{\psi}{Y}(\bPsi)
+      \bigr)^{-1}
+      \\
+      &=   \bbetas{\varphi}{X}(\bPsi)
+      \bigl(
+      I  -
+      zAF_X^\varphi(z)(I-zBF_Y(z))^{-1}
+      \bigr)
+      \bigl(
+      I-zAX(I-zBF_Y(z))^{-1}
+      \bigr)^{-1}
+      \\
+      &=
+      (I-zAF_X^\varphi(z))^{-1}
+      \bigl(
+      I  -
+      zAF_X^\varphi(z)-zBF_Y(z)
+      \bigr)
+      \bigl(
+      I-zAX-zBF_Y(z)
+      \bigr)^{-1}.
+      \\
+    \end{aligned}
+  \end{multline*}
+  We conclude by using \eqref{eq:HXphi=1-zBFXphi}, \eqref{eq:AX+BY:phi(rEphiX[Psi])=MAFX} and \eqref{eq:EpsiX[Psi]=(I-zAXpzBFY)}.
+  % \eqref{eq:AX+BY:rEphiX[Psi]=AFX} and \eqref{eq:AX+BY:rEphiX[Psi]=MAX+BY}. 
+\end{proof}
+					
+					
+					
+\begin{remark}
+  By using \eqref{eq:EpsiX[Psi]=bbetapsi2}, we can write \eqref{eq:AX+BY:rEphiX[Psi]=bbeta*res}
+  as
+  \begin{align}
+    \rE_X^\varphi[\bPsi]
+    &= \bbetas{\varphi}{Y}(\bPsi)
+      \bigl(
+      I - \bubbetas{\varphi}{X}(\bPsi)
+      \bubbetas{\varphi}{Y}(\bPsi)
+      \bigr)^{-1}
+      \bigl(
+      I
+      -
+      \bubbetas{\varphi}{X}(\bPsi)
+      \bubbetas{\psi}{Y}(\bPsi)
+      \bigr)
+      \bbetas{\psi}{Y}(\bPsi)^{-1}
+      E^\psi_X[\bPsi]
+      \label{eq:AX+BY:rEphX[Psi]=prefactorEpsiX[Psi]}.    
+  \end{align}
+\end{remark}
+
+\begin{comment}
+  \marginpar{notes p.761}
+  Consider now the first two factors of
+  \eqref{eq:AX+BY:rEphX[Psi]=prefactorEpsiX[Psi]}:
+  \begin{align*}
+    \bbetas{\varphi}{Y}(\bPsi)
+    \bigl(
+    I - \bubbetas{\varphi}{X}(\bPsi)
+    \bubbetas{\varphi}{Y}(\bPsi)
+    \bigr)^{-1}
+    &= \Bigl(       \bigl(
+      I - \bubbetas{\varphi}{X}(\bPsi)
+      \bubbetas{\varphi}{Y}(\bPsi)
+      \bigr)
+      \bbetas{\varphi}{Y}(\bPsi)^{-1}
+      \Bigr)^{-1}
+    \\
+    &= \bigl(
+      \bbetas{\varphi}{Y}(\bPsi)^{-1}
+      - \bubbetas{\varphi}{X}(\bPsi)
+      (\bbetas{\varphi}{Y}(\bPsi)-I)
+      \bbetas{\varphi}{Y}(\bPsi)^{-1}
+      \bigr)^{-1}
+    \\
+    &= \bigl(
+      \bbetas{\varphi}{Y}(\bPsi)^{-1}
+      - \bubbetas{\varphi}{X}(\bPsi)
+      +\bubbetas{\varphi}{X}(\bPsi)
+      \bbetas{\varphi}{Y}(\bPsi)^{-1}
+      \bigr)^{-1}
+    \\
+    &= \bigl(
+      \bbetas{\varphi}{X}(\bPsi)
+      \bbetas{\varphi}{Y}(\bPsi)^{-1}
+      - \bubbetas{\varphi}{X}(\bPsi)
+      \bigr)^{-1}
+    \\
+    &= \bigl(
+      \bbetas{\varphi}{X}(\bPsi)
+      (I - zF_X^\varphi(z) A - zF_Y^\varphi(z) B)
+      \bigr)^{-1}\\
+    &= M^\varphi_{AX+BY}(z) \bbetas{\varphi}{X}(\bPsi)^{-1}
+  \end{align*}
+  \adrian{why $F_Y(z)B$ instead of $BF_Y(z)$?}because by   \eqref{eq:HYphi=I-zAFXphi}
+  we have
+  \begin{equation*}
+    \bbetas{\varphi}{Y}(\bPsi)^{-1}
+    = I - zAF_X^\varphi(z) 
+  \end{equation*}
+  and
+  \begin{align*}
+    \bubbetas{\varphi}{X}(\bPsi)
+    &= \bbetas{\varphi}{X}(\bPsi) - I\\
+    &= (I-zBF_Y^\varphi(z))^{-1} - I\\
+    &= (I-zBF_Y^\varphi(z))^{-1}zBF_Y^\varphi(z)\\
+    &= \bbetas{\varphi}{X}(\bPsi)zBF_Y^\varphi(z)
+      .
+  \end{align*}
+\end{comment}
+
+\begin{proposition}
+  With the notation and hypotheses of Theorem~\ref{thm:cfreeConvolution}, we have
+  \begin{equation}
+    \varphi(E^\psi_X[\bPsi])
+    = (I-zAF^\varphi_X(z)-zBF_Y(z))^{-1}
+    \label{eq:AX+BY:phi(rEphiX[Psi])=MAFX}.
+  \end{equation}
+  As a consequence we obtain
+  \begin{align}
+    \rE_X^\varphi[\bPsi]
+    &= M^\varphi_{AX+BY}(z)\varphi(E^\psi_X[\bPsi])^{-1}E^\psi_X[\bPsi].
+      \label{eq:AX+BY:rEphiX[Psi]=MAX+BY}       
+  \end{align}
+  
+\end{proposition}
+
+\begin{comment}
+  \subsection{Alternative calculation}
+  \subsubsection{Equations}
+  \begin{align}
+    F_X & =\fbetas{\psi}{X}(X\bPsi) &
+                                      F_Y(z) & =\fbetas{\psi}{Y}(X\bPsi) \\
+    F_X^\varphi(z) & =\fbetas{\varphi}{X}(X\bPsi) &
+                                                 F_Y^\varphi(z) & =\fbetas{\varphi}{Y}(Y\bPsi) \\
+    \bbetas{\psi}{X}(\bPsi) &= (I-zAF_X)^{-1} &
+                                                \bbetas{\psi}{Y}(\bPsi) &= (I-zBF_Y(z))^{-1} \\
+    \bubbetas{\psi}{X}(\bPsi) &= (I-zAF_X)^{-1}zAF_X &
+                                                       \bubbetas{\psi}{Y}(\bPsi) &= (I-zBF_Y(z))^{-1}zBF_Y(z) \\
+    \bbetas{\varphi}{X}(\bPsi) &= (I-zAF_X^\varphi(z))^{-1} &
+                                                           \bbetas{\varphi}{Y}(\bPsi) &= (I-zBF_Y^\varphi(z))^{-1} \\
+    \bubbetas{\varphi}{X}(\bPsi) &= (I-zAF_X^\varphi(z))^{-1}zAF_X^\varphi(z) &
+                                                                          \bubbetas{\varphi}{Y}(\bPsi) &= (I-zBF_Y^\varphi(z))^{-1}zBF_Y^\varphi(z) \\
+    E^\psi_X[\bPsi]
+        &= \bbetas{\psi}{Y}(\bPsi)(I-zAX\bbetas{\psi}{Y}(\bPsi))^{-1}\\
+        &= (I-zAX-zBF_Y(z))^{-1}
+  \end{align}
+\end{comment}
+
+
+%\franz{notes p.762}
+\begin{proof}
+  We use the identities in Proposition~\ref{lem:SeveralEquations} and Proposition~\ref{prop:6.13}. In particular, using \eqref{eq:EpsiX[Psi]=(I-zAXpzBFY)} and \eqref{eq:HYAdditive}, we have
+  \begin{align*}
+    \varphi(E^\psi_X[\bPsi])
+    &= \varphi\bigl((I-zAX-zBF_Y(z))^{-1}\bigr)\\
+    &= (I-zBF_Y(z))^{-1}\varphi\bigl((I-zAX(I-zBF_Y(z))^{-1})^{-1}\bigr)   \\
+    &= H_Y(z)\varphi((I-zAXH_Y(z))^{-1})   \\
+    &= H_Y(z) M^\varphi_X(zAH_Y(z)).
+  \end{align*}
+  Now, using that $M_X^\varphi(zAH_Y(z)) = (I-\eta_X^\varphi(zAH_Y(z)))^{-1}$ and that 
+  \[
+    \eta^\varphi_X(zAH_Y(z))=zA\tilde{\eta}^\varphi_X(zH_Y(z)A)H_Y(z)=zAF^\varphi_X(z)H_Y(z),
+  \]we obtain
+  \begin{align*}
+    \varphi(E^\psi_X[\bPsi])
+    &=H_Y(z)
+      \bigl(
+      I-\eta^\varphi_X(zAH_Y(z))
+      \bigr)^{-1}   \\
+    &= H_Y(z)(I-zAF^\varphi_X(z)H_Y(z))^{-1}
+    \\ &= \bigl((I-zAF^\varphi_X(z)H_Y(z))H_Y(z)^{-1}\bigr)^{-1}
+    \\ &= \bigl( H_Y(z)^{-1} - zAF^\varphi_X(z)\bigr)^{-1}
+    \\&= 
+    \bigl(    I-zAF^\varphi_X(z)-zBF_Y(z)    \bigr)^{-1},
+  \end{align*}
+  where we used \eqref{eq:HYAdditive} in the last equality.
+\end{proof}
+
+
+\section{$c$-free multiplicative convolution}
+\label{sec:sigmatransform}
+
+Our goal in this section is to show, as an application of the developments presented in this paper, how to compute the distribution of the product of two $c$-free random variables. Moreover, we also reproduce the multiplicativity of the \emph{Popa-Wang $\Sigma$-transform} from \cite{PopaWang:2011:multiplicative}.
+
+%\franz{notes p.707 \& 787}
+\begin{proposition}
+  Let $(\mathbb{C}\langle X,Y\rangle,\varphi,\psi)$ be a two-state
+  noncommutative probability space such that $X$ and $Y$ are $c$-free with $\psi(X),\psi(Y)\ne0$. Then the moment generating function of $XY$ with respect to $\varphi$ is given by
+  \begin{equation}
+    M_{XY}^\varphi(z) = \frac{1}{
+      1- z\tilde{\eta}^\varphi_X(\omega_X(z))\tilde{\eta}^\varphi_Y(\omega_Y(z))
+    },
+    \label{eq:XY:MphiXY}
+  \end{equation}
+  where $\omega_X(z)$ and $\omega_Y(z)$ are the subordination functions for the free multiplicative convolution of $X$ and $Y$ with respect to $\psi$. Furthermore, if we set $\Sigma^\varphi = \tilde\eta^\varphi\circ(\eta^\psi)^{-1}$, then
+  \begin{equation}
+    \label{eq:PopaWang}
+    \Sigma^\varphi_{XY} = \Sigma^\varphi_X\cdot \Sigma^\varphi_Y.
+  \end{equation}
+\end{proposition}
+\begin{proof}
+  In order to compute the moment generating function $M_{XY}^\varphi(z)$, we consider 
+  \begin{equation}
+    \label{eq:ResolventMult}
+    \bPsi := (1-zXY)^{-1}
+    = 1+zXY\bPsi
+  \end{equation}
+  so that $M_{XY}^\varphi(z) =\varphi(\rE_X^\varphi[\bPsi])$. It is easy to compute the following block derivations:
+  \begin{align*}
+    \rdelta_X\bPsi &= z\bPsi\otimes XY\bPsi &    \rdelta_Y\bPsi &= z\bPsi X\otimes Y\bPsi \\
+                   &= \bPsi\otimes(\bPsi-1)
+  \end{align*}
+  % \subsubsection{$\rE^\varphi_X[\bPsi]$}
+  Using resolvent identity in \eqref{eq:ResolventMult}, we can resort to the simpler recurrence
+  \eqref{eq:rEphiX[XW]:rec} in Theorem~\ref{thm:rEphi:recurrence} and obtain
+  \begin{align*}
+    \rE^\varphi_X[\bPsi]
+    &= 1 +   z \rE^\varphi_X[XY\bPsi]\\
+    &= 1+zXE^\psi_X[Y\bPsi] +
+      z\bbetas{\varphi}{X}\otimes(\rE^\varphi_X-E^\psi_X)\rdelta_Y[XY\bPsi].
+  \end{align*}
+  A short calculation reveals 
+  \[
+    \rdelta_Y [XY\bPsi] = \bPsi
+    X\otimes Y\bPsi
+  \] 
+  and thus
+  \begin{equation}
+    \label{eq:rEMult}
+    \rE^\varphi_X[\bPsi]  = E^\psi_X[\bPsi]
+    +
+    z\bbetas{\varphi}{X}(\bPsi X)
+    \bigl(
+    \rE^\varphi_X[Y\bPsi] - E^\psi_X[Y\bPsi]
+    \bigr)
+  \end{equation}
+  % \subsubsection{$\rE^\varphi_X[Y\bPsi]$}
+  The recurrence
+  \eqref{eq:rEphiX[YW]:rec}
+  for $\rE^\varphi_X[Y\bPsi]$ in Theorem~\ref{thm:rEphi:recurrence} is identical to the one \eqref{eq:condexprec}  for  $E^\psi_X[Y\bPsi]$. This means:
+  \begin{align}
+    \rE^\varphi_X[Y\bPsi]\nonumber
+    &= \bbetas{\varphi}{Y}(Y\bPsi) + z\bbetas{\varphi}{Y}(Y\bPsi)\rE^\varphi_X[XY\bPsi]\\
+    &= \bbetas{\varphi}{Y}(Y\bPsi)\rE^\varphi_X[\bPsi]
+      \label{eq:XY:EvarphiX[YPsi]}
+  \end{align}
+  % \subsubsection{$\rE^\psi_X[Y\bPsi]$}
+  and
+  \begin{equation}
+    \label{eq:XY:EpsiX[YPsi]}
+    E^\psi_X[Y\bPsi] = \bbetas{\psi}{Y}(Y\bPsi)E^\psi_X[\bPsi]
+    .
+  \end{equation}
+  Therefore, substituting \eqref{eq:XY:EvarphiX[YPsi]} and \eqref{eq:XY:EpsiX[YPsi]} in \eqref{eq:rEMult}, we obtain
+  \begin{equation*}
+    \rE^\varphi_X[\bPsi]
+    = E^\psi_X[\bPsi]
+    +
+    z\bbetas{\varphi}{X}(\bPsi X)
+    \bigl(
+    \bbetas{\varphi}{Y}(Y\bPsi)\rE^\varphi_X[\bPsi]
+    -
+    \bbetas{\psi}{Y}(Y\bPsi)E^\psi_X[\bPsi]
+    \bigr),
+  \end{equation*}
+  which implies
+  \begin{equation}
+    \label{eq:XY:rEphiX[Psi]}
+    \rE^\varphi_X[\bPsi]
+    =
+    \frac{
+      1-z\bbetas{\varphi}{X}(\bPsi X)     \bbetas{\psi}{Y}(Y\bPsi)
+    }{
+      1-z\bbetas{\varphi}{X}(\bPsi X)     \bbetas{\varphi}{Y}(Y\bPsi)
+    }
+    E^\psi_X[\bPsi]
+  \end{equation}
+  % subsubsection{$\rE^\psi_X[\bPsi]$}
+  Now, we look at the factor $\E_X^\psi[\bPsi]$ in the right-hand side of the above equation. The free recurrence \eqref{eq:condexprec} together
+  with   \eqref{eq:XY:EpsiX[YPsi]} yields
+  \begin{align}
+    E^\psi_X[\bPsi]
+    &= 1 + zXE^\psi_X[Y\bPsi]\nonumber\\
+    &= 1 + zX\bbetas{\psi}{Y}(Y\bPsi)E^\psi_X[\bPsi]\nonumber
+      \intertext{and solving}
+      E^\psi_X[\bPsi]    
+    &=
+      \bigl(
+      1 - z\bbetas{\psi}{Y}(Y\bPsi)X
+      \bigr)^{-1}.\label{eq:EXpsiPsiMult}
+  \end{align}
+  % \subsubsection{The subordination function $\omega_X(z)$}
+  It follows that
+  \begin{equation}
+    \label{eq:XY:omegaX}
+    \omega_X(z) = z\bbetas{\psi}{Y}(Y\bPsi)
+  \end{equation}
+  is the \emph{subordination function}, i.e.,~$\omega_X(z)$ satisfies
+  \[
+    M_{XY}^\psi(z) = M_X^\psi(\omega_X(z)).
+  \]
+  Analogously, we have that
+  \begin{equation}
+    E^\psi_Y[\bPsi] =
+    \bigl(
+    1-z\bbetas{\psi}{X}(\bPsi X)Y
+    \bigr)^{-1}
+  \end{equation}
+  and
+  \begin{equation}
+    \label{eq:XY:omegaY}
+    \omega_Y(z) = z\bbetas{\psi}{X}(\bPsi X).
+  \end{equation}
+  
+  % \subsubsection{Equations for $\omega_X(z)$ and $\omega_Y(z)$}
+  Our next step is to deduce a system of equations for the subordination functions $\omega_X(z)$ and $\omega_Y(z)$. First, observe that all terms in the expansion $\bPsi(z) = \sum_{n=0}^{\infty} (XY)^n z^n$ are alternating words, with each block of letters in the alternation having length one. In particular, this implies that $\beta_Y^{b,\psi}(Y\bPsi)=\beta_Y^{\delta,\psi}(Y\bPsi)$. Hence
+  \[
+    \omega_X(z) = z\beta_Y^{b,\psi}(Y\bPsi)= z\beta_Y^{\delta,\psi}(Y\bPsi).
+  \]
+  Now, since $\partial_Y(\bPsi) =z\bPsi X\otimes \bPsi$ and, we can show by induction that
+  \[
+    \partial_Y^n(Y\bPsi) = z^{n-1}1\otimes (\bPsi  X)^{\otimes (n-1)}\otimes \bPsi + z^nY\bPsi X \otimes (\bPsi X)^{\otimes (n-1)}\otimes \bPsi.
+  \]
+  Then, by \eqref{eq:IntroVNRP_for_betas:uni} we obtain
+  \begin{align*}
+    \omega_X(z)
+    &= z\fbetas{\psi}{Y}(Y\bPsi)\\
+    &= z\tilde{\eta}^\psi_Y(z\bbetas{\psi}{X}(\bPsi X))\\
+    &= z\tilde{\eta}^\psi_Y(\omega_Y(z)).
+      \intertext{Analogoulsy, we have}
+      \omega_Y(z)
+    &= z\tilde{\eta}^\psi_X(\omega_X(z)).
+  \end{align*}
+  A similar argument for $\bbetas{\varphi}{X}(\bPsi X)$ and $\bbetas{\varphi}{Y}(Y\bPsi)$ but now using \eqref{eq:ProductsasEntriesCFree} yields 
+  \begin{align*}
+    \bbetas{\varphi}{X}(\bPsi X)
+    &=   \fbetas{\varphi}{X}(\bPsi X)\\
+    &= \tilde{\eta}^\varphi_X(z\beta^ {b,\psi}_{Y}(Y\bPsi))\\
+    &= \tilde{\eta}^\varphi_X(\omega_X(z)),
+      \intertext{and}
+      \bbetas{\varphi}{Y}(Y\bPsi)
+    &=   \fbetas{\varphi}{Y}(Y\bPsi)\\
+    &= \tilde{\eta}^\varphi_Y(z\beta^{b,\psi}_{X}(\bPsi X))\\
+    &= \tilde{\eta}^\varphi_Y(\omega_Y(z)).
+  \end{align*}
+  % \subsubsection{Equation for $M_{XY}^\varphi(z)$}
+  Finally, we can plug the above identities into   \eqref{eq:XY:rEphiX[Psi]} in order to obtain
+  \begin{align*}
+    M_{XY}^\varphi(z)
+    &= \varphi(\rE^\varphi_X[\bPsi])\\
+    &=   \frac{
+      1-z\bbetas{\varphi}{X}(\bPsi X)     \bbetas{\psi}{Y}(Y\bPsi)
+      }{
+      1-z\bbetas{\varphi}{X}(\bPsi X)     \bbetas{\varphi}{Y}(Y\bPsi)
+      }
+      \varphi(E_X^\psi[\bPsi])\\
+    &=   \frac{
+      1-z\bbetas{\varphi}{X}(\bPsi X)     \bbetas{\psi}{Y}(Y\bPsi)
+      }{
+      1-z\bbetas{\varphi}{X}(\bPsi X)     \bbetas{\varphi}{Y}(Y\bPsi)
+      }
+      M_X^\varphi(z\bbetas{\psi}{Y}(Y\bPsi))\\
+    &= \frac{1-z\tilde{\eta}^\varphi_X(\omega_X(z))\frac{\omega_X(z)}{z}
+      }{
+      1- z\tilde{\eta}^\varphi_X(\omega_X(z))\tilde{\eta}^\varphi_Y(\omega_Y(z))
+      }
+      M^\varphi_X(\omega_X(z)).
+  \end{align*}
+  Recalling that $M_X^\varphi(s) = (1 - \eta^\varphi_X(s))^{-1}$ and $\eta_X^\varphi(s) = s\tilde\eta_X^\varphi(s)$. By taking $s=\omega_X(z)$, we conclude \eqref{eq:XY:MphiXY}:
+  \begin{equation*}
+    M_{XY}^\varphi(z) = \frac{1}{
+      1- z\tilde{\eta}^\varphi_X(\omega_X(z))\tilde{\eta}^\varphi_Y(\omega_Y(z))
+    }.
+  \end{equation*}
+  % \subsubsection{free $\Sigma$-transform}
+  Now we prove \eqref{eq:PopaWang}. According to \cite[Theorem 3.2]{BelBerNewApproach}, it is known that
+  \begin{align*}
+    \eta^\psi_{XY}(z)
+    &= \eta^\psi_{X}(\omega_X(z))\\
+    &= \eta^\psi_{Y}(\omega_Y(z)).
+  \end{align*}
+  If we set $u=\eta^\psi_{XY}(z)$, then
+  \begin{align*}
+    \omega_X(z)
+    &= (\eta^{\psi}_X)^{-1}(u)\\
+    \omega_Y(z)
+    &= (\eta^{\psi}_Y)^{-1}(u).
+      \intertext{Also, we have}
+      \eta^\psi_{XY}(z)
+    &= \tilde{\eta}^\psi_X(\omega_X(z))\omega_X(z)\\
+    &= \tilde{\eta}^\psi_X(\omega_X(z))z \tilde{\eta}^\psi_Y(\omega_Y(z)).
+      \intertext{Hence}
+      \tilde{\eta}^\psi_{XY}(z)
+    &= \tilde{\eta}^\psi_X(\omega_X(z)) \tilde{\eta}^\psi_Y(\omega_Y(z))
+      \intertext{so that}
+      \tilde{\eta}^\psi_{XY}\circ(\eta^\psi_{XY})^{-1}(u)
+    &= \tilde{\eta}^\psi_X\circ(\eta^\psi_{X})^{-1}(u)
+      \cdot
+      \tilde{\eta}^\psi_Y\circ(\eta^\psi_{Y})^{-1}(u).
+  \end{align*}
+  % \subsubsection{Popa-Wang transform}
+  On the other hand, from \eqref{eq:XY:MphiXY} we infer that the $\tilde\eta$-transform of $XY$ with respect to $\varphi$ is given by
+  \[
+    \tilde{\eta}^\varphi_{XY}(z)
+    = \tilde{\eta}^\varphi_X(\omega_X(z))\tilde{\eta}^\varphi_Y(\omega_Y(z)).
+  \]
+  By setting again $u = \eta_{XY}^\psi(z)$, we conclude that
+  \begin{equation*}
+    \tilde{\eta}^\varphi_{XY}\circ(\eta^\psi_{XY})^{-1}(u)
+    =
+    \tilde{\eta}^\varphi_{X}\circ(\eta^\psi_{X})^{-1}(u)
+    \cdot
+    \tilde{\eta}^\varphi_{Y}\circ(\eta^\psi_{Y})^{-1}(u)    
+  \end{equation*}
+  which reproduces \cite[Lemma~2.1]{PopaWang:2011:multiplicative} upon setting $\Sigma^\varphi = \tilde{\eta}^\varphi \circ (\eta^\psi)^{-1}$, and is precisely \eqref{eq:PopaWang}.
+\end{proof}
+
+%\bibliographystyle{abbrv}
+\bibliographystyle{plainurl}
+% \bibliographystyle{plain}
+\bibliography{freeintegral}
+\end{document}
+%%% Local Variables:
+%%% TeX-master: t
+%%% End:
+
+% LocalWords:  ik lj mP zL AX eq zAF zBF zAX zBY betaX betaY sa ba zH eqn ua
+% LocalWords:  phiua phiEua xy au modularproperty bxb rEab nX WX nY boolRecPsi
+% LocalWords:  condexprec XW YW rEphi rEphiX recurrenceboolcum LX zA zB resid
+% LocalWords:  resolventIdentity zBE zAXE rEvarphi XPlugging EpsiX bbetapsi XH
+% LocalWords:  prefactor bbeta AFX HXphi zBFXphi MAFX zAXpzBFY rEphX HYphi zAH
+% LocalWords:  prefactorEpsiX zAFXphi HYAdditive zXY ResolventMult YPsi rEMult
+% LocalWords:  ProductsasEntriesCFree PopaWang freeintegral
