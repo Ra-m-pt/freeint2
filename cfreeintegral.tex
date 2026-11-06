@@ -1,7 +1,7 @@
 \documentclass[12pt]{amsart}
 \usepackage{svn}
 % svn propset svn:keywords 'Revision' cfreeintegral.tex
-\SVN $Revision: 177 $
+\SVN $Revision: 178 $
 
 \usepackage{amssymb,amsthm,amsmath,amsfonts}
 \usepackage{graphicx}
@@ -2038,9 +2038,9 @@ and similarly for $\psi$.
       \beta^\psi_k(X)
       \left[\epsilon_0\otimes
         \left(\bbetas{\psi}{ {Y}}\right)^{\otimes(k-1)}\otimes
-        \epsilon_0\right]\left(
-        \partial_X^k (P)
-      \right).
+        \epsilon_0\right]\bigl(
+        \partial_X^k P
+      \bigr).
     \end{equation}
    \item 
     If in addition  $X$ and $Y$ are $c$-free with respect to the pair
@@ -2056,9 +2056,10 @@ and similarly for $\psi$.
     \beta^\varphi_k(X)
     \left[\epsilon_0\otimes
       \left(\bbetas{\psi}{{Y}}\right)^{\otimes(k-1)}\otimes
-      \epsilon_0\right]\left(
-      \partial_X^k (P)
-    \right).
+      \epsilon_0\right]
+    \bigl(
+      \partial_X^k P
+    \bigr).
   \end{equation}
   \end{enumerate}
 \end{proposition}
@@ -2167,7 +2168,7 @@ $I$ for the identity matrix $I_N\in M_N(\mathbb{C})$.
   and similarly
   \[\eta_A^{\psi}(B)=\sum_{n=1}^\infty \beta_n^{\psi,(N)}\left(AB,AB,\dots,AB\right).\]
   We still have
-  \[M_A^\psi(B)=\left(I_N-\eta_A^{\psi}(B)\right)^{-1}.\]
+  \[M_A^\psi(B)=\bigl(I_N-\eta_A^{\psi}(B)\bigr)^{-1}.\]
 
   %In what follows we will always assume that $B=zI_N$ for $z\in \mathbb{C}$.
 \end{remark}
@@ -2323,11 +2324,13 @@ satisfy the fixed point equation featuring in the following Proposition.
     H_X & :=\bbetas{\psi}{X}(\bPsi),
     &
       F_X & :=\fbetas{\psi}{X}(X\bPsi), \\
+    \label{eq:def:HYFY}
     H_Y & :=\bbetas{\psi}{Y}(\bPsi),
     &
       F_Y & :=\fbetas{\psi}{Y}(Y\bPsi) ,
   \end{align}
   \begin{align}
+    \label{eq:def:FXphi}    
     F_X^\varphi & :=\fbetas{\varphi}{X}(X\bPsi), \\
     F_Y^\varphi & :=\fbetas{\varphi}{Y}(Y\bPsi).
   \end{align}
@@ -2391,10 +2394,14 @@ satisfy the fixed point equation featuring in the following Proposition.
   $$
   \beta^{b,\psi}_X(\bPsi) = I + z\beta_X^{b,\psi}(\bPsi)\beta_X^{\delta,\psi}(AX\bPsi),
   $$
-  and hence
-  $$
-  H_X=\beta_X^{b,\psi}(\bPsi) = \left(I-zA\beta_X^{\delta,\psi}(X\bPsi)\right)^{-1} = (I-zAF_X)^{-1}.
-  $$
+  and thus
+  \begin{equation}
+  \label{eq:bbeta=fbetainv}
+  \beta_X^{b,\psi}(\bPsi) =
+  \bigl(I-zA\beta_X^{\delta,\psi}(X\bPsi)\bigr)^{-1}
+  \end{equation}
+  which is exactly \eqref{eq:HAdditive}.
+  
   Finally, it is not difficult to show that
   \[
     \partial_X^n(X\bPsi) = z^{n-1} I\odot (\bPsi A)^{\odot n-1}\odot \bPsi + z^n X(\bPsi A)\odot (\bPsi A)^{\odot n-1}\odot \bPsi
@@ -3950,11 +3957,14 @@ The last theorem of this section generalizes Proposition~\ref{prop:6.13} to the 
       \rE^\varphi_X[\bPsi]
   \end{align*}
   where the last equality follows by applying $\bbetas{\varphi}{Y}$ to the
-  resolvent identity \eqref{eq:resolventIdentity}. In particular, we get
-  \[
-    \rE_{X}^{\varphi}[\bPsi] - zB\rE_X^\varphi[Y\bPsi] = \beta_Y^{b,\varphi}(\bPsi)^{-1}\rE_X^{\varphi}[\bPsi].
-  \]
-  On the other hand, from the above equation and \eqref{eq:AX+BY:resid} we obtain
+  resolvent identity \eqref{eq:resolventIdentity}. In particular,
+  combining this with
+%  we get
+%  \[
+%    \rE_{X}^{\varphi}[\bPsi] - zB\rE_X^\varphi[Y\bPsi] = \beta_Y^{b,\varphi}(\bPsi)^{-1}\rE_X^{\varphi}[\bPsi].
+%  \]
+%  On the other hand, from the above equation and
+  \eqref{eq:AX+BY:resid}   we obtain
   \begin{align*}
     zA\rE^\varphi_X[X\bPsi]
     &= \rE^\varphi_X[\bPsi] - zB\rE^\varphi_X[Y\bPsi]  - I \\
@@ -4165,85 +4175,97 @@ The last theorem of this section generalizes Proposition~\ref{prop:6.13} to the 
   and we conclude 
   \eqref{eq:AX+BY:rEphiX[Psi]=bbeta*res}.
   
-  Now we proceed with the proof of 	\eqref{eq:AX+BY:rEphiX[Psi]=AFX}.
-  First, observe that 
-  \begin{align*}
-    \bubbetas{\varphi}{X}(\bPsi)
-    &= \bbetas{\varphi}{X}(\bPsi) - I\\
-    &= (I-zAF_X^\varphi(z))^{-1} - I\\
-    &= (I-zAF_X^\varphi(z))^{-1}zAF_X^\varphi(z)\\
-    &= \bbetas{\varphi}{X}(\bPsi)zAF_X^\varphi(z).
-  \end{align*}
-On the other hand, using that $$\beta_Y^{b,\varphi}(\bPsi)^{-1} = I - zBF_Y^\varphi(z),$$the coefficient of $\rE_X^\varphi[\bPsi]$ in \eqref{eq:rEphiX[Psi]:equation}  can be written as
-  \begin{align*}
-    \MoveEqLeft[4] I - \bubbetas{\varphi}{Y}(\bPsi) \bbetas{\varphi}{Y}(\bPsi)^{-1}
-    - \bubbetas{\varphi}{X}(\bPsi) \bigl( I - \bbetas{\varphi}{Y}(\bPsi)^{-1} \bigr) \\
-    &= I - zBF_Y^\varphi(z) - zAF_X^\varphi(z)(I-zAF_X^\varphi(z))^{-1}zBF_Y^\varphi(z) \\
-    &= I - (I-zAF_X^\varphi(z))^{-1}zBF_Y^\varphi(z) \\
-    &= (I-zAF_X^\varphi(z))^{-1} \bigl( I - zAF_X^\varphi(z) - zBF_Y^\varphi(z) \bigr) \\
-    &= \bbetas{\varphi}{X}(\bPsi) M^\varphi_{AX+BY}(z)^{-1},
-  \end{align*}
-  where we have applied Equations \eqref{eq:HXphi=1-zBFXphi} and \eqref{eq:AX+BY:phi(Psi)} in the last step. Finally, the right-hand side in the third equality in \eqref{eq:rEphiX[Psi]:equation} is
-  \begin{multline*}
-    \bbetas{\varphi}{X}(\bPsi)
-    +
-    \bigl(
-    \bbetas{\varphi}{X}(\bPsi)zAX
-    -
-    \bubbetas{\varphi}{X}(\bPsi)
-    \bigr)
-    \bbetas{\psi}{Y}(\bPsi)
-    \bigl(
-    I-zAX\bbetas{\psi}{Y}(\bPsi)
-    \bigr)^{-1}
-    \\
-    \begin{aligned}[t]
-      &=   \bbetas{\varphi}{X}(\bPsi)
+  We proceed by rewriting $\bubbetas{\varphi}{}$ and  $\bubbetas{\psi}{}$
+  in terms of $\bbetas{\varphi}{}$  and $\bbetas{\psi}{}$ and shuffling 
+  the latter around:
+  \begin{align}
+    \rE_X^\varphi[\bPsi]
+    &=
+      \begin{multlined}[t]
+      \bbetas{\varphi}{Y}(\bPsi)
+      \bigl(
+      \bbetas{\varphi}{X}(\bPsi)
       +
-      \bigl(
-      \bbetas{\varphi}{X}(\bPsi)zAX
+      \bbetas{\varphi}{Y}(\bPsi)
       -
-      \bbetas{\varphi}{X}(\bPsi)zAF_X^\varphi(z)
-      \bigr)
+      \bbetas{\varphi}{X}(\bPsi)
+      \bbetas{\varphi}{Y}(\bPsi)
+      \bigr)^{-1}
+      \\
+      \times
+      \bigl(
+      \bbetas{\varphi}{X}(\bPsi)
+      +
       \bbetas{\psi}{Y}(\bPsi)
-      \bigl(
-      I-zAX\bbetas{\psi}{Y}(\bPsi)
-      \bigr)^{-1}
-      \\
-      &=   \bbetas{\varphi}{X}(\bPsi)
-      \bigl(
-      I-zAX\bbetas{\psi}{Y}(\bPsi)
-      + zAX  \bbetas{\psi}{Y}(\bPsi)
       -
-      zAF_X^\varphi(z)  \bbetas{\psi}{Y}(\bPsi)
+      \bbetas{\varphi}{X}(\bPsi)
+      \bbetas{\psi}{Y}(\bPsi)
       \bigr)
+      \bbetas{\psi}{Y}(\bPsi)^{-1}
       \bigl(
-      I-zAX\bbetas{\psi}{Y}(\bPsi)
-      \bigr)^{-1}
-      \\
-      &=   \bbetas{\varphi}{X}(\bPsi)
-      \bigl(
-      I  -
-      zAF_X^\varphi(z)(I-zBF_Y(z))^{-1}
-      \bigr)
-      \bigl(
-      I-zAX(I-zBF_Y(z))^{-1}
-      \bigr)^{-1}
-      \\
-      &=
-      (I-zAF_X^\varphi(z))^{-1}
-      \bigl(
-      I  -
-      zAF_X^\varphi(z)-zBF_Y(z)
-      \bigr)
-      \bigl(
-      I-zAX-zBF_Y(z)
+      \bbetas{\psi}{Y}(\bPsi)^{-1}
+      -zAX
       \bigr)^{-1}.
+    \end{multlined}
+    \\
+    &=
+      \begin{multlined}[t]
+      \bigl(
+      \bbetas{\varphi}{X}(\bPsi)
+      \bbetas{\varphi}{Y}(\bPsi)^{-1}
+      +
+      I
+      -
+      \bbetas{\varphi}{X}(\bPsi)
+      \bigr)^{-1}
       \\
-    \end{aligned}
-  \end{multline*}
-  We conclude by using \eqref{eq:HXphi=1-zBFXphi}, \eqref{eq:AX+BY:phi(rEphiX[Psi])=MAFX} and \eqref{eq:EpsiX[Psi]=(I-zAXpzBFY)}.
-  % \eqref{eq:AX+BY:rEphiX[Psi]=AFX} and \eqref{eq:AX+BY:rEphiX[Psi]=MAX+BY}. 
+      \times
+      \bigl(
+      \bbetas{\varphi}{X}(\bPsi)
+      \bbetas{\psi}{Y}(\bPsi)^{-1}
+      +
+      I
+      -
+      \bbetas{\varphi}{X}(\bPsi)
+      \bigr)
+      \bigl(
+      \bbetas{\psi}{Y}(\bPsi)^{-1}
+      -zAX
+      \bigr)^{-1}.
+      \end{multlined}
+    \\
+    &=
+      \begin{multlined}[t]
+      \bigl(
+      \bbetas{\varphi}{Y}(\bPsi)^{-1}
+      +
+      \bbetas{\varphi}{X}(\bPsi)^{-1}
+      -
+      I
+      \bigr)^{-1}
+      \\
+      \times
+      \bigl(
+      \bbetas{\psi}{Y}(\bPsi)^{-1}
+      +
+      \bbetas{\varphi}{X}(\bPsi)^{-1}
+      -
+      I
+      \bigr)
+      \bigl(
+      \bbetas{\psi}{Y}(\bPsi)^{-1}
+      -zAX
+      \bigr)^{-1}.
+      \end{multlined}
+  \end{align}
+  Now use identity \eqref{eq:bbeta=fbetainv} for both $\bbetas{\varphi}{}$ and
+  $\bbetas{\psi}{}$ and substitute
+    \eqref{eq:def:HYFY} and 
+    \eqref{eq:def:FXphi} to obtain 
+          \eqref{eq:AX+BY:rEphiX[Psi]=AFX}.
+
+
+%\input{del/rEXphirold}
 \end{proof}
 					
 					
