@@ -1,7 +1,7 @@
 \documentclass[12pt]{amsart}
 \usepackage{svn}
 % svn propset svn:keywords 'Revision' cfreeintegral.tex
-\SVN $Revision: 178 $
+\SVN $Revision: 180 $
 
 \usepackage{amssymb,amsthm,amsmath,amsfonts}
 \usepackage{graphicx}
@@ -2557,7 +2557,7 @@ $\lVert a-\E[a|P(a,b)]\rVert_2\leq \lVert a-g(P(a,b))\rVert_2$ among all bounded
 Borel functions $g$. We will work with a slightly more general problem and we
 will consider $\E[f(a)|P(a,b)]$. The crucial observation from \cite{FevrierNicaSzpojankowski:2024} is that $c$-freeness provides a framework to find $\E[f(a)|P(a,b)]$. Fix a non-negative function $f$ such that $\psi(f(a))=1$ and define a new state $\varphi(c)=\psi(f(a)c)$. The main observations from \cite{FevrierNicaSzpojankowski:2024} are the following:
 \begin{enumerate}[label=\arabic*.]
- \item Freeness of $a,b$ with respect to $\Psi$ implies that they are $c$-free with respect to the pair $(\varphi,\psi)$.
+ \item Freeness of $a,b$ with respect to $\psi$ implies that they are $c$-free with respect to the pair $(\varphi,\psi)$.
  \item Given the distributions of $P$ with respect to both states
   $\mu_{P(a,b)}^{\psi}$ and $\mu_{P(a,b)}^{\varphi}$, the measure
   $\mu_{P(a,b)}^{\varphi}$ is absolutely continuous with respect to
@@ -3356,7 +3356,10 @@ analogue of the recurrence \eqref{eq:condexprec} for its definition.
 \end{remark}
 
 The following lemma connects the $c$-free quasi-conditional expectation
-to the free conditional expectation \textcolor{red}{I do not see any c-free conditional expectations in the statement!} and is the key to the proof of the preceding theorem.
+to the free conditional expectation \textcolor{red}{I do not see any c-free
+  conditional expectations in the statement!}
+\franz{this is the essential ingredient of the proof of Theorem 6.9!}
+and is the key to the proof of the preceding theorem.
 \begin{lemma}
   If $W\in \C\langle X,Y\rangle$ is a monomial starting with $X$,  then
   \begin{equation}
@@ -4177,9 +4180,13 @@ The last theorem of this section generalizes Proposition~\ref{prop:6.13} to the 
   and we conclude 
   \eqref{eq:AX+BY:rEphiX[Psi]=bbeta*res}.
   
-  \textcolor{red}{Not clear: How we address what referee pointed out. any we proceed with what now, when (6.22) was proved?} We proceed by rewriting $\bubbetas{\varphi}{}$ and  $\bubbetas{\psi}{}$
-  in terms of $\bbetas{\varphi}{}$  and $\bbetas{\psi}{}$ and shuffling 
-  the latter around:
+  \textcolor{red}{Not clear: How we address what referee pointed out. any we
+    proceed with what now, when (6.22) was proved?}
+
+  We proceed with
+  the latter formula and rewrite $\bubbetas{\varphi}{}$ and  $\bubbetas{\psi}{}$
+  in terms of $\bbetas{\varphi}{}$  and $\bbetas{\psi}{}$. Shuffling these
+  around we find
   \begin{align}
     \rE_X^\varphi[\bPsi]
     &=
