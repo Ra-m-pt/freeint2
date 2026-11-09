@@ -632,7 +632,7 @@ with
 \[
   h(t)=\frac{2(2+\tilde{\eta}_a(s)^2)
   }{%
-    (1-s\tilde{\eta}_a(s)^2)\left((2+\tilde{\eta}_a(s)^2)^2-\tilde{\eta}_a(s)^2
+    (1-s\tilde{\eta}_a(s))\left((2+\tilde{\eta}_a(s)^2)^2-\tilde{\eta}_a(s)^2
       t^2\right)},
 \]
 where $\tilde{\eta}_a(s)=\frac{1-\sqrt{1-4 s^2}}{2 s}$ is the shifted Boolean transform of the standard semicircle distribution.
@@ -958,6 +958,8 @@ different kinds of cumulants
 \cite {Lehner:2002:connected,ArizmendiHasebeLehnerVargas:2015:relations},
 in particular:
 
+\vspace{1cm}
+
 \begin{proposition}
   \begin{enumerate}[label=(\roman*)]
    \item []
@@ -1260,7 +1262,7 @@ this time the closure operator being $c(\pi)=\pi\vee\rho$.
 \end{proposition}
 
 The expansion \eqref{eq:BoolProd} has the following recursive reformulation
-\cite{LehnerSzpojankowski:2023:freeint1}.
+\cite{LehnerSzpojankowski:2023:freeint1}, see also \cite{Popa:2009:multiplicative}.
 \begin{corollary}
   \label{cor:RecursiveBoolProd}
   Let $a_1,a_2,\dots,a_n\in \alg{A}$ be random variables.
@@ -2071,7 +2073,7 @@ and similarly for $\psi$.
   particular, \eqref{eq:intro_betas_prod_as_entries} is a simple consequence
   of the Leonov-Shiryaev formula \eqref{eq:BoolProd}
   for $\beta^\varphi_n$, noticing that the extra
-  terms vanish by Property (\VNEC) from Remark~\ref{remdef:fNEC}. Equation
+  terms vanish by Property (\VNEC) from Remark and Definition~\ref{remdef:fNEC}. Equation
   \eqref{eq:ProductsasEntriesCFree} can be obtained by the same argument as in
   \cite[Theorem 5.5]{LehnerSzpojankowski:2023:freeint1}, except that, in 
   identity \eqref{eq:VNRP:cfree} of Theorem~\ref{thm:VNTPCfree}, the unique
@@ -2555,7 +2557,7 @@ $\lVert a-\E[a|P(a,b)]\rVert_2\leq \lVert a-g(P(a,b))\rVert_2$ among all bounded
 Borel functions $g$. We will work with a slightly more general problem and we
 will consider $\E[f(a)|P(a,b)]$. The crucial observation from \cite{FevrierNicaSzpojankowski:2024} is that $c$-freeness provides a framework to find $\E[f(a)|P(a,b)]$. Fix a non-negative function $f$ such that $\psi(f(a))=1$ and define a new state $\varphi(c)=\psi(f(a)c)$. The main observations from \cite{FevrierNicaSzpojankowski:2024} are the following:
 \begin{enumerate}[label=\arabic*.]
- \item The elements $a,b$ are $c$-free with respect to the pair $(\varphi,\psi)$.
+ \item Freeness of $a,b$ with respect to $\Psi$ implies that they are $c$-free with respect to the pair $(\varphi,\psi)$.
  \item Given the distributions of $P$ with respect to both states
   $\mu_{P(a,b)}^{\psi}$ and $\mu_{P(a,b)}^{\varphi}$, the measure
   $\mu_{P(a,b)}^{\varphi}$ is absolutely continuous with respect to
@@ -2694,7 +2696,7 @@ Stieltjes inversion formula and a direct calculation gives
 Since it is well known that the distribution of the commutator of a semicircular
 variable and a Bernoulli variable is equal to the free convolution of two
 semicircle distributions of variance one
-(see, e.g., the discussion in \cite[Example~3.12]{HaagerupLarsen}),
+(see, e.g., the discussion in \cite[Example~3.12]{HaagerupLarsen} or \cite{NicaSpeicher:1998:commutator} for a general derivation of the distribution of the commutator in free variables),
 we obtain the density $\tfrac{1}{4 \pi}\sqrt{8-x^2}$.
 We finally obtain the Radon-Nikodym derivative and the conditional expectation
 \[h(t)=M_a^\psi(s)\frac{d\mu^{\varphi}_{i[a,b]}}{d\mu^{\psi}_{i[a,b]}}=\frac{2(2+\tilde{\eta}_X(s)^2)}{(1-s\tilde{\eta}_X(s))\left((2+\tilde{\eta}_X(s)^2)^2-\tilde{\eta}_X(s)^2 t^2\right)}.\]
@@ -3354,7 +3356,7 @@ analogue of the recurrence \eqref{eq:condexprec} for its definition.
 \end{remark}
 
 The following lemma connects the $c$-free quasi-conditional expectation
-to the free conditional expectation and is the key to the proof of the preceding theorem.
+to the free conditional expectation \textcolor{red}{I do not see any c-free conditional expectations in the statement!} and is the key to the proof of the preceding theorem.
 \begin{lemma}
   If $W\in \C\langle X,Y\rangle$ is a monomial starting with $X$,  then
   \begin{equation}
@@ -4175,7 +4177,7 @@ The last theorem of this section generalizes Proposition~\ref{prop:6.13} to the 
   and we conclude 
   \eqref{eq:AX+BY:rEphiX[Psi]=bbeta*res}.
   
-  We proceed by rewriting $\bubbetas{\varphi}{}$ and  $\bubbetas{\psi}{}$
+  \textcolor{red}{Not clear: How we address what referee pointed out. any we proceed with what now, when (6.22) was proved?} We proceed by rewriting $\bubbetas{\varphi}{}$ and  $\bubbetas{\psi}{}$
   in terms of $\bbetas{\varphi}{}$  and $\bbetas{\psi}{}$ and shuffling 
   the latter around:
   \begin{align}
@@ -4427,6 +4429,7 @@ The last theorem of this section generalizes Proposition~\ref{prop:6.13} to the 
 Our goal in this section is to show, as an application of the developments presented in this paper, how to compute the distribution of the product of two $c$-free random variables. Moreover, we also reproduce the multiplicativity of the \emph{Popa-Wang $\Sigma$-transform} from \cite{PopaWang:2011:multiplicative}.
 
 %\franz{notes p.707 \& 787}
+\textcolor{red}{Kamil: I think we need to assume that  distributions of $X,Y$ wrt $\psi$ is supported on $\mathbb{R}_+$ and not $\delta_0$, in particular \cite[Theorem 3.3]{BelBerNewApproach} makes that assumption! (and we should cite thm 3.3, not thm 3.2!}
 \begin{proposition}
   Let $(\mathbb{C}\langle X,Y\rangle,\varphi,\psi)$ be a two-state
   noncommutative probability space such that $X$ and $Y$ are $c$-free with $\psi(X),\psi(Y)\ne0$. Then the moment generating function of $XY$ with respect to $\varphi$ is given by
@@ -4617,7 +4620,7 @@ Our goal in this section is to show, as an application of the developments prese
     }.
   \end{equation*}
   % \subsubsection{free $\Sigma$-transform}
-  Now we prove \eqref{eq:PopaWang}. According to \cite[Theorem 3.2]{BelBerNewApproach}, it is known that
+  Now we prove \eqref{eq:PopaWang}. According to \cite[Theorem 3.3]{BelBerNewApproach}, it is known that
   \begin{align*}
     \eta^\psi_{XY}(z)
     &= \eta^\psi_{X}(\omega_X(z))\\
