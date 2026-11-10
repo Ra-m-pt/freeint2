@@ -1,0 +1,155 @@
+
+\documentclass[12pt]{report}
+\usepackage{amssymb,amsthm,amsmath,amsfonts}
+%\usepackage{cite}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+%\usepackage[cp1250]{inputenc}
+%\usepackage[T1]{polski}
+\textwidth=16cm
+\oddsidemargin=0pt
+\evensidemargin=0pt
+%\usepackage{yhmath}
+
+
+\newcommand{\cA}{ \mathcal{A} }
+\newcommand{\cB}{ \mathcal{B} }
+\newcommand{\cD}{ \mathscr{D} }
+\newcommand{\cF}{ \mathcal{F} }
+\newcommand{\cM}{ \mathscr{M} }
+\newcommand{\cN}{ \mathcal{N} }
+\newcommand{\cP}{ \mathcal{P} }
+\newcommand{\cQ}{ \mathcal{Q} }
+\newcommand{\cR}{ \mathcal{R} }
+\newcommand{\cT}{ \mathcal{T} }
+
+\newcommand{\fM}{ \mathfrak{M} }
+\newcommand{\fT}{ \mathfrak{T} }
+
+\newcommand{\bC}{ \mathbb{C} }
+\newcommand{\bE}{ \mathbb{E} }
+\newcommand{\bH}{ \mathbb{H} }
+\newcommand{\bN}{ \mathbb{N} }
+\newcommand{\bQ}{ \mathbb{Q} }
+\newcommand{\bR}{ \mathbb{R} }
+\newcommand{\bZ}{ \mathbb{Z} }
+
+\newcommand{\qi}{ \mathrm{i} }
+\newcommand{\qj}{ \mathrm{j} }
+\newcommand{\qk}{ \mathrm{k} }
+\newcommand{\qone}{1}
+\newcommand{\pp}{p}
+
+\newcommand{\gat}{ g_a^{(t)} }
+\newcommand{\gazero}{ g_a^{(0)} }
+\newcommand{\Lat}{ L_a^{(t)} }
+\newcommand{\uat}{ u_a^{(t)} }
+
+\newcommand{\bExp}{ E }
+\newcommand{\bExpp}{ \widehat{\varphi} }
+\newcommand{\oneA}{ 1_{ { }_{\cA} } }
+\newcommand{\oneM}{ 1_{ { }_{\cM} } }
+\newcommand{\limn}{ \lim_{n \to \infty} }
+\newcommand{\Comp}{ \mathrm{Co} }
+\newcommand{\Imi}{ \mathrm{Im}_{\qi} }
+
+
+\newcommand{\supp}{{\rm supp}  }
+\def\R{{\mathbb R}}
+\def\Rr{{\mathcal R}}
+\def\C{{\mathbb C}}
+\def\N{{\mathbb N}}
+\def\Z{{\mathbb Z}}
+\def\tr{\;\mathrm{tr}\,}
+\def\Tr{\;\mathrm{Tr}\,}
+\def\<{\langle}
+\def\>{\rangle}
+\def\P{{\mathbb P}}
+\def\Q{{\mathbb Q}}
+\def\E{{\mathbb E}}
+\def\U{{\mathbb U}}
+\def\V{{\mathbb V}}
+\def\S{{\mathbb S}}
+\def\D{{\mathbb D}}
+\def\eps{\epsilon}
+\def\I{\mathbb I}
+\def\i{\underline i}
+\def\r{\underline r}
+\def\e{\underline e}
+\def\X{\mathbb X}
+\def\a{\underline a}
+\def\c{\underline c}
+\def\d{\underline d}
+\def\w{\underline w}
+\def\v{\underline v}
+\def\u{\underline u}
+\def\Y{\mathbb Y}
+\def\var{\mathbb{V}\mathrm{ar}}
+\def\cov{\mathbb{C}\mathrm{ov}}
+\def\corr{\mathbb{C}\mathrm{orr}}
+
+\newcommand{\doalign}[2]{%
+ {\vbox{\offinterlineskip\ialign{\hfil##\hfil\cr#1\cr$#2$\cr}}}%
+}
+
+\newcommand{\harprightsign}{\scriptstyle\rightharpoonup}
+\newcommand{\harpright}[2]{%
+  \ifx\displaystyle#1\doalign{$\harprightsign$}{#1#2}\fi
+  \ifx\textstyle#1\doalign{$\harprightsign$}{#1#2}\fi
+  \ifx\scriptstyle#1\doalign{\scalebox{.6}[.9]{$\harprightsign$}}{#1#2}\fi
+  \ifx\scriptscriptstyle#1\doalign{\scalebox{.5}[.8]{$\harprightsign$}}{#1#2}\fi
+}
+
+\DeclareMathOperator{\rE}{\mathpalette\harpright{E}}
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+      \newtheorem{theorem}{Theorem}[section]
+       \newtheorem{proposition}[theorem]{Proposition}
+       \newtheorem{corollary}[theorem]{Corollary}
+       \newtheorem{lemma}[theorem]{Lemma}
+       \newtheorem{remark}{Remark}[section]
+%\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{assumption}{Assumption}
+\newtheorem{example}{Example}[section]
+
+
+%\begin{frontmatter}
+
+\begin{document}
+\begin{center}
+\large\textbf{Response to the report on the paper \\``Polynomials in $c$-free random variables \\ with applications to free denoising''}
+\end{center}
+The authors thank the referee for a careful reading of the manuscript and for many helpful and constructive remarks. In particular, we thank the referee for identifying errors in the final formula of our main example and for suggesting a very nice example showing that c-free conditional expectations need not be positive. All issues raised in the report have been addressed. Below, we respond to the referee’s comments, following the numbering in the report, and explain the corresponding changes made to the manuscript. For comments where the required changes were clear, we simply confirm that the corresponding revisions have been made.
+\begin{itemize}
+    \item[I.1] We corrected the example, as noted by the referee the correct formula is 
+    \[
+  h(t)=\frac{2(2+\tilde{\eta}_a(s)^2)
+  }{%
+    (1-s\tilde{\eta}_a(s))\left((2+\tilde{\eta}_a(s)^2)^2-\tilde{\eta}_a(s)^2
+      t^2\right)},
+\]
+with $-1/2<s<1/2.$
+    \item[I.2] As the referee suggested we now show that
+    \[\rE^\varphi_\mathcal{A}[(a+ib)^*(a-ib)] = 2 + i(e^{-2\lambda}-e^{-\lambda}a),\]
+   
+    and since the expression on RHS is not self-adjoint, then clearly $\rE^\varphi_\mathcal{A}$ is does not preserve positivity.
+    \item[I.3] We now prove (2.7) assuming that $\pi$ is an interval partition. We also added the suggested reference.
+    \item[I.4] We corrected the statement of Corollary 2.15. We added the reference suggested by the referee.
+    \item[I.5] In Definition 6.8, we now require that a conditional expectation is a linear projection. Such assumptions do not allow the example given by the referee. In particular a projection onto a unital subalgebra is automatically unital.
+    \item[I.6] In the proof of Theorem 6.9 we now show explicitly the right modular property.
+    \item[I.7] We corrected the assumptions in Proposition 7.1, and assume in particular non-zero first moments.
+    \item[I.8--I.12] These comments identify useful corrections, and we have implemented all of the referee’s suggestions. 
+    \item[II.1] We now assume that $P$ is finite.
+    \item[II.2] Since the condition with the partition containing pairs $\{d_j,d_j+1\}$ is not used in the paper we deleted this part of Proposition 2.14.
+    \item[II.3--II.11] We have addressed all of these helpful comments and revised the manuscript accordingly.
+    \item[II.12] We have reorganized the final calculation in the proof of Theorem 6.15.
+    \item[II.13, II.14] We went through the paper and checked references, language and updated references.
+    
+\end{itemize}
+    
+\end{document}
+
