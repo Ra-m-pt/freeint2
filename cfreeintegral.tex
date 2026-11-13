@@ -1,7 +1,7 @@
 \documentclass[12pt]{amsart}
 \usepackage{svn}
 % svn propset svn:keywords 'Revision' cfreeintegral.tex
-\SVN $Revision: 180 $
+\SVN $Revision: 182 $
 
 \usepackage{amssymb,amsthm,amsmath,amsfonts}
 \usepackage{graphicx}
@@ -1260,9 +1260,8 @@ this time the closure operator being $c(\pi)=\pi\vee\rho$.
 %  \end{equation*}
 %  %	or $\descents(\pi)\cap \descents(\rho)=\emptyset$.
 \end{proposition}
-
 The expansion \eqref{eq:BoolProd} has the following recursive reformulation
-\cite{LehnerSzpojankowski:2023:freeint1}, see also \cite{Popa:2009:multiplicative}.
+\cite{LehnerSzpojankowski:2023:freeint1}.
 \begin{corollary}
   \label{cor:RecursiveBoolProd}
   Let $a_1,a_2,\dots,a_n\in \alg{A}$ be random variables.
@@ -3355,18 +3354,15 @@ analogue of the recurrence \eqref{eq:condexprec} for its definition.
   $$
 \end{remark}
 
-The following lemma connects the $c$-free quasi-conditional expectation
-to the free conditional expectation \textcolor{red}{I do not see any c-free
-  conditional expectations in the statement!}
-\franz{this is the essential ingredient of the proof of Theorem 6.9!}
-\kamil{I know, my point is c-free cond. exp. is not present in lemma 6.12, so how exactly this lemma connects c-free and free cond exp? My opinion: it does not.}
+The following lemma will allow us to connect the $c$-free quasi-conditional expectation
+to the free conditional expectation
 and is the key to the proof of the preceding theorem.
 \begin{lemma}
   If $W\in \C\langle X,Y\rangle$ is a monomial starting with $X$,  then
   \begin{equation}
     \varphi(\E^\psi_X[W]) = \bbetas{\varphi}{}(W) + \bigl(\bbetas{\varphi}{}\otimes(\varphi\circ \E^\psi_X)\bigr)[\rdelta_YW];
   \end{equation}
-  that is, if $X_0,\ldots,X_n$ are non-constant monomials in $X$ and $Y_0,\ldots,Y_n$ are non-constant monomials in $Y$, then
+  that is, if $X_0,X_1,\ldots,X_n$ are non-constant monomials in $X$ and $Y_0,Y_1,\ldots,Y_n$ are non-constant monomials in $Y$, then
   \begin{equation}
     \label{eq:phi(EpsiX(X0Y1X1))}
     \varphi(\E_X^\psi[X_0Y_1X_1\dotsm Y_nX_n])
@@ -4185,8 +4181,8 @@ The last theorem of this section generalizes Proposition~\ref{prop:6.13} to the 
   We proceed with
   the latter formula and rewrite $\bubbetas{\varphi}{}$ and  $\bubbetas{\psi}{}$
   in terms of $\bbetas{\varphi}{}$  and $\bbetas{\psi}{}$. Shuffling these
-  around we find \textcolor{red}{Kamil: Do we need numbers for each line?}
-  \begin{align}
+  around we find
+  \begin{align*}
     \rE_X^\varphi[\bPsi]
     &=
       \begin{multlined}[t]
@@ -4265,7 +4261,7 @@ The last theorem of this section generalizes Proposition~\ref{prop:6.13} to the 
       -zAX
       \bigr)^{-1}.
       \end{multlined}
-  \end{align}
+  \end{align*}
   Now use identity \eqref{eq:bbeta=fbetainv} for both $\bbetas{\varphi}{}$ and
   $\bbetas{\psi}{}$ and substitute
     \eqref{eq:def:HYFY} and 
@@ -4432,10 +4428,23 @@ The last theorem of this section generalizes Proposition~\ref{prop:6.13} to the 
 \section{$c$-free multiplicative convolution}
 \label{sec:sigmatransform}
 
-Our goal in this section is to show, as an application of the developments presented in this paper, how to compute the distribution of the product of two $c$-free random variables. Moreover, we also reproduce the multiplicativity of the \emph{Popa-Wang $\Sigma$-transform} from \cite{PopaWang:2011:multiplicative}.
+The product formula     \eqref{eq:BoolProd} translates
+into a product identity for products of Boolean independent variables
+\cite{Popa:2009:multiplicative}
+as well as products of free variables \cite {BelinschiNica:2008:semigroup}
+and $c$-free random variables \cite{PopaWang:2011:multiplicative}
+in terms of the Boolean transforms of the involved variables.
+
+Our goal in this section is to show, as an application of the developments
+presented in this paper, how to reproduce the multiplicativity of
+the \emph{Popa-Wang $\Sigma$-transform}
+\cite[Lemma~4.2]{PopaWang:2011:multiplicative}
+by purely algebraic means.
+
 
 %\franz{notes p.707 \& 787}
-\textcolor{red}{Kamil: I think we need to assume that  distributions of $X,Y$ wrt $\psi$ is supported on $\mathbb{R}_+$ and not $\delta_0$, in particular \cite[Theorem 3.3]{BelBerNewApproach} makes that assumption! (and we should cite thm 3.3, not thm 3.2! Second thought Popa-Wang is about unitaries so maybe this is thm. 3.2, but we do not say unitaries anywhere!}
+
+%\textcolor{red}{Kamil: I think we need to assume that  distributions of $X,Y$ wrt $\psi$ is supported on $\mathbb{R}_+$ and not $\delta_0$, in particular \cite[Theorem 3.3]{BelBerNewApproach} makes that assumption! (and we should cite thm 3.3, not thm 3.2! Second thought Popa-Wang is about unitaries so maybe this is thm. 3.2, but we do not say unitaries anywhere!}
 \begin{proposition}
   Let $(\mathbb{C}\langle X,Y\rangle,\varphi,\psi)$ be a two-state
   noncommutative probability space such that $X$ and $Y$ are $c$-free with $\psi(X),\psi(Y)\ne0$. Then the moment generating function of $XY$ with respect to $\varphi$ is given by
@@ -4548,10 +4557,13 @@ Our goal in this section is to show, as an application of the developments prese
     \label{eq:XY:omegaX}
     \omega_X(z) = z\bbetas{\psi}{Y}(Y\bPsi)
   \end{equation}
-  is the \emph{subordination function}, i.e.,~$\omega_X(z)$ satisfies
-  \[
+  is the \emph{multiplicative subordination function}
+  \cite{Biane98,BelBerNewApproach,Chistyakov+Goetze:2008:limit},
+    i.e.,~$\omega_X(z)$ satisfies
+  \begin{equation}
+    \label{eq:XY:MXY=MX(omegaX)}
     M_{XY}^\psi(z) = M_X^\psi(\omega_X(z)).
-  \]
+  \end{equation}
   Analogously, we have that
   \begin{equation}
     E^\psi_Y[\bPsi] =
@@ -4626,13 +4638,17 @@ Our goal in this section is to show, as an application of the developments prese
     }.
   \end{equation*}
   % \subsubsection{free $\Sigma$-transform}
-  Now we prove \eqref{eq:PopaWang}. According to \cite[Theorem 3.2]{BelBerNewApproach}, it is known that
+  Now we prove \eqref{eq:PopaWang}.
+  It follows from     \eqref{eq:XY:MXY=MX(omegaX)} that
+%  According to \cite[Theorem 3.2]{BelBerNewApproach}, it is known that
   \begin{align*}
     \eta^\psi_{XY}(z)
     &= \eta^\psi_{X}(\omega_X(z))\\
     &= \eta^\psi_{Y}(\omega_Y(z)).
   \end{align*}
-  If we set $u=\eta^\psi_{XY}(z)$, then
+  By assumption all variables are not centered and the Boolean transforms
+  $\eta_X,\eta_Y,\eta_{XY}$   are invertible. Thus
+  if we set $u=\eta^\psi_{XY}(z)$, then
   \begin{align*}
     \omega_X(z)
     &= (\eta^{\psi}_X)^{-1}(u)\\
@@ -4671,8 +4687,13 @@ Our goal in this section is to show, as an application of the developments prese
 
 \noindent
 
-{\bf Acknowledgement.}
+\subsection*{Acknowledgements}
 We would like to thank the anonymous referee for a careful reading of the manuscript and for valuable comments and suggestions.
+
+\subsection*{AI statement}
+No AI tools were used at any stage of this work.
+
+
 %\bibliographystyle{abbrv}
 \bibliographystyle{plainurl}
 % \bibliographystyle{plain}
