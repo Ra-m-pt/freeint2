@@ -1,7 +1,7 @@
 \documentclass[12pt]{amsart}
 \usepackage{svn}
 % svn propset svn:keywords 'Revision' cfreeintegral.tex
-\SVN $Revision: 184 $
+\SVN $Revision: 185 $
 
 \usepackage{amssymb,amsthm,amsmath,amsfonts}
 \usepackage{graphicx}
@@ -1981,13 +1981,13 @@ for Boolean cumulants with products as entries.
   Moreover, we need to define an additional derivation to keep track of the variable we are taking derivative with respect to. 
 			
   \begin{definition}[{\cite[Def.~5.4]{LehnerSzpojankowski:2023:freeint1}}]
-    For a subset of variables $\alg{Y} = \{Y_1.\ldots,Y_k\}\subseteq \alf{X}$ define the operator $L_\alg{Y}^*\odot \partial_\alg{Y}:\IC\langle \alf{X}\rangle \to \IC\langle \alg{Y}\rangle \otimes \IC\langle \alf{X}\rangle\otimes \IC\langle \alf{X}\rangle$ by
+    For a subset of variables $\alf{Y} = \{Y_1.\ldots,Y_k\}\subseteq \alf{X}$ define the operator $L_\alf{Y}^*\odot \partial_\alf{Y}:\IC\langle \alf{X}\rangle \to \IC\langle \alf{Y}\rangle \otimes \IC\langle \alf{X}\rangle\otimes \IC\langle \alf{X}\rangle$ by
     \[
-      (L_\alg{Y}^*\odot \delta_\alg{Y})(W) = \sum_{i=1}^k Y_j\otimes \partial_{Y_j} W,
+      (L_\alf{Y}^*\odot \delta_\alf{Y})(W) = \sum_{i=1}^k Y_j\otimes \partial_{Y_j} W,
     \]
     where iterations are defined on the left component as follows:
     \[
-      (L_\alg{Y}^*\odot \delta_\alg{Y})^p(W) = \sum_{i_1,i_2,\ldots,i_p} Y_{i_1}Y_{i_2}\cdots Y_{i_p} \otimes (\partial_{Y_{i_1}}\otimes\id^{\otimes(p-1)})(\partial_{Y_{i_2}}\otimes\id^{\otimes(p-2)})\cdots \partial_{Y_{i_p}}(W).
+      (L_\alf{Y}^*\odot \delta_\alf{Y})^p(W) = \sum_{i_1,i_2,\ldots,i_p} Y_{i_1}Y_{i_2}\cdots Y_{i_p} \otimes (\partial_{Y_{i_1}}\otimes\id^{\otimes(p-1)})(\partial_{Y_{i_2}}\otimes\id^{\otimes(p-2)})\cdots \partial_{Y_{i_p}}(W).
     \]
   \end{definition}
   
@@ -3155,7 +3155,7 @@ and $\beta_Y^{b,\psi}$ in terms of partial deconcatenations.
     \ldelta_{\alf{X}}(P) &= \sum \partial_{X_i}(P)(X_i\otimes 1),
   \end{align*}
   for any $P\in \mathbb{C}\langle \alg{S}\rangle$, where the alphabet is
-  $\alg{S}=\alf{X}\cup\alg{Y}$
+  $\alg{S}=\alf{X}\cup\alf{Y}$
   and the sums run over the letters  $X_i\in\alf{X}$.
 \end{remark}
 
