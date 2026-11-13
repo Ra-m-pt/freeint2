@@ -1,7 +1,7 @@
 \documentclass[12pt]{amsart}
 \usepackage{svn}
 % svn propset svn:keywords 'Revision' cfreeintegral.tex
-\SVN $Revision: 183 $
+\SVN $Revision: 184 $
 
 \usepackage{amssymb,amsthm,amsmath,amsfonts}
 \usepackage{graphicx}
@@ -219,6 +219,19 @@
 
 \DeclareMathOperator{\IP}{\mathrm{Int}} %
 \newcommand{\alg}[1]{\mathcal{#1}}
+
+
+%bbmsl12
+\usepackage{bbm}
+%\usepackage{amsaddr}
+
+\DeclareMathAlphabet{\mathbbmsl}{U}{bbm}{m}{sl}
+%\DeclareMathAlphabet{\mathbbmsl}{U}{bbm}{m}{sl}
+
+
+\newcommand{\alf}[1]{\mathbbmsl{#1}} % alphabets
+
+
 \renewcommand{\norm}[1]{\lVert#1\rVert}
 \renewcommand{\abs}[1]{\lvert#1\rvert}
 \newcommand{\bigabs}[1]{\bigl\lvert#1\bigr\rvert}
@@ -696,18 +709,18 @@ We will assume throughout that the second state $\psi$ is tracial.
    \item 
   A family of subalgebras $(\alg{A}_i)_{i\in I}$ of a noncommutative probability space $(\alg{M},\psi)$ is called \emph{free} or \emph{free independent} if
   \begin{equation*}
-    \psi(u_1u_2\dotsm u_n)=  0
+    \psi(a_1a_2\dotsm a_n)=  0
   \end{equation*}
-  for any choice of $u_j\in \bigcup_i\alg{A}_i$ such that $\psi(u_j)=0$ and
-  $u_j\in\alg{A}_{i_j}$ with $i_j\ne i_{j+1}$ for all $j\in\{1,2,\dots,n-1\}$.
+  for any choice of $a_j\in \bigcup_i\alg{A}_i$ such that $\psi(a_j)=0$ and
+  $a_j\in\alg{A}_{i_j}$ with $i_j\ne i_{j+1}$ for all $j\in\{1,2,\dots,n-1\}$.
    \item 
   A family of subalgebras $(\alg{A}_i)_{i\in I}$ of a two-state noncommutative probability space $(\alg{M},\varphi,\psi)$ is called
   \emph{conditionally free} or \emph{$c$-free} if
   \begin{equation*}
-   \psi(u_1u_2\cdots u_n) = 0\qquad\mbox{and}\qquad \varphi(u_1u_2\dotsm u_n)=  \varphi(u_1)\varphi(u_2)\dotsm\varphi(u_n)
+   \psi(a_1a_2\cdots a_n) = 0\qquad\mbox{and}\qquad \varphi(a_1a_2\dotsm a_n)=  \varphi(a_1)\varphi(a_2)\dotsm\varphi(a_n)
   \end{equation*}
-  whenever $u_j\in \bigcup_i\alg{A}_i$ with $\psi(u_j)=0$ and
-  $u_j\in\alg{A}_{i_j}$ with $i_j\ne i_{j+1}$ for all $j\in\{1,2,\dots,n-1\}$,
+  whenever $a_j\in \bigcup_i\alg{A}_i$ with $\psi(a_j)=0$ and
+  $a_j\in\alg{A}_{i_j}$ with $i_j\ne i_{j+1}$ for all $j\in\{1,2,\dots,n-1\}$,
   i.e., the family is free with respect to $\psi$ and in addition satisfies the
   factorization property with respect to $\varphi$.
   \end{enumerate}
@@ -819,7 +832,7 @@ This is even more true for non-commuting ones. In the present paper we will deal
 %  }
   V\in\OB(\sigma)              
   }
-  r_{V}^{\varphi,\psi}(a_1,\ldots,a_n)
+  r_{V}^{\varphi,\psi}(a_1,a_2,\ldots,a_n)
   \prod_{
 %          \substack{
 %				V\in\sigma  \\
@@ -827,7 +840,7 @@ This is even more true for non-commuting ones. In the present paper we will deal
 %  }
   W\in\IB(\sigma)  
   }
-  r_{W}^{\psi}(a_1,\ldots,a_n)
+  r_{W}^{\psi}(a_1,a_2,\ldots,a_n)
   .\label{eq:mccfree}
 	\end{align}
 
@@ -1373,7 +1386,7 @@ appear naturally in the generalization of \eqref{eq:betaphi=sumNCirrpi}.
 	Let $(\alg{M},\varphi,\psi)$ be a two-state noncommutative probability space, and fix $n \in \mathbb{N}$ and $\pi \in \NC(n)$.  
 	We define the \emph{nested two-state Boolean cumulant functional} $\beta^{\varphi,\psi}_\pi:\mathcal{M}^n\to\mathbb{C}$ by the formula
 	\begin{align*}
-		\beta^{\varphi,\psi}_\pi(a_1,\ldots,a_n)
+		\beta^{\varphi,\psi}_\pi(a_1,a_2,\ldots,a_n)
 		:=\prod_{
 			%          \substack{
 				%           V\in\pi  \\
@@ -1381,7 +1394,7 @@ appear naturally in the generalization of \eqref{eq:betaphi=sumNCirrpi}.
 				%          }
 			V\in\OB(\pi)            
 		}
-		\beta_{V}^{\varphi}\bigl(a_1,\ldots,a_n\bigr)
+		\beta_{V}^{\varphi}\bigl(a_1,a_2,\ldots,a_n\bigr)
 		\prod_{
 			%          \substack{
 				%           V\in\pi  \\
@@ -1389,13 +1402,13 @@ appear naturally in the generalization of \eqref{eq:betaphi=sumNCirrpi}.
 				% }
 			W\in\IB(\pi)  
 		}
-		\beta_{W}^{\psi}\bigl(a_1,\ldots,a_n\bigr),
+		\beta_{W}^{\psi}\bigl(a_1,a_2,\ldots,a_n\bigr),
 	\end{align*}
-	for every $a_1,\ldots,a_n\in \alg{M}$.
+	for every $a_1,a_2,\ldots,a_n\in \alg{M}$.
 \end{definition}
 \begin{remark}
 	Observe that for an interval partition $\pi\in \IntPart(n)$ we have 
-	\[\beta^{\varphi,\psi}_\pi(a_1,\ldots,a_n)=\beta^{\varphi}_\pi(a_1,\ldots,a_n).\]
+	\[\beta^{\varphi,\psi}_\pi(a_1,a_2,\ldots,a_n)=\beta^{\varphi}_\pi(a_1,a_2,\ldots,a_n).\]
 \end{remark}
 %With the definition of $\beta^{\varphi,\psi}$ we can extend the results from \cite{Lehner:2002:connected} to a general noncrossing partition $\pi$.
 
@@ -1403,7 +1416,7 @@ appear naturally in the generalization of \eqref{eq:betaphi=sumNCirrpi}.
 	Let $(\alg{M},\varphi,\psi)$ be a two-state noncommutative probability space,
 	fix $n \in \mathbb{N}$ and $\pi \in \NC(n)$. Then for every
 	$a_1,\ldots,a_n\in\alg{M}$ the nested two-state Boolean cumulants are given by
-	\[\beta_\pi^{\varphi,\psi}(a_1,\ldots,a_n)=\sum_{\rho\ll \pi}
+	\[\beta_\pi^{\varphi,\psi}(a_1,a_2,\ldots,a_n)=\sum_{\rho\ll \pi}
 	\prod_{
 		%      \substack{
 			%         V\in\rho   \\
@@ -1411,29 +1424,29 @@ appear naturally in the generalization of \eqref{eq:betaphi=sumNCirrpi}.
 			%       }
 		V\in\OB(\rho)                   
 	}
-	r_{V}^{\varphi,\psi}\bigl(a_1,\ldots,a_n\bigr)
+	r_{V}^{\varphi,\psi}\bigl(a_1,a_2,\ldots,a_n\bigr)
 	\prod_{
 		%        \substack{ V\in\rho    \\
 			%          \textnormal{$V$  inner block } 
 			%        }
 		W\in\IB(\rho)
 	}
-	r_{W}^{\psi}\bigl(a_1,\ldots,a_n\bigr).\]
+	r_{W}^{\psi}\bigl(a_1,a_2,\ldots,a_n\bigr).\]
 \end{proposition}
 \begin{proof}
 	We know that
 	\begin{align*}
-		\beta^\varphi_n(a_1,\ldots,a_n)
+		\beta^\varphi_n(a_1,a_2,\ldots,a_n)
 		=& \sum_{\substack{
 				\rho\ll 1_n   \\
 				1\in V_0
 		} }
-		r_{V_0}^{\varphi,\psi}\bigl(a_1,\ldots,a_n\bigr)
+		r_{V_0}^{\varphi,\psi}\bigl(a_1,a_2,\ldots,a_n\bigr)
 		\prod_{\substack{
 				V\in\rho  \\
 				V\neq V_0
 		}}
-		r_{V}^{\psi}\bigl(a_1,\ldots,a_n\bigr),
+		r_{V}^{\psi}\bigl(a_1,a_2,\ldots,a_n\bigr),
 		\\
 		\beta_n^{\psi}(a_1,a_2,\dots,a_n) = & \sum_{\pi\in\NCirr(n)}    r_\pi^{\psi}(a_1,a_2,\dots,a_n)
 	\end{align*}
@@ -1732,30 +1745,25 @@ polynomials, making this setting more suitable for our purposes.
 \label{ssec:nc_polynomials}
 \begin{notation}
   %\label{notation:nc_polynomials}
-  Let $\alg{X}=\{X_1,X_2,\ldots,X_n\}$ be an alphabet, i.e.~a set of letters.
+  Let $\alf{X}=\{X_1,X_2,\ldots,X_n\}$ be an alphabet, i.e.~a set of letters.
   We denote by 
   \[
-    \alg{X}^+=\{X_{i_1}X_{i_2}\cdots X_{i_k}\mid k\in\IN, i_j\in
+    \alf{X}^+=\{X_{i_1}X_{i_2}\cdots X_{i_k}\mid k\in\IN, i_j\in
     \{1,2,\dots,n\}\}
   \]
-  the free semigroup generated by $\alg{X}$ and by
-  $\alg{X}^*=\alg{X}^+\cup\{1\}$ the free monoid.
-  Furthermore, we also denote by $\IC\langle\alg{X}\rangle= \IC\langle
+  the free semigroup generated by $\alf{X}$ and by
+  $\alf{X}^*=\alf{X}^+\cup\{1\}$ the free monoid.
+  Furthermore, we also denote by $\IC\langle\alf{X}\rangle= \IC\langle
   X_1,X_2,\ldots,X_n\rangle$ the free associative algebra generated by the
-  variables $X_1,X_2,\ldots,X_n$, i.e., the linear span of $\alg{X}^*$ with the
+  variables $X_1,X_2,\ldots,X_n$, i.e., the linear span of $\alf{X}^*$ with the
   concatenation product, also known as the algebra of noncommutative
   polynomials. 
-			
-			
-			
 			
   For elements $a_1,a_2,\ldots,a_n\in\alg{M}$ and
   $P\in\IC\langle X_1,X_2,\dots,X_n\rangle$ we denote by
   $P(a_1,a_2,\ldots,a_n)$ the evaluation of a polynomial
   $P\in\IC\langle X_1,X_2,\ldots,X_n\rangle$, i.e., the element of $\alg{M}$
   obtained after substituting every $X_i$ with $a_i$ for $i=1,2,\ldots,n$.
-
-  
 \end{notation}
 \begin{definition}
   Fix a noncommutative probability space $(\alg{M},\psi)$.
@@ -1766,6 +1774,11 @@ polynomials, making this setting more suitable for our purposes.
   \[
     \psi_{a_1,a_2,\dots,a_n}(P(X_1,X_2,\ldots,X_n)):=\psi\left(P(a_1,a_2,\ldots,a_n)\right).
   \]
+  A state $\psi:\IC\langle\alf{X}\rangle\to\IC$ is called \emph{free} if
+  the variables $X_i\in\alf{X}$ are free.
+  A pair of states $\phi,\psi:\IC\langle\alf{X}\rangle\to\IC$ is called
+  \emph{c-free} if
+    the variables $X_i\in\alf{X}$ form a c-free family.
 \end{definition}
 \begin{remark}
 %  \label{rem:freealgebra}
@@ -1817,18 +1830,18 @@ polynomials, making this setting more suitable for our purposes.
 
 \subsection{Boolean cumulant functionals and derivations}
 
-It will be important to factor monomials into alternating blocks of ``pure''
-monomials coming from different subalgebras.
+It will be important to factor words into alternating blocks of ``pure''
+words coming from different subalgebras.
 
 \begin{definition}
   The \emph{support} of a polynomial is the set of letters which appear in its
   terms.
-  The \emph{block factorization} of a monomial
-  $W\in \IC \langle X,Y\rangle $ is the (unique) decomposition
-  $W=U_1U_2\cdots  U_n$ into nontrivial monomials $U_i$, each supported either on $X$ alone or on $Y$ alone, alternating between the two.
+  The \emph{block factorization} of a word
+  $W\in \alf{X}$ is the (unique) decomposition
+  $W=W_1W_2\cdots  W_n$ into nontrivial words $W_i$, each supported either on $X$ alone or on $Y$ alone, alternating between the two.
   % are non-constant (i.e. $\eps(U_i)=0$) and are alternating (i.e. $U_i$ and
   % $U_{i+1}$ are from different subalgebras).
-  The  block length of the monomial $W$ is then equal to the number $n$ of blocks. For example the block length of the word $W=X^3Y^2X$ is equal to 3.
+  The  block length of the word $W$ is then equal to the number $n$ of blocks. For example the block length of the word $W=X^3Y^2X$ is equal to 3.
 \end{definition}
 
 
@@ -1847,7 +1860,7 @@ one which operates on blocks, and another which operates in letters.
         \beta^{b,\psi}(W)& = \beta_n^\psi(U_1,U_2,\ldots,U_n)
     \end{aligned}
   \end{equation*}
-  where  $W=U_1U_2\cdots U_n$ is the block factorisation of the monomial $W$.  
+  where  $W=U_1U_2\cdots U_n$ is the block factorisation of the word $W$.  
   Similarly we  define the  \emph{partial block Boolean cumulant functional}
   $\beta^{b,\psi}_X:\IC\langle X,Y\rangle\to\mathbb{C}$ as 
   \begin{align*}
@@ -1968,7 +1981,7 @@ for Boolean cumulants with products as entries.
   Moreover, we need to define an additional derivation to keep track of the variable we are taking derivative with respect to. 
 			
   \begin{definition}[{\cite[Def.~5.4]{LehnerSzpojankowski:2023:freeint1}}]
-    For a subset of variables $\alg{Y} = \{Y_1.\ldots,Y_k\}\subseteq \alg{X}$ define the operator $L_\alg{Y}^*\odot \partial_\alg{Y}:\IC\langle \alg{X}\rangle \to \IC\langle \alg{Y}\rangle \otimes \IC\langle \alg{X}\rangle\otimes \IC\langle \alg{X}\rangle$ by
+    For a subset of variables $\alg{Y} = \{Y_1.\ldots,Y_k\}\subseteq \alf{X}$ define the operator $L_\alg{Y}^*\odot \partial_\alg{Y}:\IC\langle \alf{X}\rangle \to \IC\langle \alg{Y}\rangle \otimes \IC\langle \alf{X}\rangle\otimes \IC\langle \alf{X}\rangle$ by
     \[
       (L_\alg{Y}^*\odot \delta_\alg{Y})(W) = \sum_{i=1}^k Y_j\otimes \partial_{Y_j} W,
     \]
@@ -2520,7 +2533,7 @@ A note on notation:
 The standard notation for the conditional expectation onto a subalgebra
 $\alg{A}$ is $\E_{\alg{A}}$ and when the subalgebra  $\alg{A}$ is generated
 by a single element $a$ we also write $\E_{a}$ 
-Occasionally we write the latter also as $E[x|a]=E_a[x]$,
+Occasionally we write the latter also as $E[u|a]=E_a[u]$,
 for example in Section~\ref{sec:denoising} in order to avoid clumsy expressions like
 $\E_{i[a,b]}$.
 
@@ -2668,17 +2681,17 @@ for $z\in \IC^+$, where the branch of the square root is chosen such that
 $\sqrt{z^2-8}\sim z$ as $z\to\infty$.
 Stieltjes inversion formula and a direct calculation gives 
 \[
-  d\mu^{\varphi}_{i[a,b]}(x)=-\frac{1}{\pi}\frac{(2+\tilde{\eta}_X(s)^2)\sqrt{8-x^2}}{2\tilde{\eta}_X(s)^2
-    x^2-2(\tilde{\eta}_X(s)^2+2)^2}.
+  d\mu^{\varphi}_{i[a,b]}(t)=-\frac{1}{\pi}\frac{(2+\tilde{\eta}_X(s)^2)\sqrt{8-t^2}}{2\tilde{\eta}_X(s)^2
+    t^2-2(\tilde{\eta}_X(s)^2+2)^2}.
 \]
 
 Since it is well known that the distribution of the commutator of a semicircular
 variable and a Bernoulli variable is equal to the free convolution of two
 semicircle distributions of variance one
 (see, e.g., the discussion in \cite[Example~3.12]{HaagerupLarsen} or \cite{NicaSpeicher:1998:commutator} for a general derivation of the distribution of the commutator in free variables),
-we obtain the density $\tfrac{1}{4 \pi}\sqrt{8-x^2}$.
+we obtain the density $\tfrac{1}{4 \pi}\sqrt{8-t^2}$.
 We finally obtain the Radon-Nikodym derivative and the conditional expectation
-\[h(t)=M_a^\psi(s)\frac{d\mu^{\varphi}_{i[a,b]}}{d\mu^{\psi}_{i[a,b]}}=\frac{2(2+\tilde{\eta}_X(s)^2)}{(1-s\tilde{\eta}_X(s))\left((2+\tilde{\eta}_X(s)^2)^2-\tilde{\eta}_X(s)^2 t^2\right)}.\]
+\[h(t)=M_a^\psi(s)\frac{d\mu^{\varphi}_{i[a,b]}}{d\mu^{\psi}_{i[a,b]}}\,(t)=\frac{2(2+\tilde{\eta}_X(s)^2)}{(1-s\tilde{\eta}_X(s))\left((2+\tilde{\eta}_X(s)^2)^2-\tilde{\eta}_X(s)^2 t^2\right)}.\]
 Extracting the first few coefficients from the generating function we obtain
 the conditional moments
 \begin{align*}
@@ -2771,7 +2784,7 @@ a subalgebra and $L^2(\alg{M})_r$ and $L^2(\alg{A})_r$  the right $L^2$-spaces,
 i.e., the respective completions
 of $\alg{M}$ and $\alg{A}$ with respect to the scalar product
 \begin{equation*}
-  \langle x,y\rangle  = \varphi(xy^*)
+  \langle u,v\rangle  = \varphi(xv^*)
   .
 \end{equation*}
 Then the orthogonal projection $\rE_{\alg{A}}:L^2(\alg{M},\varphi)_r\to L^2(\alg{A},\varphi)_r$ exists
@@ -2781,7 +2794,7 @@ Similarly,
 the left Hilbert spaces $L^2(\alg{M},\varphi)_l$ and $L^2(\alg{A},\varphi)_l$
 are obtained from the scalar product
 \begin{equation*}
-  \langle x,y\rangle  = \varphi(y^*x)
+  \langle u,v\rangle  = \varphi(v^*u)
 \end{equation*}
 and the projection  $\lE_{\alg{A}}:L^2(\alg{M},\varphi)_l\to L^2(\alg{A},\varphi)_l$ satisfies
 the left module property $\lE_{\alg{A}}[au]=a\lE_{\alg{A}}[u]$.
@@ -2914,19 +2927,19 @@ the left and right conditional expectations coincide with the free one.
 \begin{proposition}
   Let $f$ be a strictly positive function on the spectrum of $a$
   such that $\psi(f(a))=1$.
-  Then the state $\varphi(x)=\psi(f(a)x)$ is faithful
+  Then the state $\varphi(u)=\psi(f(a)u)$ is faithful
   and  the right quasi-conditional expectation $\rE_a^{\varphi}$ coincides with
   the free conditional expectation $E^{\psi}_a$.
 \end{proposition}
 \begin{proof}
   Indeed,
   \begin{align*}
-    \varphi\bigl(E_a^\psi[x]g(a)\bigr)
-    &=     \psi\bigl(f(a)E_a^\psi[x]g(a)\bigr)\\
-    &=     \psi(f(a)xg(a))\\
-    &=     \varphi(xg(a))
+    \varphi\bigl(E_a^\psi[u]g(a)\bigr)
+    &=     \psi\bigl(f(a)E_a^\psi[u]g(a)\bigr)\\
+    &=     \psi(f(a)ug(a))\\
+    &=     \varphi(ug(a))
   \end{align*}
-  and therefore $\rE^\varphi_a[x] = E_a^\psi[x]$.  
+  and therefore $\rE^\varphi_a[u] = E_a^\psi[u]$.  
 \end{proof}
 \begin{remark}
 This does not contradict \eqref{eq:rEab} as we have $\varphi(b)=\psi(b)$ when
@@ -3025,8 +3038,7 @@ of products of marginal moments.
   evaluated on free elements in von Neumann algebras.
   \begin{proposition}[\cite{LehnerSzpojan}]
     \label{prop:freecondexpX}
-    Assume that $\psi$ is a state on $\IC\langle X,Y\rangle$ such that $X$ and
-    $Y$ are free.
+    Assume that $\psi$ is a free state on $\IC\langle X,Y\rangle$.
     Given a word  in block-factorization $W=X_0Y_1X_1Y_2\dotsm X_{n-1}Y_nX_n$
     (with $X_0$ and $X_n$ possible being empty),
     we define the linear map $\E^\psi_X:\IC \langle X,Y \rangle\to \IC \langle X \rangle$
@@ -3040,9 +3052,9 @@ of products of marginal moments.
     \sum_{p=0}^{n-1}\sum_{0=i_0 < i_1<i_2<\dots< i_{p+1}= n}
     X_{0}X_{i_1}\dotsm X_{i_{p}}X_n\prod_{j=0}^p \beta^\psi_{2(i_{j+1}-i_j)-1}(Y_{i_j+1},X_{i_j+1},\ldots, Y_{i_{j+1}}).        
       \end{multline}      
-%    where $Y_1,\ldots,Y_n$ are non-constant monomials in $Y$,
+%    where $Y_1,\ldots,Y_n$ are non-constant words in $Y$,
 %    $X_0$ and $X_n$ are possibly constant
-%    and $X_1,X_2,\ldots,X_{n-1}$ are non-constant monomials in $X$
+%    and $X_1,X_2,\ldots,X_{n-1}$ are non-constant words in $X$
     Then $E_X^\psi$ is  a conditional expectation with respect to the state $\psi$,
     i.e., it has the bimodule property $E_X^\psi[X_0WX_n]=X_0E_X^\psi[W]X_n$
     and preserves the state $\psi$.
@@ -3081,7 +3093,7 @@ where $W_j=Y_{i_j+1}X_{i_j+1}\dotsm Y_{i_{j+1}}$.
 
 The main tool in \cite{LehnerSzpojankowski:2023:freeint1} is the following
 recurrence for the conditional expectation $E_X^\psi$, when evaluated on
-monomials starting and ending in $Y$, i.e., when $X_0=X_n=1$ in formula 
+words starting and ending in $Y$, i.e., when $X_0=X_n=1$ in formula 
 \eqref{eq:Epsi:full} above:
 \begin{equation}
   \label{eq:Epsi:recurrence}
@@ -3121,14 +3133,14 @@ and $\beta_Y^{b,\psi}$ in terms of partial deconcatenations.
 
 \begin{theorem}[{\cite[Thm.~4.12]{LehnerSzpojankowski:2023:freeint1}}]
  % \label{thm:FreeIntCalc4.12}
-  For any monomial $W\in\IC\langle X,Y\rangle$  the following recurrence relations hold:
+  For any polynomial $P\in\IC\langle X,Y\rangle$  the following recurrence relations hold:
   \begin{equation} 
     \label{eq:condexprec}
     \begin{aligned}
-      \E_{X}^\psi[W] &= \bbetas{\psi}{Y}(W)
-      + (\bbetas{\psi}{Y}\otimes \E^\psi_{X}) [\rdelta_{X}(W)]\\
-      &= \bbetas{\psi}{Y}(W) + 
-      (\E^\psi_{X}\otimes\bbetas{\psi}{Y})[\ldelta_{X}(W)].
+      \E_{X}^\psi[P] &= \bbetas{\psi}{Y}(P)
+      + (\bbetas{\psi}{Y}\otimes \E^\psi_{X}) [\rdelta_{X}(P)]\\
+      &= \bbetas{\psi}{Y}(P) + 
+      (\E^\psi_{X}\otimes\bbetas{\psi}{Y})[\ldelta_{X}(P)].
     \end{aligned}
   \end{equation}
 \end{theorem}
@@ -3138,13 +3150,13 @@ and $\beta_Y^{b,\psi}$ in terms of partial deconcatenations.
   For the multivariate version of the previous theorem
   the corresponding partial divided power derivations are given by 
   \begin{align*}
-    \rdelta_{\alg{X}}(P) &= \sum (1\otimes X_i)\partial_{X_i}(P),
+    \rdelta_{\alf{X}}(P) &= \sum (1\otimes X_i)\partial_{X_i}(P),
     \\
-    \ldelta_{\alg{X}}(P) &= \sum \partial_{X_i}(P)(X_i\otimes 1),
+    \ldelta_{\alf{X}}(P) &= \sum \partial_{X_i}(P)(X_i\otimes 1),
   \end{align*}
   for any $P\in \mathbb{C}\langle \alg{S}\rangle$, where the alphabet is
-  $\alg{S}=\alg{X}\cup\alg{Y}$
-  and the sums run over the letters  $X_i\in\alg{X}$.
+  $\alg{S}=\alf{X}\cup\alg{Y}$
+  and the sums run over the letters  $X_i\in\alf{X}$.
 \end{remark}
 
 
@@ -3204,9 +3216,8 @@ for $\rE_X^\varphi$ like \eqref{eq:Epsi:full} and rather have to rely on an
 analogue of the recurrence \eqref{eq:condexprec} for its definition.
 \begin{theorem} 
   \label{thm:rEphi:recurrence}
-  Assume that  $X$ and $Y$ are $c$-free
-  with respect to the pair of states $(\varphi,\psi)$
-  on $\IC\langle X,Y\rangle$.
+  Assume that  the pair of states $(\varphi,\psi)$ 
+  on $\IC\langle X,Y\rangle$ is c-free.
   Then the following recurrence defines a right quasi-conditional expectation
   for $\varphi$
   onto the subalgebra $\IC\langle X \rangle$:
@@ -3245,9 +3256,9 @@ analogue of the recurrence \eqref{eq:condexprec} for its definition.
     where $\bubbetas{\varphi}{}=\bbetas{\varphi}{}-\epsilon_0$ and $L_X$ is the left annihilation operator, i.e., 
     \[
       L_X(W) = \begin{cases}
-        0 & \text{if $W=1$ or $W=YW'$ for some $W'\in \alg{M}$} 
+        0 & \text{if $W=1$ or $W=YW'$ for some word $W'$} %\in \alf{X}^*$} 
         \\
-        W' & \text{if $W=XW'$}
+        W' & \text{if $W=XW'$ for some word $W'$} %\in \alf{X}^*$} 
       \end{cases}
     \]
   \end{enumerate}
@@ -3257,7 +3268,7 @@ analogue of the recurrence \eqref{eq:condexprec} for its definition.
   \begin{enumerate}[label=(\roman*)]
    \item []
    \item Note that for possible lack of faithfulness of the state $\varphi$ this conditional
-    expectation is not necessarily unique, however it is well-defined.
+    expectation is not necessarily unique, yet it is well-defined.
    \item
     Given a word in block factorization,
     it is not difficult to see that
