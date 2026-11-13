@@ -1,7 +1,7 @@
 \documentclass[12pt]{amsart}
 \usepackage{svn}
 % svn propset svn:keywords 'Revision' cfreeintegral.tex
-\SVN $Revision: 182 $
+\SVN $Revision: 183 $
 
 \usepackage{amssymb,amsthm,amsmath,amsfonts}
 \usepackage{graphicx}
@@ -481,7 +481,7 @@ KSz: This research was funded in part by National Science Centre, Poland WEAVE-U
 
 
 
-%\usepackage{refcheck}
+\usepackage{refcheck}
 
 \begin{document}
 \date{Rev. \SVNRevision, \today}
@@ -690,7 +690,7 @@ We will assume throughout that the second state $\psi$ is tracial.
 
 
 
-\begin{definition}\label{def:2.2}
+\begin{definition}
   \begin{enumerate}[label=(\roman*)]
    \item []
    \item 
@@ -788,7 +788,7 @@ This is even more true for non-commuting ones. In the present paper we will deal
 \end{notation}
 
 % DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
-\begin{definition}\label{def:cumulants}
+\begin{definition}%\label{def:cumulants}
   \begin{enumerate}[label=(\roman*)]
    \item []
    \item 
@@ -796,9 +796,16 @@ This is even more true for non-commuting ones. In the present paper we will deal
   functionals $(\beta^\psi_n)_{n\in\IN}$,
   $(r^\psi_n)_{n\in\IN}$,
   called \emph{Boolean} and \emph{free} cumulants:
-\begin{align}
-\psi(a_1a_2\dotsm a_n)&=\sum_{\sigma \in \IntPart(n)}\beta^\psi_{\sigma}(a_1,a_2,\ldots,a_n),\label{eq:mcboolean}\\
-\psi(a_1a_2\dotsm a_n)&=\sum_{\sigma \in  \NC(n)}r^\psi_{\sigma}(a_1,a_2,\ldots,a_n).\label{eq:mcfree}
+  \begin{align}
+  \psi(a_1a_2\dotsm a_n)
+  &=\sum_{\sigma \in \IntPart(n)}\beta^\psi_{\sigma}(a_1,a_2,\ldots,a_n),
+  % \label{eq:mcboolean}
+    \nonumber
+  \\
+  \psi(a_1a_2\dotsm a_n)
+  &=\sum_{\sigma \in \NC(n)}r^\psi_{\sigma}(a_1,a_2,\ldots,a_n).
+                        %\label{eq:mcfree}
+    \nonumber
 \end{align}
 \item 
 	Let $(\mathcal{M},\varphi,\psi)$ be a two-state noncommutative probability space. The following identity uniquely determines the family of \emph{$c$-free cumulants}: $(r_{n}^{\varphi,\psi})_{n\in\mathbb{N}}$
@@ -1080,10 +1087,10 @@ cumulants.
 	Let $(\alg{M},\psi)$ be a noncommutative probability space and
         $(r^\psi_n)_{n\geq1},(\beta_n^\psi)_{n\geq1}$ be the sequences of free
         and Boolean cumulant functionals, respectively. Then
-	\begin{equation}
-		\label{eq:betarho=sumNCirrpi}
+	\begin{equation*}
+%		\label{eq:betarho=sumNCirrpi}
 		\beta_\rho^\psi(a_1,a_2,\dots,a_n) = \sum_{\pi\ll\rho}    r_\pi^\psi(a_1,a_2,\dots,a_n)
-	\end{equation}
+	\end{equation*}
 	for every $n\geq1$, $\rho\in \NC(n)$ and $a_1,a_2,\ldots,a_n\in \alg{M}$.
 \end{proposition}
 
@@ -1241,11 +1248,11 @@ has its natural analogue for Boolean cumulants
 It is again a consequence of Lemma~\ref{lem:closure},
 this time the closure operator being $c(\pi)=\pi\vee\rho$.
 \begin{proposition}
-  \label{prop:boolprod}
+%  \label{prop:boolprod}
   Let $a_1,a_2,\dots,a_n\in \alg{A}$ be random variables
   then
   \begin{equation}
-    \label{eq:BoolProd}
+   \label{eq:BoolProd}
     \beta_{m+1}(a_1a_2\cdots a_{d_1},a_{d_1+1}a_{d_1+2}\cdots a_{d_2},\ldots,a_{d_{m}+1}a_{d_{m}+2}\cdots a_{n})
     =\sum_{\substack{\pi \in \IntPart(n)\\ \pi \vee \rho=1_n}}\beta_\pi(a_1,a_2,\ldots,a_n),
   \end{equation}
@@ -1263,7 +1270,7 @@ this time the closure operator being $c(\pi)=\pi\vee\rho$.
 The expansion \eqref{eq:BoolProd} has the following recursive reformulation
 \cite{LehnerSzpojankowski:2023:freeint1}.
 \begin{corollary}
-  \label{cor:RecursiveBoolProd}
+%  \label{cor:RecursiveBoolProd}
   Let $a_1,a_2,\dots,a_n\in \alg{A}$ be random variables.
   Given an  interval partition
   $\rho=\{\{1,\ldots,d_1\},\{d_1+1,\ldots,d_2\},\ldots,\{d_{m-1}+1,\ldots,n\}\}\in
@@ -1536,7 +1543,7 @@ The above proposition is crucial in the proof of the characterization of $c$-fre
   In the free case we have
   \cite[Proposition~3.1]{SzpojankowskiWesolowski:2020:conditional}
   \begin{align}
-    \label{eq:VNRPpsi:pic}
+%    \label{eq:VNRPpsi:pic}
     \beta^\psi(a_0,b_1,a_1,\dots,b_n,a_n)
     &=
       \sum
@@ -1559,6 +1566,7 @@ The above proposition is crucial in the proof of the characterization of $c$-fre
         \node at (4,0.0){$\cdots$};
         \paczek{6,0.0}{\beta^\psi}
       \end{tikzpicture}
+      \nonumber
     \\
     \intertext{
     and the $c$-free generalization \eqref{eq:VNRP:cfree}
@@ -1722,7 +1730,8 @@ polynomials, making this setting more suitable for our purposes.
 		
 \subsection{Noncommutative polynomials and formal power series}
 \label{ssec:nc_polynomials}
-\begin{notation}\label{notation:nc_polynomials}
+\begin{notation}
+  %\label{notation:nc_polynomials}
   Let $\alg{X}=\{X_1,X_2,\ldots,X_n\}$ be an alphabet, i.e.~a set of letters.
   We denote by 
   \[
@@ -1759,7 +1768,7 @@ polynomials, making this setting more suitable for our purposes.
   \]
 \end{definition}
 \begin{remark}
-  \label{rem:freealgebra}
+%  \label{rem:freealgebra}
   \begin{enumerate}[label=\arabic*., leftmargin=2em]
    \item []
    \item 
@@ -1826,18 +1835,18 @@ monomials coming from different subalgebras.
 We can now define two kinds of linear functionals related to Boolean cumulants,
 one which operates on blocks, and another which operates in letters. 
 \begin{definition}
-  \label{def:blockcumulant}
+%  \label{def:blockcumulant}
    The \emph{block Boolean cumulant functional} is the linear functional
   $\beta^{b,\psi}:\IC\langle  X,Y\rangle\to\mathbb{C}$
   determined by the following values on the monomial basis:
-  \begin{equation}
-    \label{eq:blockbeta}
+  \begin{equation*}
+%    \label{eq:blockbeta}
     \begin{aligned}
       \beta^{b,\psi}(1)&=1\\
     % \beta^{b,\psi}(U_1U_2\cdots U_n) = \beta_n^\psi(U_1,U_2,\ldots,U_n)
         \beta^{b,\psi}(W)& = \beta_n^\psi(U_1,U_2,\ldots,U_n)
     \end{aligned}
-  \end{equation}
+  \end{equation*}
   where  $W=U_1U_2\cdots U_n$ is the block factorisation of the monomial $W$.  
   Similarly we  define the  \emph{partial block Boolean cumulant functional}
   $\beta^{b,\psi}_X:\IC\langle X,Y\rangle\to\mathbb{C}$ as 
@@ -1861,13 +1870,13 @@ For example we have $\beta^{b,\psi}_X(X^3Y^2X)=\beta_3^{\psi}(X^3,Y^2,X)$.
   The   \emph{letter-wise Boolean cumulant functional} is the linear functional
   $\beta^{\delta,\psi}:\alg{M}\to \IC$
   determined by the following values on the monomial basis:
-  \begin{equation}
-    \label{eq:betaDelta}
+  \begin{equation*}
+%    \label{eq:betaDelta}
     \begin{aligned}
       \beta^{\delta,\psi}(1) &= 1 \\
     \beta^{\delta,\psi}(Z_1Z_2\cdots Z_k) &= \beta^\psi_k(Z_1,Z_2,\ldots,Z_k),
     \end{aligned}
-  \end{equation}
+  \end{equation*}
   where $Z_i\in \{X,Y\}$ for $1\leq i\leq k$.
   In a similar way to $\bbetas{\psi}{X}$, we define the
   \emph{partial letter-wise Boolean cumulant functional}
@@ -2320,7 +2329,7 @@ satisfy the fixed point equation featuring in the following Proposition.
   Assume that $X$ and $Y$ are $c$-free in the two-state noncommutative
   probability space $(\mathbb{C}\langle X,Y\rangle,\varphi,\psi)$.
   Given matrices  $A,B\in M_N(\mathbb{C})$,
-  denote by $\bPsi = \bigl(I - z(AX+BY)\bigr)^{-1}$ the resolvent and let
+  denote the resolvent by $\bPsi = \bigl(I - z(AX+BY)\bigr)^{-1}$  and let
   \begin{align}
     H_X & :=\bbetas{\psi}{X}(\bPsi),
     &
@@ -2363,12 +2372,12 @@ satisfy the fixed point equation featuring in the following Proposition.
     H_Y^\varphi & :=\bbetas{\varphi}{Y}(\bPsi), 
   \end{align*}
   satisfy the identities
-  \begin{align}
-    \label{eq:HXphi=1-zBFXphi}
+  \begin{align*}
+%    \label{eq:HXphi=1-zBFXphi}
     H_X^\varphi &=  (I-zAF_X^\varphi)^{-1},\\
-    \label{eq:HYphi=I-zAFXphi}
+%    \label{eq:HYphi=I-zAFXphi}
     H_Y^\varphi &=  (I-zBF_Y^\varphi)^{-1},
-  \end{align}
+  \end{align*}
   similar to the identities   \eqref{eq:HAdditive}
   and   \eqref{eq:HYAdditive} satisfied by $H_X$ and $H_Y$,
   however they are not needed because we can obtain
@@ -2415,36 +2424,7 @@ satisfy the fixed point equation featuring in the following Proposition.
 \end{proof}
 
 
-\begin{comment}
-  \phantom{x}
-  \subsubsection{Equations}
-  \begin{align}
-    H_X & =\bbetas{\psi}{X}(\bPsi) &
-                                     F_X & =\fbetas{\psi}{X}(X\bPsi) &
-                                                                       F_X^\varphi & =\fbetas{\varphi}{X}(X\bPsi) \\
-    H_Y & =\bbetas{\psi}{Y}(\bPsi)
-                                   &
-                                     F_Y & =\fbetas{\psi}{Y}(Y\bPsi) &
-                                                                       F_Y^\varphi & =\fbetas{\varphi}{Y}(Y\bPsi) 
-  \end{align}
-  Then by the product formula
-  \begin{align}
-    H_X &= \bbetas{\psi}{X}(\bPsi) = (I-zBF_X)^{-1}\\
-    H_Y &= \bbetas{\psi}{Y}(\bPsi) = (I-zAF_Y)^{-1}\\
-    H_X^\varphi &= \bbetas{\varphi}{X}(\bPsi) = (I-zBF_X^\varphi)^{-1}\\
-    \label{eq:HYphi=I-zAFXphi}
-    H_Y^\varphi &= \bbetas{\varphi}{Y}(\bPsi) = (I-zAF_Y^\varphi)^{-1}
-  \end{align}
-  \adrian{I think $H_X$ and $H_Y$ are swapped}
-  and by VNRP
-  \begin{align}
-    % F_X &= \tilde{\eta}^\psi_X(zH_YA)\\
-    % F_Y &= \tilde{\eta}^\psi_Y(zH_XB)\\
-    F_X^\varphi &= \tilde{\eta}^\varphi_X(zH_YA)\\
-    F_Y^\varphi &= \tilde{\eta}^\varphi_Y(zH_XB)
-  \end{align}
-\end{comment}
-		
+%\input{del/formulas}		
 		
 		
 The solutions of the previous fixed point equations can now be used to
@@ -2459,11 +2439,11 @@ as shown in the next theorem.
   Assume moreover that the resolvent of a given polynomial $P \in
   \mathbb{C}\langle X,Y\rangle$ of degree $m$ has a linearization given by
   $\Psi= \Psi(z) = (1-z^mP)^{-1} = u^t\bPsi v$, where $\bPsi=\bPsi(z) = \bigl(I-z(AX+BY)\bigr)^{-1}$, with $A=A(z),B=B(z)\in M_N(\mathbb{C}[z])$ and $u,v\in \mathbb{C}^N$. Then
-  \begin{equation}
+  \begin{equation*}
     M^\varphi_{AX+BY}(z):=\varphi(\bPsi)
     = (I-zAF^\varphi_X(z)-zBF_Y^\varphi(z))^{-1}
-    \label{eq:AX+BY:phi(Psi)}
-  \end{equation} and
+%    \label{eq:AX+BY:phi(Psi)}
+  \end{equation*} and
   consequently
   \[M^{\varphi}_{P(X,Y)}(z^m)=u^t M^\varphi_{AX+BY}(z) v.\]
 \end{theorem}
@@ -2775,7 +2755,7 @@ by purely algebraic means.
 
 
 \subsection{Left and right quasi-conditional expectations}
-\label{ssec:ExistenceCondExp}
+%\label{ssec:ExistenceCondExp}
 From a technical point of view,
 the computation of the conditional expectation
 of an element $u\in\alg{M}$
@@ -2867,9 +2847,9 @@ not hold for the right  quasi-conditional expectation and vice versa.
     = a\psi(b) + \varphi(a)(\varphi(b)-\psi(b))1_\alg{M}
   \end{equation}
   and the difference
-  \begin{equation}
+  \begin{equation*}
     \rE^\varphi_\alg{A}[ab]- a\rE^\varphi_\mathcal{A}[b] = (a-\varphi(a)1_\alg{M})(\psi(b)-\varphi(b))
-  \end{equation}
+  \end{equation*}
 %  \begin{equation}
 %  \begin{aligned}
 %    \rE^\varphi_\alg{A}[ab]
@@ -3140,7 +3120,7 @@ and $\beta_Y^{b,\psi}$ in terms of partial deconcatenations.
 % The algebraic formulation of the recursive relations between $\E^\psi_X$ and $\beta_Y^{b,\psi}$ is given below.
 
 \begin{theorem}[{\cite[Thm.~4.12]{LehnerSzpojankowski:2023:freeint1}}]
-  \label{thm:FreeIntCalc4.12}
+ % \label{thm:FreeIntCalc4.12}
   For any monomial $W\in\IC\langle X,Y\rangle$  the following recurrence relations hold:
   \begin{equation} 
     \label{eq:condexprec}
@@ -3157,11 +3137,11 @@ and $\beta_Y^{b,\psi}$ in terms of partial deconcatenations.
   %If one is interested in stating
   For the multivariate version of the previous theorem
   the corresponding partial divided power derivations are given by 
-  \begin{align}
+  \begin{align*}
     \rdelta_{\alg{X}}(P) &= \sum (1\otimes X_i)\partial_{X_i}(P),
     \\
     \ldelta_{\alg{X}}(P) &= \sum \partial_{X_i}(P)(X_i\otimes 1),
-  \end{align}
+  \end{align*}
   for any $P\in \mathbb{C}\langle \alg{S}\rangle$, where the alphabet is
   $\alg{S}=\alg{X}\cup\alg{Y}$
   and the sums run over the letters  $X_i\in\alg{X}$.
@@ -3197,7 +3177,7 @@ the right module property.
   properties: 
   \begin{enumerate}[label=(\roman*)]
    \item
-    \label{def:it:invariance}
+%    \label{def:it:invariance}
     \emph{Invariance.}
     For every polynomial $P(X,Y)\in \C\langle X,Y\rangle$ we have
     \[\varphi(\E[P(X,Y) ])=\varphi(P(X,Y)).\] 
@@ -3359,9 +3339,9 @@ to the free conditional expectation
 and is the key to the proof of the preceding theorem.
 \begin{lemma}
   If $W\in \C\langle X,Y\rangle$ is a monomial starting with $X$,  then
-  \begin{equation}
+  \begin{equation*}
     \varphi(\E^\psi_X[W]) = \bbetas{\varphi}{}(W) + \bigl(\bbetas{\varphi}{}\otimes(\varphi\circ \E^\psi_X)\bigr)[\rdelta_YW];
-  \end{equation}
+  \end{equation*}
   that is, if $X_0,X_1,\ldots,X_n$ are non-constant monomials in $X$ and $Y_0,Y_1,\ldots,Y_n$ are non-constant monomials in $Y$, then
   \begin{equation}
     \label{eq:phi(EpsiX(X0Y1X1))}
@@ -3724,18 +3704,21 @@ E_X^\psi[WX] +
     \rE_{X}^\varphi[W] = \bigl(\beta_Y^{b,\varphi}\otimes \rE_X^{\varphi} \bigr)[1\otimes W].
   \]
   In particular, if we write $\bubbetas{\varphi}{Y} = \bbetas{\varphi}{Y} - \epsilon_0$, we have that
-  \begin{equation}
-    \label{eq:monomialX}
+  \begin{equation*}
+%    \label{eq:monomialX}
     0 = \bubbetas{\varphi}{Y}(W) + \bigl( \bubbetas{\varphi}{Y} \otimes \rE_X^\varphi \bigr)[\rdelta_XW].
-  \end{equation}
+  \end{equation*}
   On the other hand, from \eqref{eq:rEphiX[XW]:rec} we observe that for any $W\in \alg{M}$:
-  \begin{align}
+  \begin{align*}
     \IE_X^\psi[W] +
     \bigl(\bbetas{\varphi}{X}\otimes(\rE^\varphi_X-\IE_X^\psi)\bigr)[\rdelta_YW]
-    \nonumber
+%    \nonumber
     &= 
-      \bigl(\bubbetas{\varphi}{X}\otimes(\rE^\varphi_X-\IE_X^\psi)\bigr)[\rdelta_YW] + (\epsilon_0\otimes \rE_X^\varphi)[\rdelta_YW] \\ &\phantom{xxx}+\IE_X^\psi[W]- (\epsilon_0\otimes \IE_X^\psi)[\rdelta_YW].\label{eq:monomialY}
-  \end{align}
+      \bigl(\bubbetas{\varphi}{X}\otimes(\rE^\varphi_X-\IE_X^\psi)\bigr)[\rdelta_YW]
+      + (\epsilon_0\otimes \rE_X^\varphi)[\rdelta_YW] \\
+    &\phantom{xxx}+\IE_X^\psi[W]- (\epsilon_0\otimes \IE_X^\psi)[\rdelta_YW].
+%      \label{eq:monomialY}
+  \end{align*}
   Now, from the definition of $\rdelta_YW$ it is easy to see that
   \[
     (\epsilon_0\otimes \rE^\varphi_X)[\rdelta_YW]
@@ -3802,12 +3785,13 @@ The following result from \cite{LehnerSzpojankowski:2023:freeint1} explains how 
   $\bPsi = (I - z(AX+BY))^{-1}$ 
   is given by 
   \begin{align}
-    \label{eq:EpsiX[Psi]=bbetapsi1}
+%    \label{eq:EpsiX[Psi]=bbetapsi1}
     \IE^\psi_X[\bPsi]
     &= \bigl(
       I-z\bbetas{\psi}{Y}(\bPsi)AX
       \bigr)^{-1}
       \bbetas{\psi}{Y}(\bPsi)
+      \nonumber
     \\
     \label{eq:EpsiX[Psi]=bbetapsi2}
     &= \bbetas{\psi}{Y}(\bPsi)
@@ -3934,14 +3918,14 @@ The last theorem of this section generalizes Proposition~\ref{prop:6.13} to the 
     \bigl(I+z\bbetas{\varphi}{Y}(Y\bPsi)B\bigr)  \rE^\varphi_X[Y\bPsi] = \bbetas{\varphi}{Y}(Y\bPsi)    \rE^\varphi_X[\bPsi]
   \end{equation*}
   and therefore
-  \begin{equation}
-    \label{eq:AX+BY:rEphiX[YPsi]}
+  \begin{equation*}
+%    \label{eq:AX+BY:rEphiX[YPsi]}
     \rE^\varphi_X[Y\bPsi] =  
     \bigl(
     I+z\bbetas{\varphi}{Y}(Y\bPsi)B
     \bigr)^{-1}
     \bbetas{\varphi}{Y}(Y\bPsi)    \rE^\varphi_X[\bPsi].
-  \end{equation}
+  \end{equation*}
   Furthermore, the previous equation implies that
   \begin{align*}
     zB  \rE^\varphi_X[Y\bPsi]
@@ -4277,9 +4261,9 @@ The last theorem of this section generalizes Proposition~\ref{prop:6.13} to the 
 \begin{remark}
   By using \eqref{eq:EpsiX[Psi]=bbetapsi2}, we can write \eqref{eq:AX+BY:rEphiX[Psi]=bbeta*res}
   as
-  \begin{align}
+  \begin{equation*}
     \rE_X^\varphi[\bPsi]
-    &= \bbetas{\varphi}{Y}(\bPsi)
+    = \bbetas{\varphi}{Y}(\bPsi)
       \bigl(
       I - \bubbetas{\varphi}{X}(\bPsi)
       \bubbetas{\varphi}{Y}(\bPsi)
@@ -4292,107 +4276,29 @@ The last theorem of this section generalizes Proposition~\ref{prop:6.13} to the 
       \bigr)
       \bbetas{\psi}{Y}(\bPsi)^{-1}
       E^\psi_X[\bPsi]
-      \label{eq:AX+BY:rEphX[Psi]=prefactorEpsiX[Psi]}.    
-  \end{align}
+%      \label{eq:AX+BY:rEphX[Psi]=prefactorEpsiX[Psi]}.    
+  \end{equation*}
 \end{remark}
 
-\begin{comment}
-  \marginpar{notes p.761}
-  Consider now the first two factors of
-  \eqref{eq:AX+BY:rEphX[Psi]=prefactorEpsiX[Psi]}:
-  \begin{align*}
-    \bbetas{\varphi}{Y}(\bPsi)
-    \bigl(
-    I - \bubbetas{\varphi}{X}(\bPsi)
-    \bubbetas{\varphi}{Y}(\bPsi)
-    \bigr)^{-1}
-    &= \Bigl(       \bigl(
-      I - \bubbetas{\varphi}{X}(\bPsi)
-      \bubbetas{\varphi}{Y}(\bPsi)
-      \bigr)
-      \bbetas{\varphi}{Y}(\bPsi)^{-1}
-      \Bigr)^{-1}
-    \\
-    &= \bigl(
-      \bbetas{\varphi}{Y}(\bPsi)^{-1}
-      - \bubbetas{\varphi}{X}(\bPsi)
-      (\bbetas{\varphi}{Y}(\bPsi)-I)
-      \bbetas{\varphi}{Y}(\bPsi)^{-1}
-      \bigr)^{-1}
-    \\
-    &= \bigl(
-      \bbetas{\varphi}{Y}(\bPsi)^{-1}
-      - \bubbetas{\varphi}{X}(\bPsi)
-      +\bubbetas{\varphi}{X}(\bPsi)
-      \bbetas{\varphi}{Y}(\bPsi)^{-1}
-      \bigr)^{-1}
-    \\
-    &= \bigl(
-      \bbetas{\varphi}{X}(\bPsi)
-      \bbetas{\varphi}{Y}(\bPsi)^{-1}
-      - \bubbetas{\varphi}{X}(\bPsi)
-      \bigr)^{-1}
-    \\
-    &= \bigl(
-      \bbetas{\varphi}{X}(\bPsi)
-      (I - zF_X^\varphi(z) A - zF_Y^\varphi(z) B)
-      \bigr)^{-1}\\
-    &= M^\varphi_{AX+BY}(z) \bbetas{\varphi}{X}(\bPsi)^{-1}
-  \end{align*}
-  \adrian{why $F_Y(z)B$ instead of $BF_Y(z)$?}because by   \eqref{eq:HYphi=I-zAFXphi}
-  we have
-  \begin{equation*}
-    \bbetas{\varphi}{Y}(\bPsi)^{-1}
-    = I - zAF_X^\varphi(z) 
-  \end{equation*}
-  and
-  \begin{align*}
-    \bubbetas{\varphi}{X}(\bPsi)
-    &= \bbetas{\varphi}{X}(\bPsi) - I\\
-    &= (I-zBF_Y^\varphi(z))^{-1} - I\\
-    &= (I-zBF_Y^\varphi(z))^{-1}zBF_Y^\varphi(z)\\
-    &= \bbetas{\varphi}{X}(\bPsi)zBF_Y^\varphi(z)
-      .
-  \end{align*}
-\end{comment}
+%\input{del/notes761}
 
 \begin{proposition}
   With the notation and hypotheses of Theorem~\ref{thm:cfreeConvolution}, we have
-  \begin{equation}
+  \begin{align*}
     \varphi(E^\psi_X[\bPsi])
-    = (I-zAF^\varphi_X(z)-zBF_Y(z))^{-1}
-    \label{eq:AX+BY:phi(rEphiX[Psi])=MAFX}.
-  \end{equation}
-  As a consequence we obtain
-  \begin{align}
+    &= (I-zAF^\varphi_X(z)-zBF_Y(z))^{-1}
+    % \label{eq:AX+BY:phi(rEphiX[Psi])=MAFX}.
+    \\
+\intertext{and   as a consequence we obtain}
     \rE_X^\varphi[\bPsi]
     &= M^\varphi_{AX+BY}(z)\varphi(E^\psi_X[\bPsi])^{-1}E^\psi_X[\bPsi].
-      \label{eq:AX+BY:rEphiX[Psi]=MAX+BY}       
-  \end{align}
+    %  \label{eq:AX+BY:rEphiX[Psi]=MAX+BY}       
+  \end{align*}
   
 \end{proposition}
 
-\begin{comment}
-  \subsection{Alternative calculation}
-  \subsubsection{Equations}
-  \begin{align}
-    F_X & =\fbetas{\psi}{X}(X\bPsi) &
-                                      F_Y(z) & =\fbetas{\psi}{Y}(X\bPsi) \\
-    F_X^\varphi(z) & =\fbetas{\varphi}{X}(X\bPsi) &
-                                                 F_Y^\varphi(z) & =\fbetas{\varphi}{Y}(Y\bPsi) \\
-    \bbetas{\psi}{X}(\bPsi) &= (I-zAF_X)^{-1} &
-                                                \bbetas{\psi}{Y}(\bPsi) &= (I-zBF_Y(z))^{-1} \\
-    \bubbetas{\psi}{X}(\bPsi) &= (I-zAF_X)^{-1}zAF_X &
-                                                       \bubbetas{\psi}{Y}(\bPsi) &= (I-zBF_Y(z))^{-1}zBF_Y(z) \\
-    \bbetas{\varphi}{X}(\bPsi) &= (I-zAF_X^\varphi(z))^{-1} &
-                                                           \bbetas{\varphi}{Y}(\bPsi) &= (I-zBF_Y^\varphi(z))^{-1} \\
-    \bubbetas{\varphi}{X}(\bPsi) &= (I-zAF_X^\varphi(z))^{-1}zAF_X^\varphi(z) &
-                                                                          \bubbetas{\varphi}{Y}(\bPsi) &= (I-zBF_Y^\varphi(z))^{-1}zBF_Y^\varphi(z) \\
-    E^\psi_X[\bPsi]
-        &= \bbetas{\psi}{Y}(\bPsi)(I-zAX\bbetas{\psi}{Y}(\bPsi))^{-1}\\
-        &= (I-zAX-zBF_Y(z))^{-1}
-  \end{align}
-\end{comment}
+
+%\input{del/notes761alt}
 
 
 %\franz{notes p.762}
@@ -4540,23 +4446,25 @@ by purely algebraic means.
   % subsubsection{$\rE^\psi_X[\bPsi]$}
   Now, we look at the factor $\E_X^\psi[\bPsi]$ in the right-hand side of the above equation. The free recurrence \eqref{eq:condexprec} together
   with   \eqref{eq:XY:EpsiX[YPsi]} yields
-  \begin{align}
+  \begin{align*}
     E^\psi_X[\bPsi]
-    &= 1 + zXE^\psi_X[Y\bPsi]\nonumber\\
-    &= 1 + zX\bbetas{\psi}{Y}(Y\bPsi)E^\psi_X[\bPsi]\nonumber
+    &= 1 + zXE^\psi_X[Y\bPsi]
+      \\
+    &= 1 + zX\bbetas{\psi}{Y}(Y\bPsi)E^\psi_X[\bPsi]
       \intertext{and solving}
       E^\psi_X[\bPsi]    
     &=
       \bigl(
       1 - z\bbetas{\psi}{Y}(Y\bPsi)X
-      \bigr)^{-1}.\label{eq:EXpsiPsiMult}
-  \end{align}
+      \bigr)^{-1}.
+      %\label{eq:EXpsiPsiMult}
+  \end{align*}
   % \subsubsection{The subordination function $\omega_X(z)$}
   It follows that
-  \begin{equation}
-    \label{eq:XY:omegaX}
+  \begin{equation*}
+%    \label{eq:XY:omegaX}
     \omega_X(z) = z\bbetas{\psi}{Y}(Y\bPsi)
-  \end{equation}
+  \end{equation*}
   is the \emph{multiplicative subordination function}
   \cite{Biane98,BelBerNewApproach,Chistyakov+Goetze:2008:limit},
     i.e.,~$\omega_X(z)$ satisfies
@@ -4565,17 +4473,17 @@ by purely algebraic means.
     M_{XY}^\psi(z) = M_X^\psi(\omega_X(z)).
   \end{equation}
   Analogously, we have that
-  \begin{equation}
+  \begin{equation*}
     E^\psi_Y[\bPsi] =
     \bigl(
     1-z\bbetas{\psi}{X}(\bPsi X)Y
     \bigr)^{-1}
-  \end{equation}
+  \end{equation*}
   and
-  \begin{equation}
-    \label{eq:XY:omegaY}
+  \begin{equation*}
+%    \label{eq:XY:omegaY}
     \omega_Y(z) = z\bbetas{\psi}{X}(\bPsi X).
-  \end{equation}
+  \end{equation*}
   
   % \subsubsection{Equations for $\omega_X(z)$ and $\omega_Y(z)$}
   Our next step is to deduce a system of equations for the subordination functions $\omega_X(z)$ and $\omega_Y(z)$. First, observe that all terms in the expansion $\bPsi(z) = \sum_{n=0}^{\infty} (XY)^n z^n$ are alternating words, with each block of letters in the alternation having length one. In particular, this implies that $\beta_Y^{b,\psi}(Y\bPsi)=\beta_Y^{\delta,\psi}(Y\bPsi)$. Hence
