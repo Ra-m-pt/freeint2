@@ -1,7 +1,7 @@
 \documentclass[12pt]{amsart}
 \usepackage{svn}
 % svn propset svn:keywords 'Revision' cfreeintegral.tex
-\SVN $Revision: 187 $
+\SVN $Revision: 188 $
 
 \usepackage{amssymb,amsthm,amsmath,amsfonts}
 \usepackage{graphicx}
@@ -3732,16 +3732,17 @@ E_X^\psi[WX] +
     0 = \bubbetas{\varphi}{Y}(W) + \bigl( \bubbetas{\varphi}{Y} \otimes \rE_X^\varphi \bigr)[\rdelta_XW].
   \end{equation*}
   On the other hand, from \eqref{eq:rEphiX[XW]:rec} we observe that for any $W\in \alg{M}$:
-  \begin{align*}
+  \begin{multline*}
     \IE_X^\psi[W] +
     \bigl(\bbetas{\varphi}{X}\otimes(\rE^\varphi_X-\IE_X^\psi)\bigr)[\rdelta_YW]
+    \\
 %    \nonumber
-    &= 
+    = 
       \bigl(\bubbetas{\varphi}{X}\otimes(\rE^\varphi_X-\IE_X^\psi)\bigr)[\rdelta_YW]
-      + (\epsilon_0\otimes \rE_X^\varphi)[\rdelta_YW] \\
-    &\phantom{xxx}+\IE_X^\psi[W]- (\epsilon_0\otimes \IE_X^\psi)[\rdelta_YW].
+      + (\epsilon_0\otimes \rE_X^\varphi)[\rdelta_YW] 
+    +\IE_X^\psi[W]- (\epsilon_0\otimes \IE_X^\psi)[\rdelta_YW].
 %      \label{eq:monomialY}
-  \end{align*}
+  \end{multline*}
   Now, from the definition of $\rdelta_YW$ it is easy to see that
   \[
     (\epsilon_0\otimes \rE^\varphi_X)[\rdelta_YW]
