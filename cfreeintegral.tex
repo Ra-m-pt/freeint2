@@ -1,7 +1,7 @@
 \documentclass[12pt]{amsart}
 \usepackage{svn}
 % svn propset svn:keywords 'Revision' cfreeintegral.tex
-\SVN $Revision: 188 $
+\SVN $Revision: 190 $
 
 \usepackage{amssymb,amsthm,amsmath,amsfonts}
 \usepackage{graphicx}
@@ -606,13 +606,12 @@ $a\geq 0$ and $\psi(a)=1$, if we define a new state $\varphi(x)=\psi(a x)$ then
 $a,b$ are $c$-free with respect to the pair $(\varphi,\psi)$, and moreover we
 have $\E[a|P(a,b)]=h(P(a,b))$ where
 $h=d\mu_{P(a,b)}^\varphi/d\mu_{P(a,b)}^\psi$ is the Radon-Nikodym
-derivative. Methods of determining distributions of polynomials in free
-variables are known (see
-\cite{BelinschiMaiSpeicherSubordination,LehnerSzpojankowski:2023:freeint1}),
-and thus we fill this gap
-\franz{which gap?}
-and provide a method to compute the Radon-Nikodym
-derivative above, and consequently the conditional expectation. 
+derivative of the two respecting distributions.
+The problem thus boils down to the computation of these distributions.
+Concerning the denominator, methods of determining distributions of polynomials in free
+variables are known (see \cite{BelinschiMaiSpeicherSubordination,LehnerSzpojankowski:2023:freeint1}),
+while the numerator is settled in the present paper.
+
 
 
 %In order to illustrate our results we present one example, which is fully
@@ -1778,11 +1777,11 @@ polynomials, making this setting more suitable for our purposes.
   \[
     \psi_{a_1,a_2,\dots,a_n}(P(X_1,X_2,\ldots,X_n)):=\psi\left(P(a_1,a_2,\ldots,a_n)\right).
   \]
-  A state $\psi:\IC\langle\alf{X}\rangle\to\IC$ is called \emph{free} if
-  the variables $X_i\in\alf{X}$ are free.
-  A pair of states $\varphi,\psi:\IC\langle\alf{X}\rangle\to\IC$ is called
-  \emph{$c$-free} if
-    the variables $X_i\in\alf{X}$ form a $c$-free family.
+%%  A state $\psi:\IC\langle\alf{X}\rangle\to\IC$ is called \emph{free} if
+%%  the variables $X_i\in\alf{X}$ are free.
+%%  A pair of states $\varphi,\psi:\IC\langle\alf{X}\rangle\to\IC$ is called
+%%  \emph{$c$-free} if
+%%    the variables $X_i\in\alf{X}$ form a $c$-free family.
 \end{definition}
 \begin{remark}
 %  \label{rem:freealgebra}
@@ -2023,15 +2022,15 @@ the following identities hold:
 and similarly for $\psi$.
 \begin{proposition}
   \label{thm:FIC5.5}
-%  Assume that the random variables $X$ and $Y$ are free  with
-%  respect to the state $\psi$ on
-%  the  noncommutative probability space $\IC \langle X,Y\rangle$.
-  Assume that $\psi$ is a free state on $\IC \langle X,Y\rangle$.
+  Assume that the random variables $X$ and $Y$ are free  with
+  respect to the state $\psi$.
+%  on  the  noncommutative probability space $\IC \langle X,Y\rangle$.
+%%  Assume that $\psi$ is a free state on $\IC \langle X,Y\rangle$.
   \begin{enumerate}[label=(\roman*)]
    \item 
-    For any element $P\in \IC\langle X,Y \rangle$ we have
+    For any polynomial $P\in \IC\langle X,Y \rangle$ we have
     \begin{equation}
-      \label{eq:intro_betas_prod_as_entries}
+      \label{eq:betapsi:prod_as_entries}
       \begin{aligned}
         \bbetas{\psi}{{X}}(P) 
         &= \epsilon_0(P) + (\fbetas{\psi}{{X}}\otimes\bbetas{\psi}{{X}})(\ldelta_{X} P)
@@ -2075,13 +2074,27 @@ and similarly for $\psi$.
       \bigr).
     \end{equation}
    \item 
-%    If in addition  $X$ and $Y$ are $c$-free with respect to the pair
-%    of states $(\varphi,\psi)$ on     $\mathbb{C}\langle X,Y\rangle$
-    If in addition $(\varphi,\psi)$ is a $c$-free pair    of states
-    on     $\mathbb{C}\langle X,Y\rangle$
-    then recurrence \eqref{eq:intro_betas_prod_as_entries} holds for Boolean functionals
-    with respect to $\varphi$ as well.
-    Moreover for any element $P\in \IC\langle X,Y \rangle$ we have 
+    If in addition  $X$ and $Y$ are $c$-free with respect to the pair
+    of states $(\varphi,\psi)$
+    %on     $\mathbb{C}\langle X,Y\rangle$
+%%    If in addition $(\varphi,\psi)$ is a $c$-free pair    of states
+%%    on     $\mathbb{C}\langle X,Y\rangle$
+    then analogue of the product formula       \eqref{eq:betapsi:prod_as_entries}
+    with respect to $\varphi$ holds as well:
+    \begin{equation}
+      \label{eq:betaphi:prod_as_entries}
+      \begin{aligned}
+        \bbetas{\varphi}{{X}}(P) 
+        &= \epsilon_0(P) + (\fbetas{\varphi}{{X}}\otimes\bbetas{\varphi}{{X}})(\ldelta_{X} P)
+        \\
+        &= \epsilon_0(P) +
+        (\bbetas{\varphi}{{X}}\otimes\fbetas{\varphi}{{X}})(\rdelta_{{X}} P)
+      \end{aligned}
+    \end{equation}
+    while the analogue of
+    \eqref{eq:IntroVNRP_for_betas:uni}
+    has to be adjusted and 
+    for any polynomial $P\in \IC\langle X,Y \rangle$     we have
   \begin{equation}
     \label{eq:ProductsasEntriesCFree}
     \fbetas{\varphi}{X}(P)
@@ -2101,7 +2114,7 @@ and similarly for $\psi$.
   5.5]{LehnerSzpojankowski:2023:freeint1}. The proof for $c$-free variables
   follows the same arguments, using the fact that the VNRP also holds
   for the $c$-free case as proved in Theorem~\ref{thm:VNTPCfree}. In
-  particular, \eqref{eq:intro_betas_prod_as_entries} is a simple consequence
+  particular, recurrence \eqref{eq:betaphi:prod_as_entries} is a simple consequence
   of the Leonov-Shiryaev formula \eqref{eq:BoolProd}
   for $\beta^\varphi_n$, noticing that the extra
   terms vanish by Property (\VNEC) from Remark and Definition~\ref{remdef:fNEC}. Equation
@@ -2245,8 +2258,8 @@ $I$ for the identity matrix $I_N\in M_N(\mathbb{C})$.
   $$
   (f\otimes g)^{(N)} (A\odot B) = f^{(N)}(A)\cdot g^{(N)}(B)
   $$
-  and the formulas
-  \eqref{eq:intro_betas_prod_as_entries}--%\eqref{eq:IntroVNRP_for_betas:uni}
+  and formulas
+  \eqref{eq:betapsi:prod_as_entries}--%\eqref{eq:IntroVNRP_for_betas:uni}
 \eqref{eq:ProductsasEntriesCFree}
   from  Proposition~\ref{thm:FIC5.5} remain valid after amplification to the
   matrix valued case.
@@ -2351,8 +2364,10 @@ satisfy the fixed point equation featuring in the following Proposition.
   \label{lem:SeveralEquations}
 %  Assume that $X$ and $Y$ are $c$-free in the two-state noncommutative
 %  probability space $(\mathbb{C}\langle X,Y\rangle,\varphi,\psi)$.
-  Assume that $(\varphi,\psi)$ is a $c$-free pair    of states
-  on $\mathbb{C}\langle X,Y\rangle$.
+  Assume that the variables $X$ and $Y$ are $c$-free with respect
+  to the pair $(\varphi,\psi)$.
+%%  Assume that $(\varphi,\psi)$ is a $c$-free pair    of states
+%%  on $\mathbb{C}\langle X,Y\rangle$.
   Given matrices  $A,B\in M_N(\mathbb{C})$,
   denote the resolvent by $\bPsi = \bigl(I - z(AX+BY)\bigr)^{-1}$  and let
   \begin{align}
@@ -2424,7 +2439,7 @@ satisfy the fixed point equation featuring in the following Proposition.
   \rdelta_X(\bPsi) = z\bPsi A \odot X\bPsi = z\bPsi \odot AX\bPsi.
   $$
   Then the matricial amplification of the Leonov-Shiryaev formula
-  \eqref{eq:intro_betas_prod_as_entries}
+  \eqref{eq:betapsi:prod_as_entries}
   reads
   $$
   \beta^{b,\psi}_X(\bPsi) = I + z\beta_X^{b,\psi}(\bPsi)\beta_X^{\delta,\psi}(AX\bPsi),
@@ -3042,7 +3057,8 @@ of products of marginal moments.
 % \input{variantEY}
   
   We will work in the formal setting of noncommutative polynomials
-  $\IC\langle X,Y\rangle$   with $c$-free state $\varphi$ and free state $\psi$
+  $\IC\langle X,Y\rangle$   with two states $\varphi$ and $\psi$
+  such that $X$ and $Y$ are $c$-free
   as described in Subsection~\ref{ssec:nc_polynomials}.
   The states are possibly not faithful and the conditional expectation
   therefore not unique, yet the following formula
@@ -3052,7 +3068,8 @@ of products of marginal moments.
   evaluated on free elements in von Neumann algebras.
   \begin{proposition}[\cite{LehnerSzpojan}]
     \label{prop:freecondexpX}
-    Assume that $\psi$ is a free state on $\IC\langle X,Y\rangle$.
+    %% Assume that $\psi$ is a free state on $\IC\langle X,Y\rangle$.
+    Assume that the variables $X$ and $Y$ are free with respect to the state $\psi$.
     Given a word  in block-factorization $W=X_0Y_1X_1Y_2\dotsm X_{n-1}Y_nX_n$
     (with $X_0$ and $X_n$ possible being empty),
     we define the linear map $\E^\psi_X:\IC \langle X,Y \rangle\to \IC \langle X \rangle$
@@ -3230,8 +3247,10 @@ for $\rE_X^\varphi$ like \eqref{eq:Epsi:full} and rather have to rely on an
 analogue of the recurrence \eqref{eq:condexprec} for its definition.
 \begin{theorem} 
   \label{thm:rEphi:recurrence}
-  Assume that  the pair of states $(\varphi,\psi)$ 
-  on $\IC\langle X,Y\rangle$ is $c$-free.
+%%  Assume that  the pair of states $(\varphi,\psi)$ 
+%%  on $\IC\langle X,Y\rangle$ is $c$-free.
+  Assume that  the variables $X$ and $Y$ are $c$-free with
+  respect to the pair of states $(\varphi,\psi)$.
   Then the following recurrence defines a right quasi-conditional expectation
   for $\varphi$
   onto the subalgebra $\IC\langle X \rangle$:
@@ -3361,7 +3380,9 @@ The following lemma will allow us to connect the $c$-free quasi-conditional expe
 to the free conditional expectation
 and is the key to the proof of the preceding theorem.
 \begin{lemma}
-  If $W\in \C\langle X,Y\rangle$ is a monomial starting with $X$,  then
+  If  the variables $X$ and $Y$ are $c$-free with
+  respect to the pair of states $(\varphi,\psi)$
+  and  $W\in \C\langle X,Y\rangle$  is a word starting with $X$,  then
   \begin{equation*}
     \varphi(\E^\psi_X[W]) = \bbetas{\varphi}{}(W) + \bigl(\bbetas{\varphi}{}\otimes(\varphi\circ \E^\psi_X)\bigr)[\rdelta_YW];
   \end{equation*}
@@ -3805,12 +3826,13 @@ The following result from \cite{LehnerSzpojankowski:2023:freeint1} explains how 
 
 \begin{proposition}
   \label{prop:6.13}
-%  Assume that the random variables $X$ and $Y$ are free in the
+  Assume that the random variables $X$ and $Y$ are free
+  with respect to the state $\psi$,
 %  noncommutative probability  space 
 %  $(\mathbb{C}\langle X,Y\rangle,\psi)$.
-  Assume that $\psi$ is a free state on
-  $\mathbb{C}\langle X,Y\rangle$.
-  Then with the notations from Proposition~\ref{lem:SeveralEquations} the
+%%  Assume that $\psi$ is a free state on
+%%  $\mathbb{C}\langle X,Y\rangle$.
+  then with the notations from Proposition~\ref{lem:SeveralEquations} the
   conditional expectation of the resolvent
   $\bPsi = (I - z(AX+BY))^{-1}$ 
   is given by 
@@ -3860,8 +3882,10 @@ The last theorem of this section generalizes Proposition~\ref{prop:6.13} to the 
   % \label{thm:cfreeConvolution}
 %  Let $(\mathbb{C}\langle X,Y\rangle,\varphi,\psi)$ be a two-state
 %  noncommutative probability space such that $X$ and $Y$ are $c$-free.
-  Let $(\varphi,\psi)$ be a $c$-free pair of states on $\mathbb{C}\langle X,Y\rangle$.
-  Assume  that the resolvent of a given polynomial $P \in \mathbb{C}\langle X,Y\rangle$
+  Assume that the variables $X$ and $Y$ are $c$-free
+  with respect to the pair $(\varphi,\psi)$
+%%  Let $(\varphi,\psi)$ be a $c$-free pair of states on $\mathbb{C}\langle X,Y\rangle$.
+  and  that the resolvent of a given polynomial $P \in \mathbb{C}\langle X,Y\rangle$
   of degree $m$ has a linearization given by $\Psi=\Psi(z) = (1-z^mP)^{-1} = u^t\bPsi
   v$, where $$\bPsi=\bPsi(z) = (I-z(AX+BY))^{-1},$$ with $A=A(z),B=B(z)\in
   M_N(\mathbb{C}[z])$
@@ -4224,7 +4248,7 @@ The last theorem of this section generalizes Proposition~\ref{prop:6.13} to the 
       \bigl(
       \bbetas{\psi}{Y}(\bPsi)^{-1}
       -zAX
-      \bigr)^{-1}.
+      \bigr)^{-1}
     \end{multlined}
     \\
     &=
@@ -4250,7 +4274,7 @@ The last theorem of this section generalizes Proposition~\ref{prop:6.13} to the 
       \bigl(
       \bbetas{\psi}{Y}(\bPsi)^{-1}
       -zAX
-      \bigr)^{-1}.
+      \bigr)^{-1}
       \end{multlined}
     \\
     &=
@@ -4384,10 +4408,11 @@ by purely algebraic means.
 %\textcolor{red}{Kamil: I think we need to assume that  distributions of $X,Y$ wrt $\psi$ is supported on $\mathbb{R}_+$ and not $\delta_0$, in particular \cite[Theorem 3.3]{BelBerNewApproach} makes that assumption! (and we should cite thm 3.3, not thm 3.2! Second thought Popa-Wang is about unitaries so maybe this is thm. 3.2, but we do not say unitaries anywhere!}
 \begin{proposition}
 %  Let $(\mathbb{C}\langle X,Y\rangle,\varphi,\psi)$ be a two-state
-%  noncommutative probability space such that $X$ and $Y$ are $c$-free with
-%  $\psi(X),\psi(Y)\ne0$.
-  Let $(\varphi,\psi)$ be a $c$-free pair of states on  $\mathbb{C}\langle X,Y\rangle$
-  and assume that   $\psi(X),\psi(Y)\ne0$.
+%  noncommutative probability space such
+  Assume that that $X$ and $Y$ are $c$-free with respect to the pair
+ $(\varphi,\psi)$
+%%  Let $(\varphi,\psi)$ be a $c$-free pair of states on  $\mathbb{C}\langle X,Y\rangle$
+  with   $\psi(X),\psi(Y)\ne0$.
   Then the moment generating function of $XY$ with respect to $\varphi$ is given by
   \begin{equation}
     M_{XY}^\varphi(z) = \frac{1}{
