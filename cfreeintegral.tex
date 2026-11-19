@@ -1,7 +1,7 @@
 \documentclass[12pt]{amsart}
 \usepackage{svn}
 % svn propset svn:keywords 'Revision' cfreeintegral.tex
-\SVN $Revision: 190 $
+\SVN $Revision: 191 $
 
 \usepackage{amssymb,amsthm,amsmath,amsfonts}
 \usepackage{graphicx}
@@ -16,7 +16,7 @@
 
 \usepackage{textcomp}
 
-
+%\usepackage[numbers]{natlib}
 
 \raggedbottom{}
 
@@ -608,9 +608,9 @@ have $\E[a|P(a,b)]=h(P(a,b))$ where
 $h=d\mu_{P(a,b)}^\varphi/d\mu_{P(a,b)}^\psi$ is the Radon-Nikodym
 derivative of the two respecting distributions.
 The problem thus boils down to the computation of these distributions.
-Concerning the denominator, methods of determining distributions of polynomials in free
+Concerning the denominator, methods for determining distributions of polynomials in free
 variables are known (see \cite{BelinschiMaiSpeicherSubordination,LehnerSzpojankowski:2023:freeint1}),
-while the numerator is settled in the present paper.
+and the numerator is settled in the present paper.
 
 
 
@@ -4663,8 +4663,9 @@ No AI tools were used at any stage of this work.
 
 
 %\bibliographystyle{abbrv}
-\bibliographystyle{plainurl}
-% \bibliographystyle{plain}
+%\bibliographystyle{plainurl}
+\bibliographystyle{abbrvurl}
+
 \bibliography{freeintegral}
 \end{document}
 %%% Local Variables:
